@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using EpsSchool.Api.Data;
 using EpsSchool.Api.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EpsSchool.Api.Controllers
 {
@@ -9,40 +11,25 @@ namespace EpsSchool.Api.Controllers
     [Route("api/[controller]")]
     public class AlunoController : ControllerBase
     {
-        public List<Aluno> Alunos = new List<Aluno>() {
-            new Aluno() {
-                Id = 1,
-                Nome = "Marcos",
-                Sobrenome = "Souza",
-                Telefone = "1231546"
-            },
-            new Aluno() {
-                Id = 2,
-                Nome = "Alexandre",
-                Sobrenome = "Silva",
-                Telefone = "1231546"
-            },
-            new Aluno() {
-                Id = 3,
-                Nome = "Fernanda",
-                Sobrenome = "Dantas",
-                Telefone = "1231546"
-            }
-        };
+        private readonly SchoolContext _context;
 
-        public AlunoController() { }
+        public AlunoController(SchoolContext context)
+        {
+            _context = context;
+        }
+
         // GET api/aluno
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(Alunos);
+            return Ok(_context.Alunos);
         }
 
         // GetById api/aluno/byId/id
         [HttpGet("byId/{id}")]
         public IActionResult GetById(int id)
         {
-            var aluno = Alunos.FirstOrDefault(aluno => aluno.Id == id);
+            var aluno = _context.Alunos.FirstOrDefault(a => a.Id == id);
             if (aluno == null) return BadRequest("O Aluno não foi encontrado");
 
             return Ok(aluno);
@@ -52,7 +39,7 @@ namespace EpsSchool.Api.Controllers
         [HttpGet("byName")]
         public IActionResult GetByName(string nome, string sobrenome)
         {
-            var aluno = Alunos.FirstOrDefault(a =>
+            var aluno = _context.Alunos.FirstOrDefault(a =>
                 a.Nome.Contains(nome) && a.Sobrenome.Contains(sobrenome)
             );
             if (aluno == null) return BadRequest("O Aluno não foi encontrado");
@@ -64,6 +51,8 @@ namespace EpsSchool.Api.Controllers
         [HttpPost]
         public IActionResult Post(Aluno aluno)
         {
+            _context.Add(aluno);
+            _context.SaveChanges();
             return Ok(aluno);
         }
 
@@ -71,6 +60,11 @@ namespace EpsSchool.Api.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, Aluno aluno)
         {
+            var alu = _context.Alunos.AsNoTracking().FirstOrDefault(a => a.Id == id);
+            if (alu == null) return BadRequest("Aluno não Encontrado!");
+
+            _context.Update(aluno);
+            _context.SaveChanges();
             return Ok(aluno);
         }
 
@@ -78,13 +72,23 @@ namespace EpsSchool.Api.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Aluno aluno)
         {
+            var alu = _context.Alunos.AsNoTracking().FirstOrDefault(a => a.Id == id);
+            if (alu == null) return BadRequest("Aluno não Encontrado!");
+
+            _context.Update(aluno);
+            _context.SaveChanges();
             return Ok(aluno);
         }
 
         // Delete
-        [HttpPut("{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            var aluno = _context.Alunos.FirstOrDefault(a => a.Id == id);
+            if (aluno == null) return BadRequest("Aluno não Encontrado!");
+
+            _context.Remove(aluno);
+            _context.SaveChanges();
             return Ok();
         }
 

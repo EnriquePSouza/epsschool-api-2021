@@ -30,6 +30,7 @@ namespace EpsSchool.Api
             services.AddDbContext<SchoolContext>(
                 context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
+            
             services.AddControllers();
         }
 
