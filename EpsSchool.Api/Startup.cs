@@ -27,11 +27,19 @@ namespace EpsSchool.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Injeção de Dependencia do Contexto de Banco de Dados.
             services.AddDbContext<SchoolContext>(
                 context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
-            
-            services.AddControllers();
+
+            // Injeção de Dependencia do Controle com Inversão de Controle.
+            services.AddScoped<IRepository, Repository>();
+
+            // Tratando erro de loop infinito no envio do Json.
+            services.AddControllers()
+                    .AddNewtonsoftJson(
+                        opt => opt.SerializerSettings.ReferenceLoopHandling =
+                            Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

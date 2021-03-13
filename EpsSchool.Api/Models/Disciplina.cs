@@ -14,7 +14,7 @@ namespace EpsSchool.Api.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public int ProfessorId { get; set; }
-        public Professor Professor { get; }
+        public Professor Professor { get; set; }
         public IEnumerable<AlunoDisciplina> AlunosDisciplinas { get; set; }
     }
 }
