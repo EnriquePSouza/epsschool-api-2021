@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using EpsSchool.Api.Data;
+using EpsSchool.Api.Dtos;
 using EpsSchool.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,18 +14,21 @@ namespace EpsSchool.Api.Controllers
     public class ProfessorController : ControllerBase
     {
         private readonly IRepository _repo;
+        private readonly IMapper _mapper;
 
-        public ProfessorController(IRepository repo)
+        public ProfessorController(IRepository repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
 
         // GET api/professor
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _repo.GetAllProfessores(true);
-            return Ok(result);
+            var professores = _repo.GetAllProfessores(true);
+
+            return Ok(_mapper.Map<IEnumerable<ProfessorDto>>(professores));
         }
 
         // GetById api/professor/id
@@ -33,17 +38,21 @@ namespace EpsSchool.Api.Controllers
             var professor = _repo.GetProfessorById(id, false);
             if (professor == null) return BadRequest("O Professor não foi encontrado");
 
-            return Ok(professor);
+            var professorDto = _mapper.Map<ProfessorDto>(professor);
+
+            return Ok(professorDto);
         }
 
         // Post
         [HttpPost]
-        public IActionResult Post(Professor professor)
+        public IActionResult Post(ProfessorRegistrarDto model)
         {
+            var professor = _mapper.Map<Professor>(model);
+
             _repo.Add(professor);
             if (_repo.SaveChanges())
             {
-                return Ok(professor);
+                return Created($"/api/professor/{model.Id}", _mapper.Map<ProfessorDto>(professor));
             }
 
             return BadRequest("Professor não cadastrado!");
@@ -51,15 +60,17 @@ namespace EpsSchool.Api.Controllers
 
         // Put
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Professor professor)
+        public IActionResult Put(int id, ProfessorRegistrarDto model)
         {
-            var prof = _repo.GetProfessorById(id);
-            if (prof == null) return BadRequest("Professor não encontrado!");
+            var professor = _repo.GetProfessorById(id);
+            if (professor == null) return BadRequest("Professor não encontrado!");
+
+            _mapper.Map(model, professor);
 
             _repo.Update(professor);
             if (_repo.SaveChanges())
             {
-                return Ok(professor);
+                return Created($"/api/professor/{model.Id}", _mapper.Map<ProfessorDto>(professor));
             }
 
             return BadRequest("Professor não atualizado!");
@@ -67,15 +78,17 @@ namespace EpsSchool.Api.Controllers
 
         // Patch
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Professor professor)
+        public IActionResult Patch(int id, ProfessorRegistrarDto model)
         {
-            var prof = _repo.GetProfessorById(id);
-            if (prof == null) return BadRequest("Professor não encontrado!");
+            var professor = _repo.GetProfessorById(id);
+            if (professor == null) return BadRequest("Professor não encontrado!");
+
+            _mapper.Map(model, professor);
 
             _repo.Update(professor);
             if (_repo.SaveChanges())
             {
-                return Ok(professor);
+                return Created($"/api/professor/{model.Id}", _mapper.Map<ProfessorDto>(professor));
             }
 
             return BadRequest("Professor não atualizado!");
@@ -85,10 +98,10 @@ namespace EpsSchool.Api.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var prof = _repo.GetProfessorById(id);
-            if (prof == null) return BadRequest("Professor não encontrado!");
+            var professor = _repo.GetProfessorById(id);
+            if (professor == null) return BadRequest("Professor não encontrado!");
 
-            _repo.Remove(prof);
+            _repo.Remove(professor);
             if (_repo.SaveChanges())
             {
                 return Ok("Professor deletado.");

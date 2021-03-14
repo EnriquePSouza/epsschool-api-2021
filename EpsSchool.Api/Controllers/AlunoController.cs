@@ -39,17 +39,22 @@ namespace EpsSchool.Api.Controllers
             var aluno = _repo.GetAlunoById(id, false);
             if (aluno == null) return BadRequest("O Aluno não foi encontrado");
 
-            return Ok(aluno);
+            var alunoDto = _mapper.Map<AlunoDto>(aluno);
+
+            return Ok(alunoDto);
         }
 
         // Post
         [HttpPost]
-        public IActionResult Post(Aluno aluno)
+        public IActionResult Post(AlunoRegistrarDto model)
         {
+            var aluno = _mapper.Map<Aluno>(model);
+
+
             _repo.Add(aluno);
             if (_repo.SaveChanges())
             {
-                return Ok(aluno);
+                return Created($"/api/aluno/{model.Id}", _mapper.Map<AlunoDto>(aluno));
             }
 
             return BadRequest("Aluno não cadastrado!");
@@ -58,15 +63,17 @@ namespace EpsSchool.Api.Controllers
 
         // Put
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Aluno aluno)
+        public IActionResult Put(int id, AlunoRegistrarDto model)
         {
-            var alu = _repo.GetAlunoById(id);
-            if (alu == null) return BadRequest("Aluno não encontrado!");
+            var aluno = _repo.GetAlunoById(id);
+            if (aluno == null) return BadRequest("Aluno não encontrado!");
+
+            _mapper.Map(model, aluno);
 
             _repo.Update(aluno);
             if (_repo.SaveChanges())
             {
-                return Ok(aluno);
+                return Created($"/api/aluno/{model.Id}", _mapper.Map<AlunoDto>(aluno));
             }
 
             return BadRequest("Aluno não atualizado!");
@@ -74,15 +81,17 @@ namespace EpsSchool.Api.Controllers
 
         // Patch
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Aluno aluno)
+        public IActionResult Patch(int id, AlunoRegistrarDto model)
         {
-            var alu = _repo.GetAlunoById(id);
-            if (alu == null) return BadRequest("Aluno não encontrado!");
+            var aluno = _repo.GetAlunoById(id);
+            if (aluno == null) return BadRequest("Aluno não encontrado!");
+
+            _mapper.Map(model, aluno);
 
             _repo.Update(aluno);
             if (_repo.SaveChanges())
             {
-                return Ok(aluno);
+                return Created($"/api/aluno/{model.Id}", _mapper.Map<AlunoDto>(aluno));
             }
 
             return BadRequest("Aluno não atualizado!");
@@ -92,10 +101,10 @@ namespace EpsSchool.Api.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var alu = _repo.GetAlunoById(id);
-            if (alu == null) return BadRequest("Aluno não encontrado!");
+            var aluno = _repo.GetAlunoById(id);
+            if (aluno == null) return BadRequest("Aluno não encontrado!");
 
-            _repo.Remove(alu);
+            _repo.Remove(aluno);
             if (_repo.SaveChanges())
             {
                 return Ok("Aluno detetado.");
