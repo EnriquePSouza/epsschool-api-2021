@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using EpsSchool.Api.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,14 +33,17 @@ namespace EpsSchool.Api
                 context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
 
-            // Injeção de Dependencia do Controle com Inversão de Controle.
-            services.AddScoped<IRepository, Repository>();
-
             // Tratando erro de loop infinito no envio do Json.
             services.AddControllers()
                     .AddNewtonsoftJson(
                         opt => opt.SerializerSettings.ReferenceLoopHandling =
                             Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            // Mapeamento Automatico Para os Dtos - Os Helpers são o meio de campo.
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            // Injeção de Dependencia do Controle com Inversão de Controle.
+            services.AddScoped<IRepository, Repository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +58,7 @@ namespace EpsSchool.Api
 
             app.UseRouting();
 
-           // app.UseAuthorization();
+            // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using EpsSchool.Api.Data;
+using EpsSchool.Api.Dtos;
 using EpsSchool.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,18 +14,22 @@ namespace EpsSchool.Api.Controllers
     public class AlunoController : ControllerBase
     {
         private readonly IRepository _repo;
+        private readonly IMapper _mapper;
 
-        public AlunoController(IRepository repo)
+        public AlunoController(IRepository repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
 
         // GET api/aluno
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _repo.GetAllAlunos(true);
-            return Ok(result);
+            var alunos = _repo.GetAllAlunos(true);
+            
+
+            return Ok(_mapper.Map<IEnumerable<AlunoDto>>(alunos));
         }
 
         // GetById api/aluno/id
