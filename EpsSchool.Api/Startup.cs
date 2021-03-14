@@ -44,6 +44,18 @@ namespace EpsSchool.Api
 
             // Injeção de Dependencia do Controle com Inversão de Controle.
             services.AddScoped<IRepository, Repository>();
+
+            // Swagger - Utilizado para execução e testes da API.
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("epsschoolapi",
+                new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "EPS School API",
+                    Version = "1.0"
+
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +69,12 @@ namespace EpsSchool.Api
             // app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseSwagger()
+                .UseSwaggerUI(options => {
+                    options.SwaggerEndpoint("/swagger/epsschoolapi/swagger.json", "epsschoolapi");
+                    options.RoutePrefix = "";
+                });
 
             // app.UseAuthorization();
 
