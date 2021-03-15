@@ -13,7 +13,8 @@ namespace EpsSchool.Api.Controllers
     /// Versão 1 do controlador de Alunos.
     /// </summary>
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class AlunoController : ControllerBase
     {
         private readonly IRepository _repo;

@@ -116,12 +116,12 @@
         </member>
         <member name="T:EpsSchool.Api.Dtos.AlunoRegistrarDto">
             <summary>
-            Este e o DTO para efetuar o registro de um Aluno no banco de dados
+            Este é o DTO para efetuar o registro de um Aluno no banco de dados
             </summary>
         </member>
         <member name="P:EpsSchool.Api.Dtos.AlunoRegistrarDto.Id">
             <summary>
-            Codigo identificador e chave do Banco.
+            Código identificador e chave do Banco.
             </summary>
         </member>
         <member name="P:EpsSchool.Api.Dtos.AlunoRegistrarDto.Matricula">

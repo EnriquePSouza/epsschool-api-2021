@@ -3,12 +3,12 @@ using System;
 namespace EpsSchool.Api.Dtos
 {
     /// <summary>
-    /// Este e o DTO para efetuar o registro de um Aluno no banco de dados
+    /// Este é o DTO para efetuar o registro de um Aluno no banco de dados
     /// </summary>
     public class AlunoRegistrarDto
     {
         /// <summary>
-        /// Codigo identificador e chave do Banco.
+        /// Código identificador e chave do Banco.
         /// </summary>
         public int Id { get; set; }
         /// <summary>
