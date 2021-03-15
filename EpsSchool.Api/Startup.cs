@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using AutoMapper;
 using EpsSchool.Api.Data;
@@ -55,6 +57,11 @@ namespace EpsSchool.Api
                     Version = "1.0"
 
                 });
+
+                var xmlCommentFiles = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlCommentFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFiles);
+
+                options.IncludeXmlComments(xmlCommentFullPath);
             });
         }
 

@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EpsSchool.Api.Controllers
 {
+    /// <summary>
+    /// Versão 1 do controlador de Professores.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class ProfessorController : ControllerBase
@@ -16,13 +19,21 @@ namespace EpsSchool.Api.Controllers
         private readonly IRepository _repo;
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// Método construtor do controlador de Professores.
+        /// </summary>
+        /// <param name="repo"></param>
+        /// <param name="mapper"></param>
         public ProfessorController(IRepository repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
         }
 
-        // GET api/professor
+        /// <summary>
+        /// Método responsável por retornar todos os Professores.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -31,7 +42,11 @@ namespace EpsSchool.Api.Controllers
             return Ok(_mapper.Map<IEnumerable<ProfessorDto>>(professores));
         }
 
-        // GetById api/professor/id
+        /// <summary>
+        /// Método responsável por retornar um Professor ao informar o seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -43,7 +58,11 @@ namespace EpsSchool.Api.Controllers
             return Ok(professorDto);
         }
 
-        // Post
+        /// <summary>
+        /// Método responsável por inserir as informações de um Professor no banco de dados.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post(ProfessorRegistrarDto model)
         {
@@ -58,7 +77,12 @@ namespace EpsSchool.Api.Controllers
             return BadRequest("Professor não cadastrado!");
         }
 
-        // Put
+        /// <summary>
+        /// Método responsável por atualizar as informações de um Professor no banco de dados.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, ProfessorRegistrarDto model)
         {
@@ -76,7 +100,12 @@ namespace EpsSchool.Api.Controllers
             return BadRequest("Professor não atualizado!");
         }
 
-        // Patch
+        /// <summary>
+        /// Método responsável por atualizar todas ou algumas das informações de um Professor no banco de dados.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, ProfessorRegistrarDto model)
         {
@@ -94,7 +123,11 @@ namespace EpsSchool.Api.Controllers
             return BadRequest("Professor não atualizado!");
         }
 
-        // Delete
+        /// <summary>
+        /// Método responsável por remover as informações de um Professor do banco de dados.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
