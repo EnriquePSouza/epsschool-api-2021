@@ -33,7 +33,7 @@ namespace EpsSchool.Api
         {
             // Injeção de Dependencia do Contexto de Banco de Dados.
             services.AddDbContext<SchoolContext>(
-                context => context.UseSqlite(Configuration.GetConnectionString("Default"))
+                context => context.UseMySql(Configuration.GetConnectionString("MySqlConnection"))
             );
 
             // Tratando erro de loop infinito no envio do Json.

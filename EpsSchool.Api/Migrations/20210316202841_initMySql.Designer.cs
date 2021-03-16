@@ -9,44 +9,45 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EpsSchool.Api.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20210314133320_Inicial")]
-    partial class Inicial
+    [Migration("20210316202841_initMySql")]
+    partial class initMySql
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.0");
+                .HasAnnotation("ProductVersion", "3.1.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("EpsSchool.Api.Models.Aluno", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<bool>("Ativo")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("DataFim")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataInicio")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Matricula")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Sobrenome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -57,7 +58,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 1,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(3305),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(7223),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 1,
                             Nome = "Marta",
@@ -68,7 +69,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 2,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(5408),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9298),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 2,
                             Nome = "Paula",
@@ -79,7 +80,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 3,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(5485),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9377),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 3,
                             Nome = "Laura",
@@ -90,7 +91,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 4,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(5499),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9389),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 4,
                             Nome = "Luiza",
@@ -101,7 +102,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 5,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(5509),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9400),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 5,
                             Nome = "Lucas",
@@ -112,7 +113,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 6,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(5525),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9416),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 6,
                             Nome = "Pedro",
@@ -123,7 +124,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 7,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(5535),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9426),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 7,
                             Nome = "Paulo",
@@ -135,16 +136,16 @@ namespace EpsSchool.Api.Migrations
             modelBuilder.Entity("EpsSchool.Api.Models.AlunoCurso", b =>
                 {
                     b.Property<int>("AlunoId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("CursoId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DataFim")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataInicio")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("AlunoId", "CursoId");
 
@@ -156,19 +157,19 @@ namespace EpsSchool.Api.Migrations
             modelBuilder.Entity("EpsSchool.Api.Models.AlunoDisciplina", b =>
                 {
                     b.Property<int>("AlunoId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("DisciplinaId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DataFim")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataInicio")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int?>("Nota")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("AlunoId", "DisciplinaId");
 
@@ -181,139 +182,139 @@ namespace EpsSchool.Api.Migrations
                         {
                             AlunoId = 1,
                             DisciplinaId = 2,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(6910)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(904)
                         },
                         new
                         {
                             AlunoId = 1,
                             DisciplinaId = 4,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7591)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1591)
                         },
                         new
                         {
                             AlunoId = 1,
                             DisciplinaId = 5,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7636)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1632)
                         },
                         new
                         {
                             AlunoId = 2,
                             DisciplinaId = 1,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7639)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1635)
                         },
                         new
                         {
                             AlunoId = 2,
                             DisciplinaId = 2,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7642)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1637)
                         },
                         new
                         {
                             AlunoId = 2,
                             DisciplinaId = 5,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7647)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1644)
                         },
                         new
                         {
                             AlunoId = 3,
                             DisciplinaId = 1,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7649)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1646)
                         },
                         new
                         {
                             AlunoId = 3,
                             DisciplinaId = 2,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7651)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1709)
                         },
                         new
                         {
                             AlunoId = 3,
                             DisciplinaId = 3,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7653)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1714)
                         },
                         new
                         {
                             AlunoId = 4,
                             DisciplinaId = 1,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7657)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1719)
                         },
                         new
                         {
                             AlunoId = 4,
                             DisciplinaId = 4,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7659)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1721)
                         },
                         new
                         {
                             AlunoId = 4,
                             DisciplinaId = 5,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7661)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1723)
                         },
                         new
                         {
                             AlunoId = 5,
                             DisciplinaId = 4,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7663)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1725)
                         },
                         new
                         {
                             AlunoId = 5,
                             DisciplinaId = 5,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7666)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1727)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 1,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7668)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1729)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 2,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7669)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1731)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 3,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7672)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1733)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 4,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7675)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1737)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 1,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7677)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1739)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 2,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7679)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1741)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 3,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7681)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1743)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 4,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7683)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1745)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 5,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 806, DateTimeKind.Local).AddTicks(7685)
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1747)
                         });
                 });
 
@@ -321,10 +322,10 @@ namespace EpsSchool.Api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -352,22 +353,22 @@ namespace EpsSchool.Api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("CargaHoraria")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("CursoId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int?>("PrerequisitoId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("ProfessorId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -466,28 +467,28 @@ namespace EpsSchool.Api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<bool>("Ativo")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("DataFim")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataInicio")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Registro")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Sobrenome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -498,7 +499,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 1,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 801, DateTimeKind.Local).AddTicks(5293),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 86, DateTimeKind.Local).AddTicks(3484),
                             Nome = "Lauro",
                             Registro = 1,
                             Sobrenome = "Oliveira"
@@ -507,7 +508,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 2,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 802, DateTimeKind.Local).AddTicks(6887),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2335),
                             Nome = "Roberto",
                             Registro = 2,
                             Sobrenome = "Soares"
@@ -516,7 +517,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 3,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 802, DateTimeKind.Local).AddTicks(6942),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2395),
                             Nome = "Ronaldo",
                             Registro = 3,
                             Sobrenome = "Marconi"
@@ -525,7 +526,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 4,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 802, DateTimeKind.Local).AddTicks(6946),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2399),
                             Nome = "Rodrigo",
                             Registro = 4,
                             Sobrenome = "Carvalho"
@@ -534,7 +535,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 5,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 14, 10, 33, 19, 802, DateTimeKind.Local).AddTicks(6949),
+                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2401),
                             Nome = "Alexandre",
                             Registro = 5,
                             Sobrenome = "Montanha"
