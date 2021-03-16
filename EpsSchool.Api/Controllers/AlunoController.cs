@@ -42,8 +42,11 @@ namespace EpsSchool.Api.Controllers
         {
             var alunos = await _repo.GetAllAlunosAsync(pageParams, true);
             
+            var alunosResult = _mapper.Map<IEnumerable<AlunoDto>>(alunos);
 
-            return Ok(_mapper.Map<IEnumerable<AlunoDto>>(alunos));
+            Response.AddPagination(alunos.CurrentPage, alunos.PageSize, alunos.TotalCount, alunos.TotalPages);
+
+            return Ok(alunosResult);
         }
 
         /// <summary>
