@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using EpsSchool.Api.Helpers;
 using EpsSchool.Api.Models;
 
 namespace EpsSchool.Api.Data
@@ -10,6 +13,7 @@ namespace EpsSchool.Api.Data
         bool SaveChanges();
 
         //Aluno
+        public Task<PageList<Aluno>> GetAllAlunosAsync(PageParams pageParams, bool includeProfessor = false);
         public Aluno[] GetAllAlunos(bool includeProfessor = false);
         public Aluno[] GetAllAlunosByDisciplinaId(int disciplinaId, bool includeProfessor = false);
         public Aluno GetAlunoById(int alunoId, bool includeProfessor = false);

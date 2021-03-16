@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using EpsSchool.Api.Data;
 using EpsSchool.Api.Dtos;
+using EpsSchool.Api.Helpers;
 using EpsSchool.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -32,13 +34,13 @@ namespace EpsSchool.Api.Controllers
         }
 
         /// <summary>
-        /// Método responsável por retornar todos os Alunos.
+        /// Método responsável por retornar todos os Alunos de Forma Assíncrona.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get([FromQuery]PageParams pageParams)
         {
-            var alunos = _repo.GetAllAlunos(true);
+            var alunos = await _repo.GetAllAlunosAsync(pageParams, true);
             
 
             return Ok(_mapper.Map<IEnumerable<AlunoDto>>(alunos));

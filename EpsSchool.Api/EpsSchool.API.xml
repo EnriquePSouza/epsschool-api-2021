@@ -16,9 +16,9 @@
             <param name="repo"></param>
             <param name="mapper"></param>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.Get">
+        <member name="M:EpsSchool.Api.Controllers.AlunoController.Get(EpsSchool.Api.Helpers.PageParams)">
             <summary>
-            Método responsável por retornar todos os Alunos.
+            Método responsável por retornar todos os Alunos de Forma Assíncrona.
             </summary>
             <returns></returns>
         </member>
