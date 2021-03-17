@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EpsSchool.Api.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20210316202841_initMySql")]
+    [Migration("20210317160957_initMySql")]
     partial class initMySql
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 1,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(7223),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(4595),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 1,
                             Nome = "Marta",
@@ -69,7 +69,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 2,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9298),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(7808),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 2,
                             Nome = "Paula",
@@ -80,7 +80,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 3,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9377),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(8316),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 3,
                             Nome = "Laura",
@@ -91,7 +91,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 4,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9389),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(8693),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 4,
                             Nome = "Luiza",
@@ -102,7 +102,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 5,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9400),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(9021),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 5,
                             Nome = "Lucas",
@@ -113,7 +113,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 6,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9416),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(9399),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 6,
                             Nome = "Pedro",
@@ -124,7 +124,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 7,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9426),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(9719),
                             DataNascimento = new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Matricula = 7,
                             Nome = "Paulo",
@@ -182,139 +182,139 @@ namespace EpsSchool.Api.Migrations
                         {
                             AlunoId = 1,
                             DisciplinaId = 2,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(904)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(1505)
                         },
                         new
                         {
                             AlunoId = 1,
                             DisciplinaId = 4,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1591)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2307)
                         },
                         new
                         {
                             AlunoId = 1,
                             DisciplinaId = 5,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1632)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2343)
                         },
                         new
                         {
                             AlunoId = 2,
                             DisciplinaId = 1,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1635)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2346)
                         },
                         new
                         {
                             AlunoId = 2,
                             DisciplinaId = 2,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1637)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2348)
                         },
                         new
                         {
                             AlunoId = 2,
                             DisciplinaId = 5,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1644)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2354)
                         },
                         new
                         {
                             AlunoId = 3,
                             DisciplinaId = 1,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1646)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2356)
                         },
                         new
                         {
                             AlunoId = 3,
                             DisciplinaId = 2,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1709)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2358)
                         },
                         new
                         {
                             AlunoId = 3,
                             DisciplinaId = 3,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1714)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2360)
                         },
                         new
                         {
                             AlunoId = 4,
                             DisciplinaId = 1,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1719)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2364)
                         },
                         new
                         {
                             AlunoId = 4,
                             DisciplinaId = 4,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1721)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2366)
                         },
                         new
                         {
                             AlunoId = 4,
                             DisciplinaId = 5,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1723)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2368)
                         },
                         new
                         {
                             AlunoId = 5,
                             DisciplinaId = 4,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1725)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2370)
                         },
                         new
                         {
                             AlunoId = 5,
                             DisciplinaId = 5,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1727)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2372)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 1,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1729)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2374)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 2,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1731)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2376)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 3,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1733)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2378)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 4,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1737)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2381)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 1,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1739)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2383)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 2,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1741)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2385)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 3,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1743)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2387)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 4,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1745)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2389)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 5,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1747)
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2391)
                         });
                 });
 
@@ -499,7 +499,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 1,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 86, DateTimeKind.Local).AddTicks(3484),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 763, DateTimeKind.Local).AddTicks(3606),
                             Nome = "Lauro",
                             Registro = 1,
                             Sobrenome = "Oliveira"
@@ -508,7 +508,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 2,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2335),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 764, DateTimeKind.Local).AddTicks(3162),
                             Nome = "Roberto",
                             Registro = 2,
                             Sobrenome = "Soares"
@@ -517,7 +517,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 3,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2395),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 764, DateTimeKind.Local).AddTicks(3220),
                             Nome = "Ronaldo",
                             Registro = 3,
                             Sobrenome = "Marconi"
@@ -526,7 +526,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 4,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2399),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 764, DateTimeKind.Local).AddTicks(3224),
                             Nome = "Rodrigo",
                             Registro = 4,
                             Sobrenome = "Carvalho"
@@ -535,7 +535,7 @@ namespace EpsSchool.Api.Migrations
                         {
                             Id = 5,
                             Ativo = true,
-                            DataInicio = new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2401),
+                            DataInicio = new DateTime(2021, 3, 17, 13, 9, 56, 764, DateTimeKind.Local).AddTicks(3226),
                             Nome = "Alexandre",
                             Registro = 5,
                             Sobrenome = "Montanha"

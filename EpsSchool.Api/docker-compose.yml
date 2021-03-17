@@ -1,0 +1,41 @@
+version: "3.8"
+
+volumes: 
+    EpsSchoolDb:
+
+networks: 
+    mysqlNET:
+    epsschoolNET:
+
+services: 
+
+    mysql:
+        image: "mysql:5.7"
+        container_name: mysql
+        ports: 
+            - "3306:3306"
+        volumes: 
+            - EpsSchoolDb:/var/lib/mysql
+        networks: 
+            - mysqlNET
+        environment: 
+            - MYSQL_USER=root 
+            - MYSQL_PASSWORD=12345 
+            - MYSQL_ROOT_PASSWORD=12345 
+            - MYSQL_ROOT_HOST=%
+            - bind-address:0.0.0.0 
+    
+    epsschool:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: epsschool
+        networks: 
+            - mysqlNET
+            - epsschoolNET
+        ports: 
+            - 5000:80
+        environment: 
+            - DBHOST=mysql
+        depends_on: 
+            - mysql

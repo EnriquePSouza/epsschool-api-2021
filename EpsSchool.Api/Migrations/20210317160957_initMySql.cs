@@ -153,13 +153,13 @@ namespace EpsSchool.Api.Migrations
                 columns: new[] { "Id", "Ativo", "DataFim", "DataInicio", "DataNascimento", "Matricula", "Nome", "Sobrenome", "Telefone" },
                 values: new object[,]
                 {
-                    { 1, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(7223), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Marta", "Kent", "33225555" },
-                    { 2, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9298), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Paula", "Isabela", "3354288" },
-                    { 3, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9377), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Laura", "Antonia", "55668899" },
-                    { 4, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9389), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, "Luiza", "Maria", "6565659" },
-                    { 5, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9400), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Lucas", "Machado", "565685415" },
-                    { 6, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9416), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, "Pedro", "Alvares", "456454545" },
-                    { 7, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 93, DateTimeKind.Local).AddTicks(9426), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, "Paulo", "José", "9874512" }
+                    { 1, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(4595), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Marta", "Kent", "33225555" },
+                    { 2, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(7808), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Paula", "Isabela", "3354288" },
+                    { 3, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(8316), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Laura", "Antonia", "55668899" },
+                    { 4, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(8693), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, "Luiza", "Maria", "6565659" },
+                    { 5, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(9021), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Lucas", "Machado", "565685415" },
+                    { 6, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(9399), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, "Pedro", "Alvares", "456454545" },
+                    { 7, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 767, DateTimeKind.Local).AddTicks(9719), new DateTime(2005, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, "Paulo", "José", "9874512" }
                 });
 
             migrationBuilder.InsertData(
@@ -177,11 +177,11 @@ namespace EpsSchool.Api.Migrations
                 columns: new[] { "Id", "Ativo", "DataFim", "DataInicio", "Nome", "Registro", "Sobrenome", "Telefone" },
                 values: new object[,]
                 {
-                    { 1, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 86, DateTimeKind.Local).AddTicks(3484), "Lauro", 1, "Oliveira", null },
-                    { 2, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2335), "Roberto", 2, "Soares", null },
-                    { 3, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2395), "Ronaldo", 3, "Marconi", null },
-                    { 4, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2399), "Rodrigo", 4, "Carvalho", null },
-                    { 5, true, null, new DateTime(2021, 3, 16, 17, 28, 41, 87, DateTimeKind.Local).AddTicks(2401), "Alexandre", 5, "Montanha", null }
+                    { 1, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 763, DateTimeKind.Local).AddTicks(3606), "Lauro", 1, "Oliveira", null },
+                    { 2, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 764, DateTimeKind.Local).AddTicks(3162), "Roberto", 2, "Soares", null },
+                    { 3, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 764, DateTimeKind.Local).AddTicks(3220), "Ronaldo", 3, "Marconi", null },
+                    { 4, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 764, DateTimeKind.Local).AddTicks(3224), "Rodrigo", 4, "Carvalho", null },
+                    { 5, true, null, new DateTime(2021, 3, 17, 13, 9, 56, 764, DateTimeKind.Local).AddTicks(3226), "Alexandre", 5, "Montanha", null }
                 });
 
             migrationBuilder.InsertData(
@@ -206,29 +206,29 @@ namespace EpsSchool.Api.Migrations
                 columns: new[] { "AlunoId", "DisciplinaId", "DataFim", "DataInicio", "Nota" },
                 values: new object[,]
                 {
-                    { 2, 1, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1635), null },
-                    { 4, 5, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1723), null },
-                    { 2, 5, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1644), null },
-                    { 1, 5, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1632), null },
-                    { 7, 4, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1745), null },
-                    { 6, 4, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1737), null },
-                    { 5, 4, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1725), null },
-                    { 4, 4, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1721), null },
-                    { 1, 4, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1591), null },
-                    { 7, 3, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1743), null },
-                    { 5, 5, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1727), null },
-                    { 6, 3, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1733), null },
-                    { 7, 2, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1741), null },
-                    { 6, 2, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1731), null },
-                    { 3, 2, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1709), null },
-                    { 2, 2, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1637), null },
-                    { 1, 2, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(904), null },
-                    { 7, 1, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1739), null },
-                    { 6, 1, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1729), null },
-                    { 4, 1, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1719), null },
-                    { 3, 1, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1646), null },
-                    { 3, 3, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1714), null },
-                    { 7, 5, null, new DateTime(2021, 3, 16, 17, 28, 41, 94, DateTimeKind.Local).AddTicks(1747), null }
+                    { 2, 1, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2346), null },
+                    { 4, 5, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2368), null },
+                    { 2, 5, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2354), null },
+                    { 1, 5, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2343), null },
+                    { 7, 4, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2389), null },
+                    { 6, 4, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2381), null },
+                    { 5, 4, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2370), null },
+                    { 4, 4, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2366), null },
+                    { 1, 4, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2307), null },
+                    { 7, 3, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2387), null },
+                    { 5, 5, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2372), null },
+                    { 6, 3, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2378), null },
+                    { 7, 2, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2385), null },
+                    { 6, 2, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2376), null },
+                    { 3, 2, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2358), null },
+                    { 2, 2, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2348), null },
+                    { 1, 2, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(1505), null },
+                    { 7, 1, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2383), null },
+                    { 6, 1, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2374), null },
+                    { 4, 1, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2364), null },
+                    { 3, 1, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2356), null },
+                    { 3, 3, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2360), null },
+                    { 7, 5, null, new DateTime(2021, 3, 17, 13, 9, 56, 768, DateTimeKind.Local).AddTicks(2391), null }
                 });
 
             migrationBuilder.CreateIndex(
