@@ -44,7 +44,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.Patch(System.Int32,EpsSchool.Api.Dtos.AlunoRegistrarDto)">
+        <member name="M:EpsSchool.Api.Controllers.AlunoController.Patch(System.Int32,EpsSchool.Api.Dtos.AlunoPatchDto)">
             <summary>
             Método responsável por atualizar todas ou algumas das informações de um Aluno no banco de dados.
             </summary>
