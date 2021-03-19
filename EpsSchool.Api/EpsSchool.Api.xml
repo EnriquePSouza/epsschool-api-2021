@@ -84,6 +84,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:EpsSchool.Api.Controllers.ProfessorController.GetByAlunoId(System.Int32)">
+            <summary>
+            Método responsável por retornar um Professor ao informar o seu id de um Aluno.
+            </summary>
+            <param name="alunoId"></param>
+            <returns></returns>
+        </member>
         <member name="M:EpsSchool.Api.Controllers.ProfessorController.Post(EpsSchool.Api.Dtos.ProfessorRegistrarDto)">
             <summary>
             Método responsável por inserir as informações de um Professor no banco de dados.

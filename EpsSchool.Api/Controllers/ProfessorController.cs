@@ -60,6 +60,20 @@ namespace EpsSchool.Api.Controllers
         }
 
         /// <summary>
+        /// Método responsável por retornar um Professor ao informar o seu id de um Aluno.
+        /// </summary>
+        /// <param name="alunoId"></param>
+        /// <returns></returns>
+        [HttpGet("byaluno/{alunoId}")]
+        public IActionResult GetByAlunoId(int alunoId)
+        {
+            var professores = _repo.GetProfessoresByAlunoId(alunoId, false);
+            if (professores == null) return BadRequest("Professores não encontrados"); 
+
+            return Ok(_mapper.Map<IEnumerable<ProfessorDto>>(professores));
+        }
+
+        /// <summary>
         /// Método responsável por inserir as informações de um Professor no banco de dados.
         /// </summary>
         /// <param name="model"></param>
