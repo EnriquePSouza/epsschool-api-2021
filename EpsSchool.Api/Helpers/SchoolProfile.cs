@@ -28,6 +28,9 @@ namespace EpsSchool.Api.Helpers
                     );
             CreateMap<ProfessorDto, Professor>();
             CreateMap<Professor, ProfessorRegistrarDto>().ReverseMap();
+
+            CreateMap<DisciplinaDto, Disciplina>().ReverseMap();
+            CreateMap<CursoDto, Curso>().ReverseMap();
         }
     }
 }
