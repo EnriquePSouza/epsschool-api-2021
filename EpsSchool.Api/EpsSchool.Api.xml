@@ -29,6 +29,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:EpsSchool.Api.Controllers.AlunoController.GetByDisciplinaId(System.Int32)">
+            <summary>
+            Método responsável por retornar um Aluno ao informar o id da Disciplina que ele estuda.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:EpsSchool.Api.Controllers.AlunoController.Post(EpsSchool.Api.Dtos.AlunoRegistrarDto)">
             <summary>
             Método responsável por inserir as informações de um Aluno no banco de dados.

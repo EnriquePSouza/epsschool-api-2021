@@ -15,7 +15,7 @@ namespace EpsSchool.Api.Helpers
             camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             response.Headers.Add("Pagination", JsonConvert.SerializeObject(paginationHeader, camelCaseFormatter));
-            response.Headers.Add("Access-Control_Expose_Header", "Pagination");
+            response.Headers.Add("Access-Control-Expose-Headers", "Pagination");
         }
     }
 }
