@@ -23,6 +23,9 @@ namespace EpsSchool.Api.Data
             builder.Entity<AlunoCurso>()
                 .HasKey(AD => new { AD.AlunoId, AD.CursoId });
 
+            // TODO - Mudar essa massa de dados totalmente após resolver os bugs de listagem.
+            // Acrescentar - Os dados de acesso que vão ficar fixos quando o sistema for publicado.
+
             builder.Entity<Professor>()
                 .HasData(new List<Professor>(){
                     new Professor(1, 1, "Lauro", "Oliveira"),
