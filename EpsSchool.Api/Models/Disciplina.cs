@@ -20,7 +20,9 @@ namespace EpsSchool.Api.Models
         public int ProfessorId { get; set; }
         public Professor Professor { get; set; }
         public int CursoId { get; set; }
-        public Curso Curso { get; set; }
+        // TODO - Remodelar o banco tendo curso como base para as disciplinas.
+        // Preciso ligar professor com disciplina e aluno com curso e não aluno com disciplina.
+        public IEnumerable<Curso> Cursos { get; set; }
         public IEnumerable<AlunoDisciplina> AlunosDisciplinas { get; set; }
     }
 }

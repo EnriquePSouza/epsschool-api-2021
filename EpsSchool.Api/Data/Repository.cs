@@ -14,7 +14,7 @@ namespace EpsSchool.Api.Data
         {
             _context = context;
         }
-
+        #region Generic
         public void Add<T>(T entity) where T : class
         {
             _context.Add(entity);
@@ -34,7 +34,8 @@ namespace EpsSchool.Api.Data
         {
             return (_context.SaveChanges() > 0);
         }
-
+        #endregion
+        #region Alunos
         public async Task<PageList<Aluno>> GetAllAlunosAsync(PageParams pageParams, bool includeProfessor = false)
         {
             IQueryable<Aluno> query = _context.Alunos;
@@ -62,7 +63,6 @@ namespace EpsSchool.Api.Data
             if (pageParams.Ativo != null)
                 query = query.Where(aluno => aluno.Ativo == (pageParams.Ativo != 0));
 
-            // return await query.ToListAsync();
             return await PageList<Aluno>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }
 
@@ -118,7 +118,8 @@ namespace EpsSchool.Api.Data
 
             return query.FirstOrDefault();
         }
-
+        #endregion
+        #region Professores
         public Professor[] GetAllProfessores(bool includeAlunos = false)
         {
             IQueryable<Professor> query = _context.Professores;
@@ -190,5 +191,6 @@ namespace EpsSchool.Api.Data
 
             return query.ToArray();
         }
+        #endregion
     }
 }
