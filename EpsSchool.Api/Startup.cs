@@ -46,6 +46,8 @@ namespace EpsSchool.Api
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // Injeção de Dependencia do Controle com Inversão de Controle.
+            // AddScoped cria um DataContext por requisição e reutiliza ele, evitando conexões desnecessárias com o banco.
+            // Terminou de utilizar ele destroi o DataContext e fecha a conexão.
             services.AddScoped<IRepository, Repository>();
 
             // Configurações para escolher e controlar as versões da API.
