@@ -19,10 +19,12 @@ namespace EpsSchool.Api.Models
         public Disciplina Prerequisito { get; set; } // Disciplina de Pré-requisito para a matricula.
         public int ProfessorId { get; set; }
         public Professor Professor { get; set; }
-        public int CursoId { get; set; }
+        public int CursoId { get; set; } // remover.
+        
         // TODO - Remodelar o banco tendo curso como base para as disciplinas.
-        // Preciso ligar professor com disciplina e aluno com curso e não aluno com disciplina.
-        public IEnumerable<Curso> Cursos { get; set; }
-        public IEnumerable<AlunoDisciplina> AlunosDisciplinas { get; set; }
+        // Preciso ligar professor com disciplina e aluno com curso e curso com disciplina e não aluno com disciplina.
+        public IEnumerable<Curso> Cursos { get; set; } // remover
+        public IEnumerable<AlunoDisciplina> AlunosDisciplinas { get; set; } // Remover.
+        public IEnumerable<CursoDisciplina> CursosDisciplinas { get; set; } // Remodelagem
     }
 }

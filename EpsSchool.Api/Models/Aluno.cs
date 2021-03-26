@@ -25,6 +25,7 @@ namespace EpsSchool.Api.Models
         public DateTime DataInicio { get; set; } = DateTime.Now;
         public DateTime? DataFim { get; set; } = null;
         public bool Ativo { get; set; } = true;
-        public IEnumerable<AlunoDisciplina> AlunosDisciplinas { get; set; }
+        public IEnumerable<AlunoDisciplina> AlunosDisciplinas { get; set; } // Essa aqui precisa ser removida.
+        public IEnumerable<AlunoCurso> AlunosCursos { get; set; } // Mudanças do banco para a reestruturação do sistema.
     }
 }

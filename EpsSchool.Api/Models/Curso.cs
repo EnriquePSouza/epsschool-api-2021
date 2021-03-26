@@ -13,6 +13,7 @@ namespace EpsSchool.Api.Models
         }
         public int Id { get; set; }
         public string Nome { get; set; }
-        public IEnumerable<Disciplina> Disciplinas { get; set; }
+        public IEnumerable<Disciplina> Disciplinas { get; set; } // Remover
+        public IEnumerable<CursoDisciplina> CursosDisciplinas { get; set; } // Remodelagem - entender e complementar.
     }
 }

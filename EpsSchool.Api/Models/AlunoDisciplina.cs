@@ -2,7 +2,7 @@ using System;
 
 namespace EpsSchool.Api.Models
 {
-    public class AlunoDisciplina
+    public class AlunoDisciplina // remover essa classe do sistema.
     {
         public AlunoDisciplina() { }
 
