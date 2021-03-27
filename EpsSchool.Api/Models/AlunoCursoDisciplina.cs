@@ -8,8 +8,8 @@ namespace EpsSchool.Api.Models
         public AlunoCursoDisciplina() { }
         public AlunoCursoDisciplina(int cursoDisciplinaId, int alunoId)
         {
-            this.CursoDisciplinaId = cursoDisciplinaId;
             this.AlunoId = alunoId;
+            this.CursoDisciplinaId = cursoDisciplinaId;
         }
         public DateTime DataInicio { get; set; } = DateTime.Now;
         public DateTime? DataFim { get; set; } = null;

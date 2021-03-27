@@ -20,9 +20,6 @@ namespace EpsSchool.Api.Data
             builder.Entity<AlunoCursoDisciplina>()
                 .HasKey(AD => new { AD.AlunoId, AD.CursoDisciplinaId });
 
-            builder.Entity<CursoDisciplina>()
-                .HasKey(CD => new { CD.CursoId, CD.DisciplinaId });
-
             builder.Entity<Professor>()
                 .HasData(new List<Professor>(){
                     new Professor(1, 1, "José", "Roberto"),
@@ -40,7 +37,7 @@ namespace EpsSchool.Api.Data
                 });
 
             builder.Entity<Disciplina>()
-                .HasData(new List<Disciplina>{
+                .HasData(new List<Disciplina>(){
                     new Disciplina(1, "Matemática", 1),
                     new Disciplina(2, "Limpeza de Gabinete", 2),
                     new Disciplina(3, "Português", 3),
@@ -60,7 +57,7 @@ namespace EpsSchool.Api.Data
                 });
 
             builder.Entity<CursoDisciplina>()
-                .HasData(new List<CursoDisciplina>{
+                .HasData(new List<CursoDisciplina>() {
                     new CursoDisciplina(1, 1, 1),
                     new CursoDisciplina(2, 1, 3),
                     new CursoDisciplina(3, 1, 5),
