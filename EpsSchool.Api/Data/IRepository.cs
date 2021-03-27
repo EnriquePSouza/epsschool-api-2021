@@ -14,13 +14,10 @@ namespace EpsSchool.Api.Data
 
         //Aluno
         Task<PageList<Aluno>> GetAllAlunosAsync(PageParams pageParams, bool includeProfessor = false);
-        Aluno[] GetAllAlunos(bool includeProfessor = false);
-        Task<Aluno[]> GetAllAlunosByDisciplinaIdAsync(int disciplinaId, bool includeProfessor = false);
         Aluno GetAlunoById(int alunoId, bool includeProfessor = false);
 
         //Professor
         Professor[] GetAllProfessores(bool includeAlunos = false);
-        Professor[] GetAllProfessoresByDisciplinaId(int disciplinaId, bool includeAlunos = false);
         Professor GetProfessorById(int professorId, bool includeAlunos = false);
         Professor[] GetProfessoresByAlunoId(int alunoId, bool includeAlunos = false);
     }

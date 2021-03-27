@@ -65,20 +65,6 @@ namespace EpsSchool.Api.Controllers
             return Ok(alunoDto);
         }
 
-        // ByDisciplina
-
-        /// <summary>
-        /// Método responsável por retornar um Aluno ao informar o id da Disciplina que ele estuda.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet("ByDisciplina/{id}")]
-        public async Task<IActionResult> GetByDisciplinaId(int id)
-        {
-            var result = await _repo.GetAllAlunosByDisciplinaIdAsync(id, false);
-            return Ok(result);
-        }
-
         /// <summary>
         /// Método responsável por inserir as informações de um Aluno no banco de dados.
         /// </summary>

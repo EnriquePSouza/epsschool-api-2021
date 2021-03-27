@@ -22,6 +22,7 @@ namespace EpsSchool.Api.Models
         public DateTime DataInicio { get; set; } = DateTime.Now;
         public DateTime? DataFim { get; set; } = null;
         public bool Ativo { get; set; } = true;
+        public int DisciplinaId { get; set; }
         public IEnumerable<Disciplina> Disciplinas { get; set; }
     }
 }
