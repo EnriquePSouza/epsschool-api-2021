@@ -3,28 +3,38 @@ using System.Collections.Generic;
 
 namespace EpsSchool.Domain.Entities
 {
-    public class Aluno
+    public class Aluno : Entity
     {
-        public Aluno() { }
         public Aluno(int id, int matricula, string nome, string sobrenome, string telefone, DateTime dataNascimento)
+            : base(id)
         {
-            this.Id = id;
-            this.Matricula = matricula;
-            this.Nome = nome;
-            this.Sobrenome = sobrenome;
-            this.Telefone = telefone;
-            this.DataNascimento = dataNascimento;
-
+            Matricula = matricula;
+            Nome = nome;
+            Sobrenome = sobrenome;
+            Telefone = telefone;
+            DataNascimento = dataNascimento;
+            DataInicio = DateTime.Now;
+            DataFim = null;
+            Ativo = true;
         }
-        public int Id { get; set; }
-        public int Matricula { get; set; }
-        public string Nome { get; set; }
-        public string Sobrenome { get; set; }
-        public string Telefone { get; set; }
-        public DateTime DataNascimento { get; set; }
-        public DateTime DataInicio { get; set; } = DateTime.Now;
-        public DateTime? DataFim { get; set; } = null;
-        public bool Ativo { get; set; } = true;
-        public IEnumerable<AlunoCursoDisciplina> AlunosCursosDisciplinas { get; set; }
+        public int Matricula { get; private set; }
+        public string Nome { get; private set; }
+        public string Sobrenome { get; private set; }
+        public string Telefone { get; private set; }
+        public DateTime DataNascimento { get; private set; }
+        public DateTime DataInicio { get; private set; }
+        public DateTime? DataFim { get; private set; }
+        public bool Ativo { get; private set; }
+        public IEnumerable<AlunoCursoDisciplina> AlunosCursosDisciplinas { get; private set; }
+
+        public void IsInactive()
+        {
+            Ativo = false;
+        }
+
+        public void IsActive()
+        {
+            Ativo = true;
+        }
     }
 }

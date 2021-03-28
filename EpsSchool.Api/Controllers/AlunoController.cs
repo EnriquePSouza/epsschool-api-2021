@@ -142,7 +142,14 @@ namespace EpsSchool.Api.Controllers
             var aluno = _repo.GetAlunoById(id);
             if (aluno == null) return BadRequest("Aluno não encontrado!");
 
-            aluno.Ativo = trocaEstado.Estado;
+            if (trocaEstado.Estado)
+            {
+                aluno.IsActive();
+            }
+            else
+            {
+                aluno.IsInactive();
+            }
 
             _repo.Update(aluno);
             if (_repo.SaveChanges())

@@ -7,15 +7,18 @@ namespace EpsSchool.Domain.Entities
         public AlunoCursoDisciplina() { }
         public AlunoCursoDisciplina(int cursoDisciplinaId, int alunoId)
         {
-            this.AlunoId = alunoId;
-            this.CursoDisciplinaId = cursoDisciplinaId;
+            AlunoId = alunoId;
+            CursoDisciplinaId = cursoDisciplinaId;
+            DataInicio = DateTime.Now;
+            DataFim = null;
+            Nota = null;
         }
-        public DateTime DataInicio { get; set; } = DateTime.Now;
-        public DateTime? DataFim { get; set; } = null;
-        public int? Nota { get; set; } = null;
-        public int CursoDisciplinaId { get; set; }
-        public CursoDisciplina CursoDisciplina { get; set; }
-        public int AlunoId { get; set; }
-        public Aluno Aluno { get; set; }
+        public DateTime DataInicio { get; private set; }
+        public DateTime? DataFim { get; private set; }
+        public int? Nota { get; private set; }
+        public int CursoDisciplinaId { get; private set; }
+        public CursoDisciplina CursoDisciplina { get; private set; }
+        public int AlunoId { get; private set; }
+        public Aluno Aluno { get; private set; }
     }
 }

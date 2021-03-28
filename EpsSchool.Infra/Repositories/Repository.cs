@@ -82,7 +82,7 @@ namespace EpsSchool.infra.Repositories
 
             query = query.AsNoTracking()
                          .OrderBy(a => a.Id)
-                         .Where(aluno => aluno.Id == alunoId);
+                         .Where(aluno => aluno.Id.Equals(alunoId));
 
 
             return query.FirstOrDefault();

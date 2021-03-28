@@ -55,40 +55,6 @@ namespace EpsSchool.infra.Contexts
                     new Aluno(6, 6, "Ananias", "Fernandes", "33589624", DateTime.Parse("07/17/2010", new System.Globalization.CultureInfo("en-US"))),
                     new Aluno(7, 7, "José", "Arimatéia", "98745122", DateTime.Parse("07/17/2010", new System.Globalization.CultureInfo("en-US")))
                 });
-
-            builder.Entity<CursoDisciplina>()
-                .HasData(new List<CursoDisciplina>() {
-                    new CursoDisciplina(1, 1, 1),
-                    new CursoDisciplina(2, 1, 3),
-                    new CursoDisciplina(3, 1, 5),
-                    new CursoDisciplina(4, 2, 2),
-                    new CursoDisciplina(5, 2, 3),
-                    new CursoDisciplina(6, 3, 1),
-                    new CursoDisciplina(7, 3, 3),
-                    new CursoDisciplina(8, 3, 4)
-                });
-
-            builder.Entity<AlunoCursoDisciplina>()
-                .HasData(new List<AlunoCursoDisciplina>() {
-                    new AlunoCursoDisciplina() {AlunoId = 1, CursoDisciplinaId = 1 },
-                    new AlunoCursoDisciplina() {AlunoId = 1, CursoDisciplinaId = 2 },
-                    new AlunoCursoDisciplina() {AlunoId = 1, CursoDisciplinaId = 3 },
-                    new AlunoCursoDisciplina() {AlunoId = 2, CursoDisciplinaId = 1 },
-                    new AlunoCursoDisciplina() {AlunoId = 2, CursoDisciplinaId = 2 },
-                    new AlunoCursoDisciplina() {AlunoId = 2, CursoDisciplinaId = 3 },
-                    new AlunoCursoDisciplina() {AlunoId = 3, CursoDisciplinaId = 4 },
-                    new AlunoCursoDisciplina() {AlunoId = 3, CursoDisciplinaId = 5 },
-                    new AlunoCursoDisciplina() {AlunoId = 4, CursoDisciplinaId = 4 },
-                    new AlunoCursoDisciplina() {AlunoId = 4, CursoDisciplinaId = 5 },
-                    new AlunoCursoDisciplina() {AlunoId = 5, CursoDisciplinaId = 4 },
-                    new AlunoCursoDisciplina() {AlunoId = 5, CursoDisciplinaId = 5 },
-                    new AlunoCursoDisciplina() {AlunoId = 6, CursoDisciplinaId = 5 },
-                    new AlunoCursoDisciplina() {AlunoId = 6, CursoDisciplinaId = 6 },
-                    new AlunoCursoDisciplina() {AlunoId = 6, CursoDisciplinaId = 7 },
-                    new AlunoCursoDisciplina() {AlunoId = 7, CursoDisciplinaId = 5 },
-                    new AlunoCursoDisciplina() {AlunoId = 7, CursoDisciplinaId = 6 },
-                    new AlunoCursoDisciplina() {AlunoId = 7, CursoDisciplinaId = 7 }
-                });
         }
 
     }
