@@ -9,14 +9,14 @@
             Versão 1 do controlador de Alunos.
             </summary>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.#ctor(EpsSchool.Api.Data.IRepository,AutoMapper.IMapper)">
+        <member name="M:EpsSchool.Api.Controllers.AlunoController.#ctor(EpsSchool.Domain.Repositories.IRepository,AutoMapper.IMapper)">
             <summary>
             Método construtor do controlador de Alunos.
             </summary>
             <param name="repo"></param>
             <param name="mapper"></param>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.Get(EpsSchool.Api.Helpers.PageParams)">
+        <member name="M:EpsSchool.Api.Controllers.AlunoController.Get(EpsSchool.Domain.Helpers.PageParams)">
             <summary>
             Método responsável por retornar todos os Alunos de Forma Assíncrona.
             </summary>
@@ -29,14 +29,14 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.Post(EpsSchool.Api.Dtos.AlunoRegistrarDto)">
+        <member name="M:EpsSchool.Api.Controllers.AlunoController.Post(EpsSchool.Domain.Dtos.AlunoRegistrarDto)">
             <summary>
             Método responsável por inserir as informações de um Aluno no banco de dados.
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.Put(System.Int32,EpsSchool.Api.Dtos.AlunoRegistrarDto)">
+        <member name="M:EpsSchool.Api.Controllers.AlunoController.Put(System.Int32,EpsSchool.Domain.Dtos.AlunoRegistrarDto)">
             <summary>
             Método responsável por atualizar as informações de um Aluno no banco de dados.
             </summary>
@@ -44,7 +44,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.Patch(System.Int32,EpsSchool.Api.Dtos.AlunoPatchDto)">
+        <member name="M:EpsSchool.Api.Controllers.AlunoController.Patch(System.Int32,EpsSchool.Domain.Dtos.AlunoPatchDto)">
             <summary>
             Método responsável por atualizar todas ou algumas das informações de um Aluno no banco de dados.
             </summary>
@@ -52,7 +52,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.trocarEstado(System.Int32,EpsSchool.Api.Dtos.TrocaEstadoDto)">
+        <member name="M:EpsSchool.Api.Controllers.AlunoController.trocarEstado(System.Int32,EpsSchool.Domain.Dtos.TrocaEstadoDto)">
             <summary>
             Método responsável por registrar se um aluno está ou não ativado na Instituição.
             </summary>
@@ -72,7 +72,7 @@
             Versão 1 do controlador de Professores.
             </summary>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.#ctor(EpsSchool.Api.Data.IRepository,AutoMapper.IMapper)">
+        <member name="M:EpsSchool.Api.Controllers.ProfessorController.#ctor(EpsSchool.Domain.Repositories.IRepository,AutoMapper.IMapper)">
             <summary>
             Método construtor do controlador de Professores.
             </summary>
@@ -99,14 +99,14 @@
             <param name="alunoId"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.Post(EpsSchool.Api.Dtos.ProfessorRegistrarDto)">
+        <member name="M:EpsSchool.Api.Controllers.ProfessorController.Post(EpsSchool.Domain.Dtos.ProfessorRegistrarDto)">
             <summary>
             Método responsável por inserir as informações de um Professor no banco de dados.
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.Put(System.Int32,EpsSchool.Api.Dtos.ProfessorRegistrarDto)">
+        <member name="M:EpsSchool.Api.Controllers.ProfessorController.Put(System.Int32,EpsSchool.Domain.Dtos.ProfessorRegistrarDto)">
             <summary>
             Método responsável por atualizar as informações de um Professor no banco de dados.
             </summary>
@@ -114,7 +114,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.Patch(System.Int32,EpsSchool.Api.Dtos.ProfessorRegistrarDto)">
+        <member name="M:EpsSchool.Api.Controllers.ProfessorController.Patch(System.Int32,EpsSchool.Domain.Dtos.ProfessorRegistrarDto)">
             <summary>
             Método responsável por atualizar todas ou algumas das informações de um Professor no banco de dados.
             </summary>
@@ -128,103 +128,6 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
-        </member>
-        <member name="T:EpsSchool.Api.Dtos.AlunoRegistrarDto">
-            <summary>
-            Este é o DTO para efetuar o registro de um Aluno no banco de dados
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.AlunoRegistrarDto.Id">
-            <summary>
-            Código identificador e chave do Banco.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.AlunoRegistrarDto.Matricula">
-            <summary>
-            Código identificador para outras atividades da instituição.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.AlunoRegistrarDto.Nome">
-            <summary>
-            Primeiro nome do aluno.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.AlunoRegistrarDto.Sobrenome">
-            <summary>
-            Segundo nome do aluno.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.AlunoRegistrarDto.Telefone">
-            <summary>
-            Telefone do aluno.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.AlunoRegistrarDto.DataNascimento">
-            <summary>
-            Data em que o aluno nasceu.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.AlunoRegistrarDto.DataInicio">
-            <summary>
-            Data em que o aluno foi matrículado na instituição.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.AlunoRegistrarDto.DataFim">
-            <summary>
-            Data em que o aluno cancelou sua matrícula.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.AlunoRegistrarDto.Ativo">
-            <summary>
-            Informa se o aluno está ativo ou não na instuição.
-            </summary>
-        </member>
-        <member name="T:EpsSchool.Api.Dtos.ProfessorRegistrarDto">
-            <summary>
-            Este é o DTO para efetuar o registro de um Professor no banco de dados
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.ProfessorRegistrarDto.Id">
-            <summary>
-            Código identificador e chave do Banco.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.ProfessorRegistrarDto.Registro">
-            <summary>
-            Código identificador para outras atividades da instituição.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.ProfessorRegistrarDto.Nome">
-            <summary>
-            Primeiro nome do professor.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.ProfessorRegistrarDto.Sobrenome">
-            <summary>
-            Segundo nome do professor.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.ProfessorRegistrarDto.Telefone">
-            <summary>
-            Telefone do professor.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.ProfessorRegistrarDto.DataInicio">
-            <summary>
-            Data em que o professor começou a dar aulas na instituição.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.ProfessorRegistrarDto.DataFim">
-            <summary>
-            Data em que o professor parou de dar aulas na instituição.
-            </summary>
-        </member>
-        <member name="P:EpsSchool.Api.Dtos.ProfessorRegistrarDto.Ativo">
-            <summary>
-            Informa se o professor está ativo ou naõ na instituição.
-            </summary>
         </member>
     </members>
 </doc>

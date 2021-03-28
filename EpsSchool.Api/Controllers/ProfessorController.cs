@@ -1,11 +1,9 @@
 using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
-using EpsSchool.Api.Data;
-using EpsSchool.Api.Dtos;
-using EpsSchool.Api.Models;
+using EpsSchool.Domain.Repositories;
+using EpsSchool.Domain.Dtos;
+using EpsSchool.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace EpsSchool.Api.Controllers
 {
