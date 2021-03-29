@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using EpsSchool.Shared.Entities;
 
 namespace EpsSchool.Domain.Entities
 {
@@ -16,7 +17,7 @@ namespace EpsSchool.Domain.Entities
         public DateTime DataInicio { get; private set; }
         public DateTime? DataFim { get; private set; }
         public bool Ativo { get; private set; }
-        public IEnumerable<AlunoCursoDisciplina> AlunosCursosDisciplinas { get; private set; }
+        public IEnumerable<StudentCourseSubject> StudentsCoursesSubjects { get; private set; }
 
         public void IsInactive()
         {

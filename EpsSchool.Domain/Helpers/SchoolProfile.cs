@@ -29,8 +29,8 @@ namespace EpsSchool.Domain.Helpers
             CreateMap<ProfessorDto, Teacher>();
             CreateMap<Teacher, ProfessorRegistrarDto>().ReverseMap();
 
-            CreateMap<DisciplinaDto, Disciplina>().ReverseMap();
-            CreateMap<CursoDto, Curso>().ReverseMap();
+            CreateMap<DisciplinaDto, Subject>().ReverseMap();
+            CreateMap<CursoDto, Course>().ReverseMap();
         }
     }
 }

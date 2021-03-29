@@ -20,5 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\EpsSchool.Domain\EpsSchool.Domain.csproj" />
     <ProjectReference Include="..\EpsSchool.Infra\EpsSchool.Infra.csproj" />
+    <ProjectReference Include="..\EpsSchool.Shared\EpsSchool.Shared.csproj" />
   </ItemGroup>
 </Project>

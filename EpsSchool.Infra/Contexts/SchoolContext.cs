@@ -8,17 +8,17 @@ namespace EpsSchool.infra.Contexts
     public class SchoolContext : DbContext
     {
         public SchoolContext(DbContextOptions<SchoolContext> options) : base(options) { }
-        public DbSet<Student> Alunos { get; set; }
-        public DbSet<AlunoCursoDisciplina> AlunosCursosDisciplinas { get; set; }
-        public DbSet<Curso> Cursos { get; set; }
-        public DbSet<CursoDisciplina> CursosDisciplinas { get; set; }
-        public DbSet<Disciplina> Disciplinas { get; set; }
-        public DbSet<Teacher> Professores { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<StudentCourseSubject> StudentsCoursesSubjects { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<CourseSubject> CoursesSubjects { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<AlunoCursoDisciplina>()
-                .HasKey(AD => new { AD.StudentId, AD.CursoDisciplinaId });
+            builder.Entity<StudentCourseSubject>()
+                .HasKey(AD => new { AD.StudentId, AD.CourseSubjectId });
 
             builder.Entity<Teacher>()
                 .HasData(new List<Teacher>(){
@@ -29,20 +29,20 @@ namespace EpsSchool.infra.Contexts
                     new Teacher(5, 5, "Lucas", "Ribas","33214896", DateTime.Parse("05/04/2000", new System.Globalization.CultureInfo("en-US")))
                 });
 
-            builder.Entity<Curso>()
-                .HasData(new List<Curso>(){
-                    new Curso(1, "Informatica"),
-                    new Curso(2, "Manutenção de Micros"),
-                    new Curso(3, "Redes de Computadores")
+            builder.Entity<Course>()
+                .HasData(new List<Course>(){
+                    new Course(1, "Informatica"),
+                    new Course(2, "Manutenção de Micros"),
+                    new Course(3, "Redes de Computadores")
                 });
 
-            builder.Entity<Disciplina>()
-                .HasData(new List<Disciplina>(){
-                    new Disciplina(1, "Matemática", 1),
-                    new Disciplina(2, "Limpeza de Gabinete", 2),
-                    new Disciplina(3, "Português", 3),
-                    new Disciplina(4, "Arquitetura de Servidores", 4),
-                    new Disciplina(5, "Programação", 5)
+            builder.Entity<Subject>()
+                .HasData(new List<Subject>(){
+                    new Subject(1, "Matemática", 1),
+                    new Subject(2, "Limpeza de Gabinete", 2),
+                    new Subject(3, "Português", 3),
+                    new Subject(4, "Arquitetura de Servidores", 4),
+                    new Subject(5, "Programação", 5)
                 });
 
             builder.Entity<Student>()
@@ -56,38 +56,38 @@ namespace EpsSchool.infra.Contexts
                     new Student(7, 7, "José", "Arimatéia", "98745122", DateTime.Parse("07/17/2010", new System.Globalization.CultureInfo("en-US")))
                 });
 
-            builder.Entity<CursoDisciplina>()
-                .HasData(new List<CursoDisciplina>() {
-                    new CursoDisciplina(1, 1, 1),
-                    new CursoDisciplina(2, 1, 3),
-                    new CursoDisciplina(3, 1, 5),
-                    new CursoDisciplina(4, 2, 2),
-                    new CursoDisciplina(5, 2, 3),
-                    new CursoDisciplina(6, 3, 1),
-                    new CursoDisciplina(7, 3, 3),
-                    new CursoDisciplina(8, 3, 4)
+            builder.Entity<CourseSubject>()
+                .HasData(new List<CourseSubject>() {
+                    new CourseSubject(1, 1, 1),
+                    new CourseSubject(2, 1, 3),
+                    new CourseSubject(3, 1, 5),
+                    new CourseSubject(4, 2, 2),
+                    new CourseSubject(5, 2, 3),
+                    new CourseSubject(6, 3, 1),
+                    new CourseSubject(7, 3, 3),
+                    new CourseSubject(8, 3, 4)
                 });
 
-            builder.Entity<AlunoCursoDisciplina>()
-                .HasData(new List<AlunoCursoDisciplina>() {
-                    new AlunoCursoDisciplina(1,1),
-                    new AlunoCursoDisciplina(1,2),
-                    new AlunoCursoDisciplina(1,3),
-                    new AlunoCursoDisciplina(2,1),
-                    new AlunoCursoDisciplina(2,2),
-                    new AlunoCursoDisciplina(2,3),
-                    new AlunoCursoDisciplina(3,4),
-                    new AlunoCursoDisciplina(3,5),
-                    new AlunoCursoDisciplina(4,4),
-                    new AlunoCursoDisciplina(4,5),
-                    new AlunoCursoDisciplina(5,4),
-                    new AlunoCursoDisciplina(5,5),
-                    new AlunoCursoDisciplina(6,5),
-                    new AlunoCursoDisciplina(6,6),
-                    new AlunoCursoDisciplina(6,7),
-                    new AlunoCursoDisciplina(7,5),
-                    new AlunoCursoDisciplina(7,6),
-                    new AlunoCursoDisciplina(7,7)
+            builder.Entity<StudentCourseSubject>()
+                .HasData(new List<StudentCourseSubject>() {
+                    new StudentCourseSubject(1,1),
+                    new StudentCourseSubject(1,2),
+                    new StudentCourseSubject(1,3),
+                    new StudentCourseSubject(2,1),
+                    new StudentCourseSubject(2,2),
+                    new StudentCourseSubject(2,3),
+                    new StudentCourseSubject(3,4),
+                    new StudentCourseSubject(3,5),
+                    new StudentCourseSubject(4,4),
+                    new StudentCourseSubject(4,5),
+                    new StudentCourseSubject(5,4),
+                    new StudentCourseSubject(5,5),
+                    new StudentCourseSubject(6,5),
+                    new StudentCourseSubject(6,6),
+                    new StudentCourseSubject(6,7),
+                    new StudentCourseSubject(7,5),
+                    new StudentCourseSubject(7,6),
+                    new StudentCourseSubject(7,7)
                 });
         }
 

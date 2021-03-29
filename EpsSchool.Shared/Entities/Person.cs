@@ -1,6 +1,6 @@
 using System;
 
-namespace EpsSchool.Domain.Entities
+namespace EpsSchool.Shared.Entities
 {
     public abstract class Person : Entity
     {

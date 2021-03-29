@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace EpsSchool.Domain.Entities
 {
-    public class Curso
+    public class Course
     {
-        public Curso(int id, string nome)
+        public Course(int id, string nome)
         {
             Id = id;
             Nome = nome;
@@ -12,6 +12,6 @@ namespace EpsSchool.Domain.Entities
         }
         public int Id { get; private set; }
         public string Nome { get; private set; }
-        public IEnumerable<CursoDisciplina> CursosDisciplinas { get; private set; }
+        public IEnumerable<CourseSubject> CoursesSubjects { get; private set; }
     }
 }

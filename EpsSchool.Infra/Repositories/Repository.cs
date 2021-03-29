@@ -36,16 +36,16 @@ namespace EpsSchool.infra.Repositories
             return (_context.SaveChanges() > 0);
         }
         #endregion
-        #region Alunos
-        public async Task<PageList<Student>> GetAllAlunosAsync(PageParams pageParams, bool includeProfessor = false)
+        #region Students
+        public async Task<PageList<Student>> GetAllStudentsAsync(PageParams pageParams, bool includeTeacher = false)
         {
-            IQueryable<Student> query = _context.Alunos;
+            IQueryable<Student> query = _context.Students;
 
-            if (includeProfessor)
+            if (includeTeacher)
             {
-                query = query.Include(a => a.AlunosCursosDisciplinas)
-                             .ThenInclude(acd => acd.CursoDisciplina)
-                             .ThenInclude(cd => cd.Disciplina)
+                query = query.Include(a => a.StudentsCoursesSubjects)
+                             .ThenInclude(acd => acd.CourseSubject)
+                             .ThenInclude(cd => cd.Subject)
                              .ThenInclude(d => d.Teacher);
             }
 
@@ -68,36 +68,36 @@ namespace EpsSchool.infra.Repositories
             return await PageList<Student>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }
 
-        public Student GetAlunoById(int alunoId, bool includeProfessor = false)
+        public Student GetStudentById(int studentId, bool includeTeacher = false)
         {
-            IQueryable<Student> query = _context.Alunos;
+            IQueryable<Student> query = _context.Students;
 
-            if (includeProfessor)
+            if (includeTeacher)
             {
-                query = query.Include(a => a.AlunosCursosDisciplinas)
-                             .ThenInclude(acd => acd.CursoDisciplina)
-                             .ThenInclude(cd => cd.Disciplina)
+                query = query.Include(a => a.StudentsCoursesSubjects)
+                             .ThenInclude(acd => acd.CourseSubject)
+                             .ThenInclude(cd => cd.Subject)
                              .ThenInclude(d => d.Teacher);
             }
 
             query = query.AsNoTracking()
                          .OrderBy(a => a.Id)
-                         .Where(aluno => aluno.Id.Equals(alunoId));
+                         .Where(aluno => aluno.Id.Equals(studentId));
 
 
             return query.FirstOrDefault();
         }
         #endregion
-        #region Professores
-        public Teacher[] GetAllProfessores(bool includeAlunos = false)
+        #region Teachers
+        public Teacher[] GetAllTeachers(bool includeStudents = false)
         {
-            IQueryable<Teacher> query = _context.Professores;
+            IQueryable<Teacher> query = _context.Teachers;
 
-            if (includeAlunos)
+            if (includeStudents)
             {
-                query = query.Include(p => p.Disciplinas)
-                             .ThenInclude(d => d.CursosDisciplinas)
-                             .ThenInclude(cd => cd.AlunosCursosDisciplinas)
+                query = query.Include(p => p.Subjects)
+                             .ThenInclude(d => d.CoursesSubjects)
+                             .ThenInclude(cd => cd.StudentsCoursesSubjects)
                              .ThenInclude(acd => acd.Student);
             }
 
@@ -105,44 +105,44 @@ namespace EpsSchool.infra.Repositories
 
             return query.ToArray();
         }
-        public Teacher GetProfessorById(int professorId, bool includeAlunos = false)
+        public Teacher GetTeacherById(int teacherId, bool includeStudents = false)
         {
-            IQueryable<Teacher> query = _context.Professores;
+            IQueryable<Teacher> query = _context.Teachers;
 
-            if (includeAlunos)
+            if (includeStudents)
             {
-                query = query.Include(p => p.Disciplinas)
-                             .ThenInclude(d => d.CursosDisciplinas)
-                             .ThenInclude(cd => cd.AlunosCursosDisciplinas)
+                query = query.Include(p => p.Subjects)
+                             .ThenInclude(d => d.CoursesSubjects)
+                             .ThenInclude(cd => cd.StudentsCoursesSubjects)
                              .ThenInclude(acd => acd.Student);
             }
 
             query = query.AsNoTracking()
                          .OrderBy(p => p.Id)
-                         .Where(p => p.Id == professorId);
+                         .Where(p => p.Id == teacherId);
 
 
             return query.FirstOrDefault();
         }
 
-        public Teacher[] GetProfessoresByAlunoId(int alunoId, bool includeAlunos = false)
+        public Teacher[] GetTeachersByStudentId(int studentId, bool includeStudents = false)
         {
-            IQueryable<Teacher> query = _context.Professores;
+            IQueryable<Teacher> query = _context.Teachers;
 
-            if (includeAlunos)
+            if (includeStudents)
             {
-                query = query.Include(p => p.Disciplinas)
-                             .ThenInclude(d => d.CursosDisciplinas)
-                             .ThenInclude(cd => cd.AlunosCursosDisciplinas)
+                query = query.Include(p => p.Subjects)
+                             .ThenInclude(d => d.CoursesSubjects)
+                             .ThenInclude(cd => cd.StudentsCoursesSubjects)
                              .ThenInclude(acd => acd.Student);
             }
 
             query = query.AsNoTracking()
                          .OrderBy(a => a.Id)
-                         .Where(professor => professor.Disciplinas.Any(
-                             d => d.CursosDisciplinas.Any(
-                             cd => cd.AlunosCursosDisciplinas.Any(
-                             acd => acd.StudentId == alunoId))));
+                         .Where(professor => professor.Subjects.Any(
+                             d => d.CoursesSubjects.Any(
+                             cd => cd.StudentsCoursesSubjects.Any(
+                             acd => acd.StudentId == studentId))));
 
             return query.ToArray();
         }

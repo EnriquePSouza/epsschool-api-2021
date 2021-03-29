@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using EpsSchool.Shared.Entities;
 
 namespace EpsSchool.Domain.Entities
 {
-    public class Disciplina : Entity
+    public class Subject : Entity
     {
-        public Disciplina(int id, string nome, int teacherId) : base(id)
+        public Subject(int id, string nome, int teacherId) : base(id)
         {
             Nome = nome;
             TeacherId = teacherId;
@@ -14,6 +15,6 @@ namespace EpsSchool.Domain.Entities
         public int CargaHoraria { get; private set; }
         public int TeacherId { get; private set; }
         public Teacher Teacher { get; private set; }
-        public IEnumerable<CursoDisciplina> CursosDisciplinas { get; private set; }
+        public IEnumerable<CourseSubject> CoursesSubjects { get; private set; }
     }
 }
