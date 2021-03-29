@@ -8,26 +8,26 @@ namespace EpsSchool.Domain.Helpers
 {
     public class PageList<T> : List<T>
     {
-        public int CurrentPage { get; set; }
-        public int TotalPages { get; set; }
-        public int PageSize { get; set; }
-        public int TotalCount { get; set; }
-
         public PageList(List<T> items, int count, int pageNumber, int pageSize)
         {
             TotalCount = count;
             PageSize = pageSize;
             CurrentPage = pageNumber;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
-            this.AddRange(items);
+            AddRange(items);
         }
+
+        public int CurrentPage { get; set; }
+        public int TotalPages { get; set; }
+        public int PageSize { get; set; }
+        public int TotalCount { get; set; }
 
         public static async Task<PageList<T>> CreateAsync(
             IQueryable<T> source, int pageNumber, int pageSize)
         {
-            // Conta a quantidade total de itens.
+            // Counts the total quantity of items.
             var count = await source.CountAsync();
-            // O -1 é pq começa no zero e depois sempre diminui 1 para saber quantos itens pular na hora de paginar.
+            // The -1 is because it starts at zero and then always decreases 1 to know how many items to skip when paging.
             var items = await source.Skip((pageNumber-1) * pageSize) 
                                      .Take(pageSize)
                                      .ToListAsync();

@@ -15,6 +15,7 @@ namespace EpsSchool.infra.Repositories
         {
             _context = context;
         }
+
         #region Generic
         public void Add<T>(T entity) where T : class
         {
@@ -36,6 +37,7 @@ namespace EpsSchool.infra.Repositories
             return (_context.SaveChanges() > 0);
         }
         #endregion
+        
         #region Students
         public async Task<PageList<Student>> GetAllStudentsAsync(PageParams pageParams, bool includeTeacher = false)
         {
@@ -51,19 +53,19 @@ namespace EpsSchool.infra.Repositories
 
             query = query.AsNoTracking().OrderBy(a => a.Id);
 
-            if (!string.IsNullOrEmpty(pageParams.Nome))
-                query = query.Where(aluno => aluno.Nome
+            if (!string.IsNullOrEmpty(pageParams.Name))
+                query = query.Where(aluno => aluno.Name
                                                   .ToUpper()
-                                                  .Contains(pageParams.Nome.ToUpper()) ||
-                                             aluno.Sobrenome
+                                                  .Contains(pageParams.Name.ToUpper()) ||
+                                             aluno.Surname
                                                   .ToUpper()
-                                                  .Contains(pageParams.Nome.ToUpper()));
+                                                  .Contains(pageParams.Name.ToUpper()));
 
-            if (pageParams.Matricula > 0)
-                query = query.Where(aluno => aluno.Registration == pageParams.Matricula);
+            if (pageParams.Registration > 0)
+                query = query.Where(aluno => aluno.Registration == pageParams.Registration);
 
-            if (pageParams.Ativo != null)
-                query = query.Where(aluno => aluno.Ativo == (pageParams.Ativo != 0));
+            if (pageParams.Status != null)
+                query = query.Where(aluno => aluno.Status == (pageParams.Status != 0));
 
             return await PageList<Student>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }
@@ -88,6 +90,7 @@ namespace EpsSchool.infra.Repositories
             return query.FirstOrDefault();
         }
         #endregion
+        
         #region Teachers
         public Teacher[] GetAllTeachers(bool includeStudents = false)
         {

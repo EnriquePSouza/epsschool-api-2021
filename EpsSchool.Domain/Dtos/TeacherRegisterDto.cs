@@ -5,7 +5,7 @@ namespace EpsSchool.Domain.Dtos
     /// <summary>
     /// Este é o DTO para efetuar o registro de um Professor no banco de dados
     /// </summary>
-    public class ProfessorRegistrarDto
+    public class TeacherRegisterDto
     {
         /// <summary>
         /// Código identificador e chave do Banco.
@@ -14,30 +14,30 @@ namespace EpsSchool.Domain.Dtos
         /// <summary>
         /// Código identificador para outras atividades da instituição.
         /// </summary>
-        public int Registro { get; set; }
+        public int Registration { get; set; }
         /// <summary>
         /// Primeiro nome do professor.
         /// </summary>
-        public string Nome { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// Segundo nome do professor.
         /// </summary>
-        public string Sobrenome { get; set; }
+        public string Surname { get; set; }
         /// <summary>
         /// Telefone do professor.
         /// </summary>
-        public string Telefone { get; set; }
+        public string phoneNumber { get; set; }
         /// <summary>
         /// Data em que o professor começou a dar aulas na instituição.
         /// </summary>
-        public DateTime DataInicio { get; set; } = DateTime.Now;
+        public DateTime StartDate { get; set; } = DateTime.Now;
         /// <summary>
         /// Data em que o professor parou de dar aulas na instituição.
         /// </summary>
-        public DateTime? DataFim { get; set; } = null;
+        public DateTime? EndDate { get; set; } = null;
         /// <summary>
         /// Informa se o professor está ativo ou naõ na instituição.
         /// </summary>
-        public bool Ativo { get; set; } = true;
+        public bool Status { get; set; } = true;
     }
 }

@@ -5,13 +5,13 @@ namespace EpsSchool.Domain.Entities
 {
     public class Subject : Entity
     {
-        public Subject(int id, string nome, int teacherId) : base(id)
+        public Subject(int id, string name, int teacherId) : base(id)
         {
-            Nome = nome;
+            Name = name;
             TeacherId = teacherId;
         }
 
-        public string Nome { get; private set; }
+        public string Name { get; private set; }
         public int CargaHoraria { get; private set; }
         public int TeacherId { get; private set; }
         public Teacher Teacher { get; private set; }

@@ -40,7 +40,7 @@ namespace EpsSchool.Api.Controllers
         {
             var students = await _repo.GetAllStudentsAsync(pageParams, true);
 
-            var studentsResult = _mapper.Map<IEnumerable<AlunoDto>>(students);
+            var studentsResult = _mapper.Map<IEnumerable<StudentDto>>(students);
 
             Response.AddPagination(students.CurrentPage, students.PageSize, students.TotalCount, students.TotalPages);
 
@@ -58,7 +58,7 @@ namespace EpsSchool.Api.Controllers
             var student = _repo.GetStudentById(id, false);
             if (student == null) return BadRequest("O Aluno não foi encontrado");
 
-            var studentDto = _mapper.Map<AlunoRegistrarDto>(student);
+            var studentDto = _mapper.Map<StudentRegisterDto>(student);
 
             return Ok(studentDto);
         }
@@ -69,7 +69,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Post(AlunoRegistrarDto model)
+        public IActionResult Post(StudentRegisterDto model)
         {
             var student = _mapper.Map<Student>(model);
 
@@ -77,7 +77,7 @@ namespace EpsSchool.Api.Controllers
             _repo.Add(student);
             if (_repo.SaveChanges())
             {
-                return Created($"/api/student/{model.Id}", _mapper.Map<AlunoDto>(student));
+                return Created($"/api/student/{model.Id}", _mapper.Map<StudentDto>(student));
             }
 
             return BadRequest("Aluno não cadastrado!");
@@ -91,7 +91,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public IActionResult Put(int id, AlunoRegistrarDto model)
+        public IActionResult Put(int id, StudentRegisterDto model)
         {
             var student = _repo.GetStudentById(id);
             if (student == null) return BadRequest("Aluno não encontrado!");
@@ -101,7 +101,7 @@ namespace EpsSchool.Api.Controllers
             _repo.Update(student);
             if (_repo.SaveChanges())
             {
-                return Created($"/api/student/{model.Id}", _mapper.Map<AlunoDto>(student));
+                return Created($"/api/student/{model.Id}", _mapper.Map<StudentDto>(student));
             }
 
             return BadRequest("Aluno não atualizado!");
@@ -114,7 +114,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, AlunoPatchDto model)
+        public IActionResult Patch(int id, StudentPatchDto model)
         {
             var student = _repo.GetStudentById(id);
             if (student == null) return BadRequest("Aluno não encontrado!");
@@ -124,7 +124,7 @@ namespace EpsSchool.Api.Controllers
             _repo.Update(student);
             if (_repo.SaveChanges())
             {
-                return Created($"/api/student/{model.Id}", _mapper.Map<AlunoPatchDto>(student));
+                return Created($"/api/student/{model.Id}", _mapper.Map<StudentPatchDto>(student));
             }
 
             return BadRequest("Aluno não atualizado!");
@@ -134,15 +134,15 @@ namespace EpsSchool.Api.Controllers
         /// Método responsável por registrar se um aluno está ou não ativado na Instituição.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="trocaEstado"></param>
+        /// <param name="changeStatus"></param>
         /// <returns></returns>
-        [HttpPatch("{id}/trocarEstado")]
-        public IActionResult trocarEstado(int id, TrocaEstadoDto trocaEstado)
+        [HttpPatch("{id}/changeStatus")]
+        public IActionResult ChangeStatus(int id, ChangeStatusDto changeStatus)
         {
             var student = _repo.GetStudentById(id);
             if (student == null) return BadRequest("Aluno não encontrado!");
 
-            if (trocaEstado.Estado)
+            if (changeStatus.Status)
             {
                 student.IsActive();
             }
@@ -154,7 +154,7 @@ namespace EpsSchool.Api.Controllers
             _repo.Update(student);
             if (_repo.SaveChanges())
             {
-                var msn = student.Ativo ? "ativado" : "desativado";
+                var msn = student.Status ? "ativado" : "desativado";
                 return Ok(new { message = $"Aluno {msn} com sucesso!" });
             }
 

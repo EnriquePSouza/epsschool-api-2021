@@ -28,26 +28,26 @@ namespace EpsSchool.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Injeção de Dependencia do Contexto de Banco de Dados.
+            // Database Context Dependency Injection.
             services.AddDbContext<SchoolContext>(
                 context => context.UseMySql(Configuration.GetConnectionString("MySqlConnection"))
             );
 
-            // Tratando erro de loop infinito no envio do Json.
+            // Handling infinite loop error when sending Json.
             services.AddControllers()
                     .AddNewtonsoftJson(
                         opt => opt.SerializerSettings.ReferenceLoopHandling =
                             Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            // Mapeamento Automatico Para os Dtos - Os Helpers são o meio de campo.
+            // Automatic Mapping for Dtos - Helpers are the middle of the process.
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            // Injeção de Dependencia do Controle com Inversão de Controle.
-            // AddScoped cria um DataContext por requisição e reutiliza ele, evitando conexões desnecessárias com o banco.
-            // Terminou de utilizar ele destroi o DataContext e fecha a conexão.
+            // Control Dependency Injection with Inversion of Control.
+            // AddScoped creates a DataContext per request and reuses it, avoiding unnecessary connections with the database.
+            // When he finish the DataContext using, he destroys it and closes the connection.
             services.AddScoped<IRepository, Repository>();
 
-            // Configurações para escolher e controlar as versões da API.
+            // Settings for choosing and controlling API versions.
             services.AddVersionedApiExplorer(options =>
             {
                 options.GroupNameFormat = "'v'VVV";
@@ -63,13 +63,13 @@ namespace EpsSchool.Api
             var apiProviderDescription = services.BuildServiceProvider()
                                                  .GetService<IApiVersionDescriptionProvider>();
 
-            // Swagger - Utilizado para execução e testes da API.
+            // Swagger - Used for API documentation, execution and testing.
             services.AddSwaggerGen(options =>
             {
-                // Determina uma versão para cada documentação de acordo com a versão informada na api.
+                // Determines a version for each documentation according to the version informed in the api.
                 foreach (var description in apiProviderDescription.ApiVersionDescriptions)
                 {
-                    // Etapa que demonstra quais os passos para documentar o Swagger.
+                    // Step by step to document the Swagger.
                     options.SwaggerDoc(description.GroupName,
                     new Microsoft.OpenApi.Models.OpenApiInfo()
                     {
@@ -102,14 +102,12 @@ namespace EpsSchool.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app,
                               IWebHostEnvironment env,
-                              IApiVersionDescriptionProvider apiProviderDescription) // Injetando os dados de descrição da Versão.
+                              IApiVersionDescriptionProvider apiProviderDescription) // Injecting the version description data.
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            // app.UseHttpsRedirection();
 
             app.UseRouting();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
@@ -125,8 +123,6 @@ namespace EpsSchool.Api
                     }
                     options.RoutePrefix = "";
                 });
-
-            // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

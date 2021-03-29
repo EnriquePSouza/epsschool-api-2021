@@ -8,13 +8,13 @@ namespace EpsSchool.Domain.Entities
         {
             StudentId = studentId;
             CourseSubjectId = courseSubjectId;
-            DataInicio = DateTime.Now;
-            DataFim = null;
-            Nota = null;
+            StartDate = DateTime.Now;
+            EndDate = null;
+            Grade = null;
         }
-        public DateTime DataInicio { get; private set; }
-        public DateTime? DataFim { get; private set; }
-        public int? Nota { get; private set; }
+        public DateTime StartDate { get; private set; }
+        public DateTime? EndDate { get; private set; }
+        public int? Grade { get; private set; }
         public int CourseSubjectId { get; private set; }
         public CourseSubject CourseSubject { get; private set; }
         public int StudentId { get; private set; }

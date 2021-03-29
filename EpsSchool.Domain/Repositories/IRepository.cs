@@ -6,18 +6,22 @@ namespace EpsSchool.Domain.Repositories
 {
     public interface IRepository
     {
+        #region Generic
         void Add<T>(T entity) where T : class;
         void Update<T>(T entity) where T : class;
         void Remove<T>(T entity) where T : class;
         bool SaveChanges();
+        #endregion
 
-        //Aluno
-        Task<PageList<Student>> GetAllStudentsAsync(PageParams pageParams, bool includeProfessor = false);
-        Student GetStudentById(int alunoId, bool includeProfessor = false);
+        #region Student
+        Task<PageList<Student>> GetAllStudentsAsync(PageParams pageParams, bool includeTeacher = false);
+        Student GetStudentById(int studentId, bool includeTeacher = false);
+        #endregion
 
-        //Professor
-        Teacher[] GetAllTeachers(bool includeAlunos = false);
-        Teacher GetTeacherById(int professorId, bool includeAlunos = false);
-        Teacher[] GetTeachersByStudentId(int alunoId, bool includeAlunos = false);
+        #region Teacher
+        Teacher[] GetAllTeachers(bool includeStudents = false);
+        Teacher GetTeacherById(int teacherId, bool includeStudents = false);
+        Teacher[] GetTeachersByStudentId(int studentId, bool includeStudents = false);
+        #endregion
     }
 }

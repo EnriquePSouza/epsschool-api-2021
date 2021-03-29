@@ -6,18 +6,18 @@ namespace EpsSchool.Domain.Entities
 {
     public class Teacher : Person
     {
-        public Teacher(int id, int registration, string nome, string sobrenome, string telefone, DateTime dataNascimento)
-            : base(id, registration, nome, sobrenome, telefone, dataNascimento)
+        public Teacher(int id, int registration, string name, string surname, string phoneNumber, DateTime birthdate)
+            : base(id, registration, name, surname, phoneNumber, birthdate)
         {
-            DataInicio = DateTime.Now;
-            DataFim = null;
-            Ativo = true;
+            StartDate = DateTime.Now;
+            EndDate = null;
+            Status = true;
         }
 
-        public DateTime DataInicio { get; private set; }
-        public DateTime? DataFim { get; private set; }
-        public bool Ativo { get; private set; }
-        public int DisciplinaId { get; private set; }
+        public DateTime StartDate { get; private set; }
+        public DateTime? EndDate { get; private set; }
+        public bool Status { get; private set; }
+        public int SubjectId { get; private set; }
         public IEnumerable<Subject> Subjects { get; private set; }
     }
 }

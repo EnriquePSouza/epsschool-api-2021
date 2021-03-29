@@ -38,7 +38,7 @@ namespace EpsSchool.Api.Controllers
         {
             var teachers = _repo.GetAllTeachers(true);
 
-            return Ok(_mapper.Map<IEnumerable<ProfessorDto>>(teachers));
+            return Ok(_mapper.Map<IEnumerable<TeacherDto>>(teachers));
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace EpsSchool.Api.Controllers
             var teachers = _repo.GetTeacherById(id, true);
             if (teachers == null) return BadRequest("O Professor não foi encontrado");
 
-            var teachersDto = _mapper.Map<ProfessorDto>(teachers);
+            var teachersDto = _mapper.Map<TeacherDto>(teachers);
 
             return Ok(teachersDto);
         }
@@ -68,7 +68,7 @@ namespace EpsSchool.Api.Controllers
             var teachers = _repo.GetTeachersByStudentId(studentId, true);
             if (teachers == null) return BadRequest("Professores não encontrados"); 
 
-            return Ok(_mapper.Map<IEnumerable<ProfessorDto>>(teachers));
+            return Ok(_mapper.Map<IEnumerable<TeacherDto>>(teachers));
         }
 
         /// <summary>
@@ -77,14 +77,14 @@ namespace EpsSchool.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Post(ProfessorRegistrarDto model)
+        public IActionResult Post(TeacherRegisterDto model)
         {
             var teacher = _mapper.Map<Teacher>(model);
 
             _repo.Add(teacher);
             if (_repo.SaveChanges())
             {
-                return Created($"/api/teacher/{model.Id}", _mapper.Map<ProfessorDto>(teacher));
+                return Created($"/api/teacher/{model.Id}", _mapper.Map<TeacherDto>(teacher));
             }
 
             return BadRequest("Professor não cadastrado!");
@@ -97,7 +97,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public IActionResult Put(int id, ProfessorRegistrarDto model)
+        public IActionResult Put(int id, TeacherRegisterDto model)
         {
             var teacher = _repo.GetTeacherById(id);
             if (teacher == null) return BadRequest("Professor não encontrado!");
@@ -107,7 +107,7 @@ namespace EpsSchool.Api.Controllers
             _repo.Update(teacher);
             if (_repo.SaveChanges())
             {
-                return Created($"/api/teacher/{model.Id}", _mapper.Map<ProfessorDto>(teacher));
+                return Created($"/api/teacher/{model.Id}", _mapper.Map<TeacherDto>(teacher));
             }
 
             return BadRequest("Professor não atualizado!");
@@ -120,7 +120,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, ProfessorRegistrarDto model)
+        public IActionResult Patch(int id, TeacherRegisterDto model)
         {
             var teacher = _repo.GetTeacherById(id);
             if (teacher == null) return BadRequest("Professor não encontrado!");
@@ -130,7 +130,7 @@ namespace EpsSchool.Api.Controllers
             _repo.Update(teacher);
             if (_repo.SaveChanges())
             {
-                return Created($"/api/teacher/{model.Id}", _mapper.Map<ProfessorDto>(teacher));
+                return Created($"/api/teacher/{model.Id}", _mapper.Map<TeacherDto>(teacher));
             }
 
             return BadRequest("Professor não atualizado!");
