@@ -2,22 +2,18 @@ using System.Collections.Generic;
 
 namespace EpsSchool.Domain.Entities
 {
-    public class Disciplina
+    public class Disciplina : Entity
     {
-        public Disciplina() { }
-        public Disciplina(int id, string nome, int professorId)
+        public Disciplina(int id, string nome, int teacherId) : base(id)
         {
-            this.Id = id;
-            this.Nome = nome;
-            this.ProfessorId = professorId;
+            Nome = nome;
+            TeacherId = teacherId;
         }
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public int CargaHoraria { get; set; }
-        public int? PrerequisitoId { get; set; } = null;
-        public Disciplina Prerequisito { get; set; } // Disciplina de Pré-requisito para a matricula.
-        public int ProfessorId { get; set; }
-        public Professor Professor { get; set; }
-        public IEnumerable<CursoDisciplina> CursosDisciplinas { get; set; }
+
+        public string Nome { get; private set; }
+        public int CargaHoraria { get; private set; }
+        public int TeacherId { get; private set; }
+        public Teacher Teacher { get; private set; }
+        public IEnumerable<CursoDisciplina> CursosDisciplinas { get; private set; }
     }
 }

@@ -4,10 +4,9 @@ namespace EpsSchool.Domain.Entities
 {
     public class AlunoCursoDisciplina
     {
-        public AlunoCursoDisciplina() { }
-        public AlunoCursoDisciplina(int cursoDisciplinaId, int alunoId)
+        public AlunoCursoDisciplina(int cursoDisciplinaId, int studentId)
         {
-            AlunoId = alunoId;
+            StudentId = studentId;
             CursoDisciplinaId = cursoDisciplinaId;
             DataInicio = DateTime.Now;
             DataFim = null;
@@ -18,7 +17,7 @@ namespace EpsSchool.Domain.Entities
         public int? Nota { get; private set; }
         public int CursoDisciplinaId { get; private set; }
         public CursoDisciplina CursoDisciplina { get; private set; }
-        public int AlunoId { get; private set; }
-        public Aluno Aluno { get; private set; }
+        public int StudentId { get; private set; }
+        public Student Student { get; private set; }
     }
 }

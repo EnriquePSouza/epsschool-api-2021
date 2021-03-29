@@ -15,7 +15,7 @@ namespace EpsSchool.Api.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class AlunoController : ControllerBase
+    public class StudentController : ControllerBase
     {
         private readonly IRepository _repo;
         private readonly IMapper _mapper;
@@ -25,7 +25,7 @@ namespace EpsSchool.Api.Controllers
         /// </summary>
         /// <param name="repo"></param>
         /// <param name="mapper"></param>
-        public AlunoController(IRepository repo, IMapper mapper)
+        public StudentController(IRepository repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
@@ -71,7 +71,7 @@ namespace EpsSchool.Api.Controllers
         [HttpPost]
         public IActionResult Post(AlunoRegistrarDto model)
         {
-            var aluno = _mapper.Map<Aluno>(model);
+            var aluno = _mapper.Map<Student>(model);
 
 
             _repo.Add(aluno);

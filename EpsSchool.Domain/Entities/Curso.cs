@@ -4,15 +4,14 @@ namespace EpsSchool.Domain.Entities
 {
     public class Curso
     {
-        public Curso() { }
         public Curso(int id, string nome)
         {
-            this.Id = id;
-            this.Nome = nome;
+            Id = id;
+            Nome = nome;
 
         }
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public IEnumerable<CursoDisciplina> CursosDisciplinas { get; set; }
+        public int Id { get; private set; }
+        public string Nome { get; private set; }
+        public IEnumerable<CursoDisciplina> CursosDisciplinas { get; private set; }
     }
 }

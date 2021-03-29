@@ -8,7 +8,7 @@ namespace EpsSchool.Domain.Helpers
     {
         public SchoolProfile()
         {
-            CreateMap<Aluno, AlunoDto>()
+            CreateMap<Student, AlunoDto>()
                 .ForMember(
                     dest => dest.Nome,
                     opt => opt.MapFrom(src => $"{src.Nome} {src.Sobrenome}")
@@ -17,17 +17,17 @@ namespace EpsSchool.Domain.Helpers
                     dest => dest.Idade,
                     opt => opt.MapFrom(src => src.DataNascimento.GetCurrentAge())
                 );
-            CreateMap<AlunoDto, Aluno>();
-            CreateMap<Aluno, AlunoRegistrarDto>().ReverseMap();
-            CreateMap<Aluno, AlunoPatchDto>().ReverseMap();
+            CreateMap<AlunoDto, Student>();
+            CreateMap<Student, AlunoRegistrarDto>().ReverseMap();
+            CreateMap<Student, AlunoPatchDto>().ReverseMap();
 
-            CreateMap<Professor, ProfessorDto>()
+            CreateMap<Teacher, ProfessorDto>()
                 .ForMember(
                     dest => dest.Nome,
                     opt => opt.MapFrom(src => $"{src.Nome} {src.Sobrenome}")
                     );
-            CreateMap<ProfessorDto, Professor>();
-            CreateMap<Professor, ProfessorRegistrarDto>().ReverseMap();
+            CreateMap<ProfessorDto, Teacher>();
+            CreateMap<Teacher, ProfessorRegistrarDto>().ReverseMap();
 
             CreateMap<DisciplinaDto, Disciplina>().ReverseMap();
             CreateMap<CursoDto, Curso>().ReverseMap();

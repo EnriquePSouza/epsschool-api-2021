@@ -12,12 +12,12 @@ namespace EpsSchool.Domain.Repositories
         bool SaveChanges();
 
         //Aluno
-        Task<PageList<Aluno>> GetAllAlunosAsync(PageParams pageParams, bool includeProfessor = false);
-        Aluno GetAlunoById(int alunoId, bool includeProfessor = false);
+        Task<PageList<Student>> GetAllAlunosAsync(PageParams pageParams, bool includeProfessor = false);
+        Student GetAlunoById(int alunoId, bool includeProfessor = false);
 
         //Professor
-        Professor[] GetAllProfessores(bool includeAlunos = false);
-        Professor GetProfessorById(int professorId, bool includeAlunos = false);
-        Professor[] GetProfessoresByAlunoId(int alunoId, bool includeAlunos = false);
+        Teacher[] GetAllProfessores(bool includeAlunos = false);
+        Teacher GetProfessorById(int professorId, bool includeAlunos = false);
+        Teacher[] GetProfessoresByAlunoId(int alunoId, bool includeAlunos = false);
     }
 }

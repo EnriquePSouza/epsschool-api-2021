@@ -37,16 +37,16 @@ namespace EpsSchool.infra.Repositories
         }
         #endregion
         #region Alunos
-        public async Task<PageList<Aluno>> GetAllAlunosAsync(PageParams pageParams, bool includeProfessor = false)
+        public async Task<PageList<Student>> GetAllAlunosAsync(PageParams pageParams, bool includeProfessor = false)
         {
-            IQueryable<Aluno> query = _context.Alunos;
+            IQueryable<Student> query = _context.Alunos;
 
             if (includeProfessor)
             {
                 query = query.Include(a => a.AlunosCursosDisciplinas)
                              .ThenInclude(acd => acd.CursoDisciplina)
                              .ThenInclude(cd => cd.Disciplina)
-                             .ThenInclude(d => d.Professor);
+                             .ThenInclude(d => d.Teacher);
             }
 
             query = query.AsNoTracking().OrderBy(a => a.Id);
@@ -60,24 +60,24 @@ namespace EpsSchool.infra.Repositories
                                                   .Contains(pageParams.Nome.ToUpper()));
 
             if (pageParams.Matricula > 0)
-                query = query.Where(aluno => aluno.Matricula == pageParams.Matricula);
+                query = query.Where(aluno => aluno.Registration == pageParams.Matricula);
 
             if (pageParams.Ativo != null)
                 query = query.Where(aluno => aluno.Ativo == (pageParams.Ativo != 0));
 
-            return await PageList<Aluno>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
+            return await PageList<Student>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }
 
-        public Aluno GetAlunoById(int alunoId, bool includeProfessor = false)
+        public Student GetAlunoById(int alunoId, bool includeProfessor = false)
         {
-            IQueryable<Aluno> query = _context.Alunos;
+            IQueryable<Student> query = _context.Alunos;
 
             if (includeProfessor)
             {
                 query = query.Include(a => a.AlunosCursosDisciplinas)
                              .ThenInclude(acd => acd.CursoDisciplina)
                              .ThenInclude(cd => cd.Disciplina)
-                             .ThenInclude(d => d.Professor);
+                             .ThenInclude(d => d.Teacher);
             }
 
             query = query.AsNoTracking()
@@ -89,32 +89,32 @@ namespace EpsSchool.infra.Repositories
         }
         #endregion
         #region Professores
-        public Professor[] GetAllProfessores(bool includeAlunos = false)
+        public Teacher[] GetAllProfessores(bool includeAlunos = false)
         {
-            IQueryable<Professor> query = _context.Professores;
+            IQueryable<Teacher> query = _context.Professores;
 
             if (includeAlunos)
             {
                 query = query.Include(p => p.Disciplinas)
                              .ThenInclude(d => d.CursosDisciplinas)
                              .ThenInclude(cd => cd.AlunosCursosDisciplinas)
-                             .ThenInclude(acd => acd.Aluno);
+                             .ThenInclude(acd => acd.Student);
             }
 
             query = query.AsNoTracking().OrderBy(p => p.Id);
 
             return query.ToArray();
         }
-        public Professor GetProfessorById(int professorId, bool includeAlunos = false)
+        public Teacher GetProfessorById(int professorId, bool includeAlunos = false)
         {
-            IQueryable<Professor> query = _context.Professores;
+            IQueryable<Teacher> query = _context.Professores;
 
             if (includeAlunos)
             {
                 query = query.Include(p => p.Disciplinas)
                              .ThenInclude(d => d.CursosDisciplinas)
                              .ThenInclude(cd => cd.AlunosCursosDisciplinas)
-                             .ThenInclude(acd => acd.Aluno);
+                             .ThenInclude(acd => acd.Student);
             }
 
             query = query.AsNoTracking()
@@ -125,16 +125,16 @@ namespace EpsSchool.infra.Repositories
             return query.FirstOrDefault();
         }
 
-        public Professor[] GetProfessoresByAlunoId(int alunoId, bool includeAlunos = false)
+        public Teacher[] GetProfessoresByAlunoId(int alunoId, bool includeAlunos = false)
         {
-            IQueryable<Professor> query = _context.Professores;
+            IQueryable<Teacher> query = _context.Professores;
 
             if (includeAlunos)
             {
                 query = query.Include(p => p.Disciplinas)
                              .ThenInclude(d => d.CursosDisciplinas)
                              .ThenInclude(cd => cd.AlunosCursosDisciplinas)
-                             .ThenInclude(acd => acd.Aluno);
+                             .ThenInclude(acd => acd.Student);
             }
 
             query = query.AsNoTracking()
@@ -142,7 +142,7 @@ namespace EpsSchool.infra.Repositories
                          .Where(professor => professor.Disciplinas.Any(
                              d => d.CursosDisciplinas.Any(
                              cd => cd.AlunosCursosDisciplinas.Any(
-                             acd => acd.AlunoId == alunoId))));
+                             acd => acd.StudentId == alunoId))));
 
             return query.ToArray();
         }
