@@ -4,4 +4,4 @@
 
 ### Este sistema tem como objetivo gerenciar uma escola de cursos técnicos.
 
-    Este sistema em fase de desenvolvimento.
+    Este sistema está em fase de desenvolvimento.
