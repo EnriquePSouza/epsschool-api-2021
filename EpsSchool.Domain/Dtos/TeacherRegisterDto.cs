@@ -26,7 +26,7 @@ namespace EpsSchool.Domain.Dtos
         /// <summary>
         /// Telefone do professor.
         /// </summary>
-        public string phoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         /// <summary>
         /// Data em que o professor começou a dar aulas na instituição.
         /// </summary>

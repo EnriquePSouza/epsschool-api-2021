@@ -28,7 +28,7 @@ namespace EpsSchool.Domain.Dtos
         /// <summary>
         /// Telefone do aluno.
         /// </summary>
-        public string phoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         /// <summary>
         /// Data em que o aluno nasceu.
         /// </summary>
@@ -40,7 +40,7 @@ namespace EpsSchool.Domain.Dtos
         /// <summary>
         /// Data em que o aluno cancelou sua matrícula.
         /// </summary>
-        public DateTime? EndDAte { get; set; } = null;
+        public DateTime? EndDate { get; set; } = null;
         /// <summary>
         /// Informa se o aluno está ativo ou não na instuição.
         /// </summary>
