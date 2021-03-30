@@ -4,39 +4,39 @@
         <name>EpsSchool.Api</name>
     </assembly>
     <members>
-        <member name="T:EpsSchool.Api.Controllers.AlunoController">
+        <member name="T:EpsSchool.Api.Controllers.StudentController">
             <summary>
             Versão 1 do controlador de Alunos.
             </summary>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.#ctor(EpsSchool.Domain.Repositories.IRepository,AutoMapper.IMapper)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.#ctor(EpsSchool.Domain.Repositories.IRepository,AutoMapper.IMapper)">
             <summary>
             Método construtor do controlador de Alunos.
             </summary>
             <param name="repo"></param>
             <param name="mapper"></param>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.Get(EpsSchool.Domain.Helpers.PageParams)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.Get(EpsSchool.Domain.Helpers.PageParams)">
             <summary>
             Método responsável por retornar todos os Alunos de Forma Assíncrona.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.GetById(System.Int32)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.GetById(System.Int32)">
             <summary>
             Método responsável por retornar um Aluno ao informar o seu id.
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.Post(EpsSchool.Domain.Dtos.AlunoRegistrarDto)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.Post(EpsSchool.Domain.Dtos.StudentRegisterDto)">
             <summary>
             Método responsável por inserir as informações de um Aluno no banco de dados.
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.Put(System.Int32,EpsSchool.Domain.Dtos.AlunoRegistrarDto)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.Put(System.Int32,EpsSchool.Domain.Dtos.StudentRegisterDto)">
             <summary>
             Método responsável por atualizar as informações de um Aluno no banco de dados.
             </summary>
@@ -44,7 +44,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.Patch(System.Int32,EpsSchool.Domain.Dtos.AlunoPatchDto)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.Patch(System.Int32,EpsSchool.Domain.Dtos.StudentPatchDto)">
             <summary>
             Método responsável por atualizar todas ou algumas das informações de um Aluno no banco de dados.
             </summary>
@@ -52,61 +52,61 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.trocarEstado(System.Int32,EpsSchool.Domain.Dtos.TrocaEstadoDto)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.ChangeStatus(System.Int32,EpsSchool.Domain.Dtos.ChangeStatusDto)">
             <summary>
             Método responsável por registrar se um aluno está ou não ativado na Instituição.
             </summary>
             <param name="id"></param>
-            <param name="trocaEstado"></param>
+            <param name="changeStatus"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.AlunoController.Delete(System.Int32)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.Delete(System.Int32)">
             <summary>
             Método responsável por remover as informações de um Aluno do banco de dados.
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="T:EpsSchool.Api.Controllers.ProfessorController">
+        <member name="T:EpsSchool.Api.Controllers.TeacherController">
             <summary>
             Versão 1 do controlador de Professores.
             </summary>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.#ctor(EpsSchool.Domain.Repositories.IRepository,AutoMapper.IMapper)">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.#ctor(EpsSchool.Domain.Repositories.IRepository,AutoMapper.IMapper)">
             <summary>
             Método construtor do controlador de Professores.
             </summary>
             <param name="repo"></param>
             <param name="mapper"></param>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.Get">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.Get">
             <summary>
             Método responsável por retornar todos os Professores.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.GetById(System.Int32)">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.GetById(System.Int32)">
             <summary>
             Método responsável por retornar um Professor ao informar o seu id.
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.GetByAlunoId(System.Int32)">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.GetByStudentId(System.Int32)">
             <summary>
             Método responsável por retornar um Professor ao informar o seu id de um Aluno.
             </summary>
-            <param name="alunoId"></param>
+            <param name="studentId"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.Post(EpsSchool.Domain.Dtos.ProfessorRegistrarDto)">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.Post(EpsSchool.Domain.Dtos.TeacherRegisterDto)">
             <summary>
             Método responsável por inserir as informações de um Professor no banco de dados.
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.Put(System.Int32,EpsSchool.Domain.Dtos.ProfessorRegistrarDto)">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.Put(System.Int32,EpsSchool.Domain.Dtos.TeacherRegisterDto)">
             <summary>
             Método responsável por atualizar as informações de um Professor no banco de dados.
             </summary>
@@ -114,7 +114,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.Patch(System.Int32,EpsSchool.Domain.Dtos.ProfessorRegistrarDto)">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.Patch(System.Int32,EpsSchool.Domain.Dtos.TeacherRegisterDto)">
             <summary>
             Método responsável por atualizar todas ou algumas das informações de um Professor no banco de dados.
             </summary>
@@ -122,7 +122,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.ProfessorController.Delete(System.Int32)">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.Delete(System.Int32)">
             <summary>
             Método responsável por remover as informações de um Professor do banco de dados.
             </summary>

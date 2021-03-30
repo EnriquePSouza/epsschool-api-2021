@@ -7,11 +7,13 @@ namespace EpsSchool.Domain.Commands
     public class ChangeStudentStatusCommand : Notifiable, ICommand
     {
         public ChangeStudentStatusCommand(){}
-        public ChangeStudentStatusCommand(bool status)
+        public ChangeStudentStatusCommand(int id, bool status)
         {
+            Id = id;
             Status = status;
         }
 
+        public int Id { get; set; }
         public bool Status { get; set; }
         public void Validate()
         {

@@ -10,7 +10,7 @@ namespace EpsSchool.Domain.Commands
         public CreateStudentCommand() { }
 
         public CreateStudentCommand(int id, int registration, string name, string surname, string phoneNumber,
-            DateTime birthdate, DateTime startDate, bool status)
+            DateTime birthdate)
         {
             Id = id;
             Registration = registration;
@@ -38,8 +38,8 @@ namespace EpsSchool.Domain.Commands
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .HasMinLen(Name, 10, "Nome", "Por favor, informe ao menos o primeiro e segundo nome do aluno!")
-                    .HasMaxLen(Name, 40, "Nome", "O nome não pode conter mais que 40 caracteres!")
+                    .HasMinLen(Name, 5, "Nome", "Informe o nome do aluno!")
+                    .HasMinLen(Surname, 5, "Sobrenome", "Informe o sobrenome do aluno!")
             );
         }
     }

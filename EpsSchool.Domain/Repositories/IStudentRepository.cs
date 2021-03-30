@@ -6,5 +6,6 @@ namespace EpsSchool.Domain.Repositories
     {
         void Create(Student student);
         void Update(Student student);
+        Student GetById(int id);
     }
 }
