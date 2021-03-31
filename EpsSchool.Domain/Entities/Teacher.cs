@@ -7,8 +7,8 @@ namespace EpsSchool.Domain.Entities
 {
     public class Teacher : Person
     {
-        public Teacher(int id, int registration, string name, string surname, string phoneNumber, DateTime birthdate)
-            : base(id, registration, name, surname, phoneNumber, birthdate) { }
+        public Teacher(int id, int registration, string name, string surname, string phoneNumber)
+            : base(id, registration, name, surname, phoneNumber) { }
 
         [Required]
         [Range(1, int.MaxValue)]

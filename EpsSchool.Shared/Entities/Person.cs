@@ -5,13 +5,12 @@ namespace EpsSchool.Shared.Entities
 {
     public abstract class Person : Entity
     {
-        protected Person(int id, int registration, string name, string surname, string phoneNumber, DateTime birthdate) : base(id)
+        protected Person(int id, int registration, string name, string surname, string phoneNumber) : base(id)
         {
             Registration = registration;
             Name = name;
             Surname = surname;
             PhoneNumber = phoneNumber;
-            Birthdate = birthdate;
             StartDate = DateTime.Now;
             EndDate = null;
             Status = true;
@@ -32,8 +31,6 @@ namespace EpsSchool.Shared.Entities
         [Required]
         [MaxLength(120)]
         public string PhoneNumber { get; private set; }
-
-        public DateTime Birthdate { get; private set; }
 
         public DateTime StartDate { get; private set; }
 

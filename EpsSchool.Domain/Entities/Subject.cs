@@ -17,7 +17,7 @@ namespace EpsSchool.Domain.Entities
         public string Name { get; private set; }
 
         [MaxLength(9999)]
-        public int CargaHoraria { get; private set; }
+        public int Workload { get; private set; }
 
         [Required]
         [Range(1, int.MaxValue)]

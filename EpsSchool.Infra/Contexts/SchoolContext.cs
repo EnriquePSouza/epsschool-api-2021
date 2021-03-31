@@ -22,11 +22,11 @@ namespace EpsSchool.infra.Contexts
 
             builder.Entity<Teacher>()
                 .HasData(new List<Teacher>(){
-                    new Teacher(1, 1, "José", "Roberto","44778899", DateTime.Parse("05/04/2000", new System.Globalization.CultureInfo("en-US"))),
-                    new Teacher(2, 2, "Carlos", "Eduardo","33568941", DateTime.Parse("05/04/2000", new System.Globalization.CultureInfo("en-US"))),
-                    new Teacher(3, 3, "Manuel", "Nobre","99587462", DateTime.Parse("05/04/2000", new System.Globalization.CultureInfo("en-US"))),
-                    new Teacher(4, 4, "João", "Olavo","33506987", DateTime.Parse("05/04/2000", new System.Globalization.CultureInfo("en-US"))),
-                    new Teacher(5, 5, "Lucas", "Ribas","33214896", DateTime.Parse("05/04/2000", new System.Globalization.CultureInfo("en-US")))
+                    new Teacher(1, 1, "José", "Roberto","44778899"),
+                    new Teacher(2, 2, "Carlos", "Eduardo","33568941"),
+                    new Teacher(3, 3, "Manuel", "Nobre","99587462"),
+                    new Teacher(4, 4, "João", "Olavo","33506987"),
+                    new Teacher(5, 5, "Lucas", "Ribas","33214896")
                 });
 
             builder.Entity<Course>()
@@ -47,13 +47,13 @@ namespace EpsSchool.infra.Contexts
 
             builder.Entity<Student>()
                 .HasData(new List<Student>(){
-                    new Student(1, 1, "Joana", "Alves", "33556699", DateTime.Parse("07/17/2010", new System.Globalization.CultureInfo("en-US"))),
-                    new Student(2, 2, "Fernanda", "Silva", "33447789", DateTime.Parse("07/17/2010", new System.Globalization.CultureInfo("en-US"))),
-                    new Student(3, 3, "Vanessa", "Lisboa", "99562341", DateTime.Parse("07/17/2010", new System.Globalization.CultureInfo("en-US"))),
-                    new Student(4, 4, "Maria", "Madalena", "99452417", DateTime.Parse("07/17/2010", new System.Globalization.CultureInfo("en-US"))),
-                    new Student(5, 5, "João", "Paulo", "98564712", DateTime.Parse("07/17/2010", new System.Globalization.CultureInfo("en-US"))),
-                    new Student(6, 6, "Ananias", "Fernandes", "33589624", DateTime.Parse("07/17/2010", new System.Globalization.CultureInfo("en-US"))),
-                    new Student(7, 7, "José", "Arimatéia", "98745122", DateTime.Parse("07/17/2010", new System.Globalization.CultureInfo("en-US")))
+                    new Student(1, 1, "Joana", "Alves", "33556699", DateTime.Parse("07/17/2005", new System.Globalization.CultureInfo("en-US"))),
+                    new Student(2, 2, "Fernanda", "Silva", "33447789", DateTime.Parse("07/17/2005", new System.Globalization.CultureInfo("en-US"))),
+                    new Student(3, 3, "Vanessa", "Lisboa", "99562341", DateTime.Parse("07/17/2005", new System.Globalization.CultureInfo("en-US"))),
+                    new Student(4, 4, "Maria", "Madalena", "99452417", DateTime.Parse("07/17/2005", new System.Globalization.CultureInfo("en-US"))),
+                    new Student(5, 5, "João", "Paulo", "98564712", DateTime.Parse("07/17/2005", new System.Globalization.CultureInfo("en-US"))),
+                    new Student(6, 6, "Ananias", "Fernandes", "33589624", DateTime.Parse("07/17/2005", new System.Globalization.CultureInfo("en-US"))),
+                    new Student(7, 7, "José", "Arimatéia", "98745122", DateTime.Parse("07/17/2005", new System.Globalization.CultureInfo("en-US")))
                 });
 
             builder.Entity<CourseSubject>()
