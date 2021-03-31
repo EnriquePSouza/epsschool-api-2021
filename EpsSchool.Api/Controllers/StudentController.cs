@@ -68,6 +68,7 @@ namespace EpsSchool.Api.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
+        /// FEITO - Pronto para aluno ---------------------------------------------
         [HttpPost]
         public IActionResult Post(StudentRegisterDto model)
         {
@@ -90,6 +91,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
+        /// FEITO - Pronto para aluno ---------------------------------------------
         [HttpPut("{id}")]
         public IActionResult Put(int id, StudentRegisterDto model)
         {
@@ -113,6 +115,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
+        /// FEITO - Pronto para aluno ---------------------------------------------
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, StudentPatchDto model)
         {
@@ -136,6 +139,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <param name="changeStatus"></param>
         /// <returns></returns>
+        /// FEITO - Pronto para aluno ---------------------------------------------
         [HttpPatch("{id}/changeStatus")]
         public IActionResult ChangeStatus(int id, ChangeStatusDto changeStatus)
         {

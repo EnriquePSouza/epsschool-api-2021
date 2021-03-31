@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace EpsSchool.Shared.Entities
 {
@@ -8,7 +9,8 @@ namespace EpsSchool.Shared.Entities
         {
             Id = id;
         }
-
+        
+        [Key]
         public int Id { get; private set; }
 
         public bool Equals(Entity other)

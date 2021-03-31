@@ -4,10 +4,10 @@ using Flunt.Validations;
 
 namespace EpsSchool.Domain.Commands
 {
-    public class ChangeStudentStatusCommand : Notifiable, ICommand
+    public class ChangeTeacherStatusCommand : Notifiable, ICommand
     {
-        public ChangeStudentStatusCommand(){}
-        public ChangeStudentStatusCommand(int id, bool status)
+        public ChangeTeacherStatusCommand(){}
+        public ChangeTeacherStatusCommand(int id, bool status)
         {
             Id = id;
             Status = status;
@@ -20,8 +20,8 @@ namespace EpsSchool.Domain.Commands
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .IsNotNull(Status, "Status", "Informe se o Aluno está ou não ativo na instituição!")
-                    .IsGreaterThan(0, Id, "Código do Aluno", "Informe o Código do Aluno!")
+                    .IsNotNull(Status, "Status", "Informe se o Professor está ou não ativo na instituição!")
+                    .IsGreaterThan(0, Id, "Código do Professor", "Informe o Código do Professor!")
             );
         }
     }

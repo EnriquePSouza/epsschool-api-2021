@@ -27,13 +27,12 @@ namespace EpsSchool.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false, "Aluno Invalido!", command.Notifications);
             
-            // Gera item para inserir no banco.
-            var student = new Student(command.Id, command.Registration, command.Name, command.Surname, command.PhoneNumber, command.Birthdate);
+            // Creates the student object.
+            var student = new Student(command.Id, command.Registration, command.Name,
+                command.Surname, command.PhoneNumber, command.Birthdate);
 
-            // Salva no banco
             _repository.Create(student);
 
-            // Retorna um resultado para a tela
             return new GenericCommandResult(true, "Aluno Salvo!", student);
         }
 
@@ -44,13 +43,17 @@ namespace EpsSchool.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false, "Aluno Invalido!", command.Notifications);
             
-            // TODO - Precisa verificar se existe e depois atualizar no banco.
+            // Check if the student exists.
             var student = _repository.GetById(command.Id);
+            if (student == null)
+                return new GenericCommandResult(false, "Aluno não encontrado!", student);
 
-            // Salva no banco
+            // Update the student object with the new command data.
+            student = new Student(student.Id, student.Registration, command.Name,
+                command.Surname, command.PhoneNumber, student.Birthdate); // VERIFY
+
             _repository.Update(student);
 
-            // Retorna um resultado para a tela
             return new GenericCommandResult(true, "Aluno Salvo!", student);
         }
 
@@ -61,17 +64,19 @@ namespace EpsSchool.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false, "Aluno Invalido!", command.Notifications);
             
-            // TODO - Precisa verificar se existe e depois atualizar no banco.
+            // Check if the student exists.
             var student = _repository.GetById(command.Id);
+            if (student == null)
+                return new GenericCommandResult(false, "Aluno não encontrado!", student);
+            
+            // Update the Student Status.
+            student.ChangeStatus(command.Status);
 
-            // Alterar Estado
-            student.IsActive();
-
-            // Salva no banco
             _repository.Update(student);
 
-            // Retorna um resultado para a tela
-            return new GenericCommandResult(true, "Aluno Salvo!", student);
+            var msg = student.Status ? "ativado" : "desativado";
+
+            return new GenericCommandResult(true, $"Aluno {msg} com sucesso!", student);
         }
     }
 }
