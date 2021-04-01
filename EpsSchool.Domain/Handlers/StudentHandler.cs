@@ -68,9 +68,16 @@ namespace EpsSchool.Domain.Handlers
             var student = _repository.GetById(command.Id);
             if (student == null)
                 return new GenericCommandResult(false, "Aluno não encontrado!", student);
-            
-            // Update the Student Status.
-            student.ChangeStatus(command.Status);
+
+            // Update the student status. => student.ChangeStatus(command.Status); => Criar um método ou não?
+            if (command.Status.Equals(true))
+            {
+                student.Status = true;
+            }
+            else
+            {
+                student.Status = false;
+            }
 
             _repository.Update(student);
 

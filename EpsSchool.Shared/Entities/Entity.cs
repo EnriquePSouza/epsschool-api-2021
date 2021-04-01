@@ -11,7 +11,7 @@ namespace EpsSchool.Shared.Entities
         }
         
         [Key]
-        public int Id { get; private set; }
+        public int Id { get; set; }
 
         public bool Equals(Entity other)
         {

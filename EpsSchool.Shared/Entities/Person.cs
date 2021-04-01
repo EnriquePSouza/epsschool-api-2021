@@ -18,47 +18,25 @@ namespace EpsSchool.Shared.Entities
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int Registration { get; private set; }
+        public int Registration { get; set; }
 
         [Required]
         [MaxLength(120)]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         [Required]
         [MaxLength(120)]
-        public string Surname { get; private set; }
+        public string Surname { get; set; }
 
         [Required]
         [MaxLength(120)]
-        public string PhoneNumber { get; private set; }
+        public string PhoneNumber { get; set; }
 
-        public DateTime StartDate { get; private set; }
+        public DateTime StartDate { get; set; }
 
-        public DateTime? EndDate { get; private set; }
+        public DateTime? EndDate { get; set; }
 
         [DataType("bit")]
-        public bool Status { get; private set; }
-
-        public void IsInactive()
-        {
-            Status = false;
-        }
-
-        public void IsActive()
-        {
-            Status = true;
-        }
-
-        public void ChangeStatus(bool status) // VERIFY
-        {
-            if (status.Equals(true))
-            {
-                IsActive();
-            }
-            else
-            {
-                IsInactive();
-            }
-        }
+        public bool Status { get; set; }
     }
 }

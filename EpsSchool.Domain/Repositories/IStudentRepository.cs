@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using EpsSchool.Domain.Entities;
+using EpsSchool.Domain.Helpers;
 
 namespace EpsSchool.Domain.Repositories
 {
@@ -6,6 +8,8 @@ namespace EpsSchool.Domain.Repositories
     {
         void Create(Student student);
         void Update(Student student);
-        Student GetById(int id);
+        void Delete(Student student);
+        Student GetById(int studentId, bool includeTeacher = false);
+        Task<PageList<Student>> GetAllAsync(PageParams pageParams, bool includeTeacher = false);
     }
 }

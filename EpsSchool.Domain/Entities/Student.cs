@@ -13,8 +13,8 @@ namespace EpsSchool.Domain.Entities
                 Birthdate = birthdate;
             }
 
-            public DateTime Birthdate { get; private set; }
+            public DateTime Birthdate { get; set; }
             
-            public IEnumerable<StudentCourseSubject> StudentsCoursesSubjects { get; private set; }
+            public IEnumerable<StudentCourseSubject> StudentsCoursesSubjects { get; set; }
     }
 }

@@ -14,8 +14,8 @@ namespace EpsSchool.Domain.Entities
         
         [Required]
         [MaxLength(120)]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
-        public IEnumerable<CourseSubject> CoursesSubjects { get; private set; }
+        public IEnumerable<CourseSubject> CoursesSubjects { get; set; }
     }
 }

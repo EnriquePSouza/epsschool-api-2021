@@ -14,16 +14,16 @@ namespace EpsSchool.Domain.Entities
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int CourseId { get; private set; }
+        public int CourseId { get; set; }
 
-        public Course Course { get; private set; }
+        public Course Course { get; set; }
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int SubjectId { get; private set; }
+        public int SubjectId { get; set; }
 
-        public Subject Subject { get; private set; }
+        public Subject Subject { get; set; }
         
-        public IEnumerable<StudentCourseSubject> StudentsCoursesSubjects { get; private set; }
+        public IEnumerable<StudentCourseSubject> StudentsCoursesSubjects { get; set; }
     }
 }

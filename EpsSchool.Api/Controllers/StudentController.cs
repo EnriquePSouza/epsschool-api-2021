@@ -148,11 +148,11 @@ namespace EpsSchool.Api.Controllers
 
             if (changeStatus.Status)
             {
-                student.IsActive();
+                student.Status = true;
             }
             else
             {
-                student.IsInactive();
+                student.Status = false;
             }
 
             _repo.Update(student);

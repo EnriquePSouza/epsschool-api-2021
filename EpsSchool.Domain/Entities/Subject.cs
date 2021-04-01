@@ -14,17 +14,17 @@ namespace EpsSchool.Domain.Entities
 
         [Required]
         [MaxLength(120)]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         [MaxLength(9999)]
-        public int Workload { get; private set; }
+        public int Workload { get; set; }
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int TeacherId { get; private set; }
+        public int TeacherId { get; set; }
 
-        public Teacher Teacher { get; private set; }
+        public Teacher Teacher { get; set; }
         
-        public IEnumerable<CourseSubject> CoursesSubjects { get; private set; }
+        public IEnumerable<CourseSubject> CoursesSubjects { get; set; }
     }
 }

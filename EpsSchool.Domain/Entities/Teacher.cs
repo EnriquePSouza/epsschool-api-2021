@@ -12,8 +12,8 @@ namespace EpsSchool.Domain.Entities
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int SubjectId { get; private set; }
+        public int SubjectId { get; set; }
         
-        public IEnumerable<Subject> Subjects { get; private set; }
+        public IEnumerable<Subject> Subjects { get; set; }
     }
 }

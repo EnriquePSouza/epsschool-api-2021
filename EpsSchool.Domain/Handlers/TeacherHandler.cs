@@ -69,8 +69,15 @@ namespace EpsSchool.Domain.Handlers
             if (teacher == null)
                 return new GenericCommandResult(false, "Professor não encontrado!", teacher);
             
-            // Update the teacher status.
-            teacher.ChangeStatus(command.Status);
+            // Update the teacher status. => teacher.ChangeStatus(command.Status); => Criar um método ou não?
+            if (command.Status.Equals(true))
+            {
+                teacher.Status = true;
+            }
+            else
+            {
+                teacher.Status = false;
+            }
 
             _repository.Update(teacher);
 
