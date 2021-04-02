@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using AutoMapper;
 using EpsSchool.Domain.Repositories;
-using EpsSchool.Domain.Dtos;
 using EpsSchool.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using EpsSchool.Domain.Handlers;
+using EpsSchool.Domain.Commands;
+using EpsSchool.Shared.Commands;
 
 namespace EpsSchool.Api.Controllers
 {
@@ -15,41 +18,15 @@ namespace EpsSchool.Api.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class TeacherController : ControllerBase
     {
-        private readonly IRepository _repo;
-        private readonly IMapper _mapper;
-
-        public TeacherController(IRepository repo, IMapper mapper)
-        {
-            _repo = repo;
-            _mapper = mapper;
-        }
-
         /// <summary>
         /// Método responsável por retornar todos os Professores.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<ActionResult<List<Teacher>>> Get(
+            [FromServices] ITeacherRepository repo)
         {
-            var teachers = _repo.GetAllTeachers(true);
-
-            return Ok(_mapper.Map<IEnumerable<TeacherDto>>(teachers));
-        }
-
-        /// <summary>
-        /// Método responsável por retornar um Professor ao informar o seu id.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)
-        {
-            var teachers = _repo.GetTeacherById(id, true);
-            if (teachers == null) return BadRequest("O Professor não foi encontrado");
-
-            var teachersDto = _mapper.Map<TeacherDto>(teachers);
-
-            return Ok(teachersDto);
+            return await repo.GetAll(true);
         }
 
         /// <summary>
@@ -58,77 +35,50 @@ namespace EpsSchool.Api.Controllers
         /// <param name="studentId"></param>
         /// <returns></returns>
         [HttpGet("bystudent/{studentId}")]
-        public IActionResult GetByStudentId(int studentId)
+        public async Task<ActionResult<List<Teacher>>> GetByStudentId(
+            [FromServices] ITeacherRepository repo, int studentId)
         {
-            var teachers = _repo.GetTeachersByStudentId(studentId, true);
-            if (teachers == null) return BadRequest("Professores não encontrados"); 
+            return await repo.GetByStudentId(studentId, true);
+        }
 
-            return Ok(_mapper.Map<IEnumerable<TeacherDto>>(teachers));
+        /// <summary>
+        /// Método responsável por retornar um Professor ao informar o seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public Teacher GetById(int id,
+            [FromServices] ITeacherRepository repo)
+        {
+            return repo.GetById(id, true);
         }
 
         /// <summary>
         /// Método responsável por inserir as informações de um Professor no banco de dados.
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Post(TeacherRegisterDto model)
+        public GenericCommandResult Create(
+            [FromBody] CreateTeacherCommand command,
+            [FromServices] TeacherHandler handler)
         {
-            var teacher = _mapper.Map<Teacher>(model);
-
-            _repo.Add(teacher);
-            if (_repo.SaveChanges())
-            {
-                return Created($"/api/teacher/{model.Id}", _mapper.Map<TeacherDto>(teacher));
-            }
-
-            return BadRequest("Professor não cadastrado!");
+            return (GenericCommandResult)handler.Handle(command);
         }
 
         /// <summary>
         /// Método responsável por atualizar as informações de um Professor no banco de dados.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="model"></param>
+        /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public IActionResult Put(int id, TeacherRegisterDto model)
+        public GenericCommandResult Update(
+            [FromServices] TeacherHandler handler,
+            int id,
+            [FromBody] UpdateTeacherCommand command)
         {
-            var teacher = _repo.GetTeacherById(id);
-            if (teacher == null) return BadRequest("Professor não encontrado!");
-
-            _mapper.Map(model, teacher);
-
-            _repo.Update(teacher);
-            if (_repo.SaveChanges())
-            {
-                return Created($"/api/teacher/{model.Id}", _mapper.Map<TeacherDto>(teacher));
-            }
-
-            return BadRequest("Professor não atualizado!");
-        }
-
-        /// <summary>
-        /// Método responsável por atualizar todas ou algumas das informações de um Professor no banco de dados.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        [HttpPatch("{id}")]
-        public IActionResult Patch(int id, TeacherRegisterDto model)
-        {
-            var teacher = _repo.GetTeacherById(id);
-            if (teacher == null) return BadRequest("Professor não encontrado!");
-
-            _mapper.Map(model, teacher);
-
-            _repo.Update(teacher);
-            if (_repo.SaveChanges())
-            {
-                return Created($"/api/teacher/{model.Id}", _mapper.Map<TeacherDto>(teacher));
-            }
-
-            return BadRequest("Professor não atualizado!");
+            return (GenericCommandResult)handler.Handle(command);
         }
 
         /// <summary>
@@ -137,18 +87,14 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete([FromServices] ITeacherRepository repo, int id)
         {
-            var teacher = _repo.GetTeacherById(id);
-            if (teacher == null) return BadRequest("Professor não encontrado!");
+            var teacher = repo.GetById(id);
+            if (teacher == null) return BadRequest(new { message = "Professor não encontrado!" });
 
-            _repo.Remove(teacher);
-            if (_repo.SaveChanges())
-            {
-                return Ok("Professor deletado.");
-            }
+            repo.Delete(teacher);
 
-            return BadRequest("O Professor não foi deletado!");
+            return Ok(new { message = "Professor detetado." });
         }
 
     }

@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using EpsSchool.Domain.Entities;
-using EpsSchool.Domain.Helpers;
 using EpsSchool.Domain.Repositories;
+using EpsSchool.Domain.Helpers;
 
 namespace EpsSchool.Tests.Repositories
 {

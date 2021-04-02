@@ -3,7 +3,6 @@ using System.IO;
 using System.Reflection;
 using AutoMapper;
 using EpsSchool.Domain.Repositories;
-using EpsSchool.infra.Repositories;
 using EpsSchool.infra.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -48,8 +47,9 @@ namespace EpsSchool.Api
             // AddScoped creates a DataContext per request and reuses it, avoiding unnecessary connections with the database.
             // When he finish the DataContext using, he destroys it and closes the connection.
             services.AddScoped<IStudentRepository, StudentRepository>();
-            //services.AddScoped<ITeacherRepository, TeacherRepository>();
+            services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddScoped<StudentHandler, StudentHandler>();
+            services.AddScoped<TeacherHandler, TeacherHandler>();
 
             // Settings for choosing and controlling API versions.
             services.AddVersionedApiExplorer(options =>

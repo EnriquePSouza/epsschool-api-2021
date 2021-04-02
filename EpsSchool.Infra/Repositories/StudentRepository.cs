@@ -26,7 +26,7 @@ namespace EpsSchool.Infra.Repositories
 
         public void Delete(Student student)
         {
-            _context.Remove(student);
+            _context.Entry(student).State = EntityState.Deleted;
             _context.SaveChanges();
         }
 

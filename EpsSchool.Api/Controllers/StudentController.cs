@@ -1,12 +1,9 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using EpsSchool.Domain.Repositories;
-using EpsSchool.Domain.Dtos;
 using EpsSchool.Domain.Helpers;
 using EpsSchool.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using EpsSchool.Domain.Handlers;
-using AutoMapper;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Shared.Commands;
 
@@ -71,7 +68,7 @@ namespace EpsSchool.Api.Controllers
         public GenericCommandResult Update(
             [FromServices] StudentHandler handler,
             int id,
-            [FromBody] CreateStudentCommand command)
+            [FromBody] UpdateStudentCommand command)
         {
             return (GenericCommandResult)handler.Handle(command);
         }
