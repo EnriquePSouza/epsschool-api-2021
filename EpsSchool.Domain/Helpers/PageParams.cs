@@ -2,23 +2,17 @@ namespace EpsSchool.Domain.Helpers
 {
     public class PageParams
     {
-        public PageParams(int pageNumber, string name)
+        public const int MaxPageSize = 50;
+        public int PageNumber { get; set; } = 1;
+        private int pageSize = 10;
+        public int PageSize
         {
-            PageNumber = pageNumber;
-            Name = name;
-            MaxPageSize = 50;
-            PageNumber = 1;
-            PageSize = (PageSize > MaxPageSize) ? MaxPageSize : PageSize;
-            Registration = null;
-            Name = string.Empty;
-            Status = null;
+            get { return pageSize; }
+            set { pageSize = (value > MaxPageSize) ? MaxPageSize : value; }
         }
 
-        public int MaxPageSize { get; set; }
-        public int PageNumber { get; set; }
-        public int PageSize { get; set; }
-        public int? Registration { get; set; }
-        public string Name { get; set; }
-        public int? Status { get; set; }
+        public int? Registration { get; set; } = null;
+        public string Name { get; set; } = string.Empty;
+        public int? Status { get; set; } = null;
     }
 }

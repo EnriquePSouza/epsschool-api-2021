@@ -5,6 +5,9 @@ using Flunt.Validations;
 
 namespace EpsSchool.Domain.Commands
 {
+    /// <summary>
+    /// Este é o DTO para efetuar o registro de um Aluno no banco de dados
+    /// </summary>
     public class CreateStudentCommand : Notifiable, ICommand
     {
         public CreateStudentCommand() { }
@@ -23,14 +26,50 @@ namespace EpsSchool.Domain.Commands
             Status = true;
 
         }
+        /// <summary>
+        /// Código identificador e chave do Banco.
+        /// </summary>
+        /// <value></value>
         public int Id { get; set; }
+        /// <summary>
+        /// Código identificador para outras atividades da instituição.
+        /// </summary>
+        /// <value></value>
         public int Registration { get; set; }
+        /// <summary>
+        /// Primeiro nome do aluno.
+        /// </summary>
+        /// <value></value>
         public string Name { get; set; }
+        /// <summary>
+        /// Segundo nome do aluno.
+        /// </summary>
+        /// <value></value>
         public string Surname { get; set; }
+        /// <summary>
+        /// Telefone do aluno.
+        /// </summary>
+        /// <value></value>
         public string PhoneNumber { get; set; }
+        /// <summary>
+        /// Data em que o aluno nasceu.
+        /// </summary>
+        /// <value></value>
         public DateTime Birthdate { get; set; }
+        /// <summary>
+        /// Data em que o aluno foi matrículado na instituição.
+        /// </summary>
+        /// <value></value>
         public DateTime StartDate { get; set; }
+        /// <summary>
+        /// Data em que o aluno cancelou sua matrícula.
+        /// </summary>
+        /// <value></value>
         public DateTime? EndDate { get; set; }
+        /// <summary>
+        /// Informa se o aluno está ativo ou não na instuição.
+        /// </summary>
+        /// <value></value>
         public bool Status { get; set; }
 
         public void Validate()

@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <DocumentationFile>EpsSchool.Api.xml</DocumentationFile>
-    <NoWarn>1591, 1573</NoWarn>
+    <NoWarn>1591, 1573, ASP0000</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

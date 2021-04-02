@@ -64,14 +64,14 @@ namespace EpsSchool.Api
                 options.ReportApiVersions = true;
             });
 
-            var apiProviderDescription = services.BuildServiceProvider()
+            var apiVersionDescriptionProvider = services.BuildServiceProvider()
                                                  .GetService<IApiVersionDescriptionProvider>();
 
             // Swagger - Used for API documentation, execution and testing.
             services.AddSwaggerGen(options =>
             {
                 // Determines a version for each documentation according to the version informed in the api.
-                foreach (var description in apiProviderDescription.ApiVersionDescriptions)
+                foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
                 {
                     // Step by step to document the Swagger.
                     options.SwaggerDoc(description.GroupName,

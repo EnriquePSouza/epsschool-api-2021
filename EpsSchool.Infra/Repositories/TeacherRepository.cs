@@ -12,6 +12,11 @@ namespace EpsSchool.Infra.Repositories
     {
         private readonly SchoolContext _context;
         
+        public TeacherRepository(SchoolContext context)
+        {
+            _context = context;
+        }
+
         public void Create(Teacher teacher)
         {
             _context.Teachers.Add(teacher);

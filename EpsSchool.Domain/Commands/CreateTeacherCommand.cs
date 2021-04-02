@@ -5,6 +5,9 @@ using Flunt.Validations;
 
 namespace EpsSchool.Domain.Commands
 {
+    /// <summary>
+    /// Este é o DTO para efetuar o registro de um Professor no banco de dados.
+    /// </summary>
     public class CreateTeacherCommand : Notifiable, ICommand
     {
         public CreateTeacherCommand() { }
@@ -21,13 +24,45 @@ namespace EpsSchool.Domain.Commands
             Status = true;
 
         }
+        /// <summary>
+        /// Código identificador e chave do Banco.
+        /// </summary>
+        /// <value></value>
         public int Id { get; set; }
+        /// <summary>
+        /// Código identificador para outras atividades da instituição.
+        /// </summary>
+        /// <value></value>
         public int Registration { get; set; }
+        /// <summary>
+        /// Primeiro nome do professor.
+        /// </summary>
+        /// <value></value>
         public string Name { get; set; }
+        /// <summary>
+        /// Segundo nome do professor.
+        /// </summary>
+        /// <value></value>
         public string Surname { get; set; }
+        /// <summary>
+        /// Telefone do professor.
+        /// </summary>
+        /// <value></value>
         public string PhoneNumber { get; set; }
+        /// <summary>
+        /// Data em que o professor começou a dar aulas na instituição.
+        /// </summary>
+        /// <value></value>
         public DateTime StartDate { get; set; }
+        /// <summary>
+        /// Data em que o professor parou de dar aulas na instituição.
+        /// </summary>
+        /// <value></value>
         public DateTime? EndDate { get; set; }
+        /// <summary>
+        /// Informa se o professor está ativo ou naõ na instituição.
+        /// </summary>
+        /// <value></value>
         public bool Status { get; set; }
 
         public void Validate()

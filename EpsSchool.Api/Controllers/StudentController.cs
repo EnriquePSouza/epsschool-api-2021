@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using EpsSchool.Domain.Handlers;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Shared.Commands;
+using System.Collections.Generic;
+using AutoMapper;
 
 namespace EpsSchool.Api.Controllers
 {
@@ -17,20 +19,27 @@ namespace EpsSchool.Api.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class StudentController : ControllerBase
     {
+        private readonly IMapper _mapper;
+        public StudentController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
         /// <summary>
         /// Método responsável por retornar todos os Alunos de Forma Assíncrona.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<PageList<Student>>> Get(
+        public async Task<ActionResult> Get(
             [FromQuery] PageParams pageParams,
             [FromServices] IStudentRepository repo)
         {
             var students = await repo.GetAllAsync(pageParams, true);
+            
+            var studentsResult = _mapper.Map<IEnumerable<StudentCommand>>(students);
 
             Response.AddPagination(students.CurrentPage, students.PageSize, students.TotalCount, students.TotalPages);
 
-            return students;
+            return Ok(studentsResult);
         }
 
         /// <summary>
