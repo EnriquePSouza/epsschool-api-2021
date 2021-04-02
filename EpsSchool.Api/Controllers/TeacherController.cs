@@ -18,11 +18,6 @@ namespace EpsSchool.Api.Controllers
         private readonly IRepository _repo;
         private readonly IMapper _mapper;
 
-        /// <summary>
-        /// Método construtor do controlador de Professores.
-        /// </summary>
-        /// <param name="repo"></param>
-        /// <param name="mapper"></param>
         public TeacherController(IRepository repo, IMapper mapper)
         {
             _repo = repo;

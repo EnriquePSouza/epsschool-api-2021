@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using EpsSchool.Infra.Repositories;
+using EpsSchool.Domain.Handlers;
 
 namespace EpsSchool.Api
 {
@@ -45,7 +47,9 @@ namespace EpsSchool.Api
             // Control Dependency Injection with Inversion of Control.
             // AddScoped creates a DataContext per request and reuses it, avoiding unnecessary connections with the database.
             // When he finish the DataContext using, he destroys it and closes the connection.
-            services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            //services.AddScoped<ITeacherRepository, TeacherRepository>();
+            services.AddScoped<StudentHandler, StudentHandler>();
 
             // Settings for choosing and controlling API versions.
             services.AddVersionedApiExplorer(options =>

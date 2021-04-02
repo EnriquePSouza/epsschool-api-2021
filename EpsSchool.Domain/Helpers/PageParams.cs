@@ -14,11 +14,11 @@ namespace EpsSchool.Domain.Helpers
             Status = null;
         }
 
-        public int MaxPageSize { get; private set; }
-        public int PageNumber { get; private set; }
-        public int PageSize { get; private set; }
-        public int? Registration { get; private set; }
-        public string Name { get; private set; }
-        public int? Status { get; private set; }
+        public int MaxPageSize { get; set; }
+        public int PageNumber { get; set; }
+        public int PageSize { get; set; }
+        public int? Registration { get; set; }
+        public string Name { get; set; }
+        public int? Status { get; set; }
     }
 }

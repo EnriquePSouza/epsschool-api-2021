@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AutoMapper;
 using EpsSchool.Domain.Repositories;
 using EpsSchool.Domain.Dtos;
 using EpsSchool.Domain.Helpers;
 using EpsSchool.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using EpsSchool.Domain.Handlers;
+using AutoMapper;
+using EpsSchool.Domain.Commands;
+using EpsSchool.Shared.Commands;
 
 namespace EpsSchool.Api.Controllers
 {
@@ -17,34 +20,20 @@ namespace EpsSchool.Api.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class StudentController : ControllerBase
     {
-        private readonly IRepository _repo;
-        private readonly IMapper _mapper;
-
-        /// <summary>
-        /// Método construtor do controlador de Alunos.
-        /// </summary>
-        /// <param name="repo"></param>
-        /// <param name="mapper"></param>
-        public StudentController(IRepository repo, IMapper mapper)
-        {
-            _repo = repo;
-            _mapper = mapper;
-        }
-
         /// <summary>
         /// Método responsável por retornar todos os Alunos de Forma Assíncrona.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] PageParams pageParams)
+        public async Task<ActionResult<PageList<Student>>> Get(
+            [FromQuery] PageParams pageParams,
+            [FromServices] IStudentRepository repo)
         {
-            var students = await _repo.GetAllStudentsAsync(pageParams, true);
-
-            var studentsResult = _mapper.Map<IEnumerable<StudentDto>>(students);
+            var students = await repo.GetAllAsync(pageParams, true);
 
             Response.AddPagination(students.CurrentPage, students.PageSize, students.TotalCount, students.TotalPages);
 
-            return Ok(studentsResult);
+            return students;
         }
 
         /// <summary>
@@ -53,116 +42,51 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public Student GetById(int id,
+            [FromServices] IStudentRepository repo)
         {
-            var student = _repo.GetStudentById(id, false);
-            if (student == null) return BadRequest("O Aluno não foi encontrado");
-
-            var studentDto = _mapper.Map<StudentRegisterDto>(student);
-
-            return Ok(studentDto);
+            return repo.GetById(id, false);
         }
 
         /// <summary>
         /// Método responsável por inserir as informações de um Aluno no banco de dados.
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="command"></param>
         /// <returns></returns>
-        /// FEITO - Pronto para aluno ---------------------------------------------
         [HttpPost]
-        public IActionResult Post(StudentRegisterDto model)
+        public GenericCommandResult Create(
+            [FromBody] CreateStudentCommand command,
+            [FromServices] StudentHandler handler)
         {
-            var student = _mapper.Map<Student>(model);
-
-
-            _repo.Add(student);
-            if (_repo.SaveChanges())
-            {
-                return Created($"/api/student/{model.Id}", _mapper.Map<StudentDto>(student));
-            }
-
-            return BadRequest("Aluno não cadastrado!");
-
+            return (GenericCommandResult)handler.Handle(command);
         }
 
         /// <summary>
         /// Método responsável por atualizar as informações de um Aluno no banco de dados.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="model"></param>
+        /// <param name="command"></param>
         /// <returns></returns>
-        /// FEITO - Pronto para aluno ---------------------------------------------
         [HttpPut("{id}")]
-        public IActionResult Put(int id, StudentRegisterDto model)
+        public GenericCommandResult Update(
+            [FromServices] StudentHandler handler,
+            int id,
+            [FromBody] CreateStudentCommand command)
         {
-            var student = _repo.GetStudentById(id);
-            if (student == null) return BadRequest("Aluno não encontrado!");
-
-            _mapper.Map(model, student);
-
-            _repo.Update(student);
-            if (_repo.SaveChanges())
-            {
-                return Created($"/api/student/{model.Id}", _mapper.Map<StudentDto>(student));
-            }
-
-            return BadRequest("Aluno não atualizado!");
-        }
-
-        /// <summary>
-        /// Método responsável por atualizar todas ou algumas das informações de um Aluno no banco de dados.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        /// FEITO - Pronto para aluno ---------------------------------------------
-        [HttpPatch("{id}")]
-        public IActionResult Patch(int id, StudentPatchDto model)
-        {
-            var student = _repo.GetStudentById(id);
-            if (student == null) return BadRequest("Aluno não encontrado!");
-
-            _mapper.Map(model, student);
-
-            _repo.Update(student);
-            if (_repo.SaveChanges())
-            {
-                return Created($"/api/student/{model.Id}", _mapper.Map<StudentPatchDto>(student));
-            }
-
-            return BadRequest("Aluno não atualizado!");
+            return (GenericCommandResult)handler.Handle(command);
         }
 
         /// <summary>
         /// Método responsável por registrar se um aluno está ou não ativado na Instituição.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="changeStatus"></param>
+        /// <param name="command"></param>
         /// <returns></returns>
-        /// FEITO - Pronto para aluno ---------------------------------------------
-        [HttpPatch("{id}/changeStatus")]
-        public IActionResult ChangeStatus(int id, ChangeStatusDto changeStatus)
+        [HttpPost("changeStatus")]
+        public GenericCommandResult ChangeStatus(
+            [FromBody] ChangeStudentStatusCommand command,
+            [FromServices] StudentHandler handler)
         {
-            var student = _repo.GetStudentById(id);
-            if (student == null) return BadRequest("Aluno não encontrado!");
-
-            if (changeStatus.Status)
-            {
-                student.Status = true;
-            }
-            else
-            {
-                student.Status = false;
-            }
-
-            _repo.Update(student);
-            if (_repo.SaveChanges())
-            {
-                var msn = student.Status ? "ativado" : "desativado";
-                return Ok(new { message = $"Aluno {msn} com sucesso!" });
-            }
-
-            return BadRequest("Aluno não atualizado!");
+            return (GenericCommandResult)handler.Handle(command);
         }
 
         /// <summary>
@@ -171,18 +95,14 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete([FromServices]IStudentRepository repo, int id)
         {
-            var student = _repo.GetStudentById(id);
-            if (student == null) return BadRequest("Aluno não encontrado!");
+            var student = repo.GetById(id);
+            if (student == null) return BadRequest(new { message = "Aluno não encontrado!" });
 
-            _repo.Remove(student);
-            if (_repo.SaveChanges())
-            {
-                return Ok("Aluno detetado.");
-            }
+            repo.Delete(student);
 
-            return BadRequest("O Aluno não foi deletado!");
+            return Ok(new { message = "Aluno detetado." });
         }
 
     }
