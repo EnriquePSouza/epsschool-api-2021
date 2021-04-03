@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Helpers;
 using EpsSchool.Domain.Repositories;
 using EpsSchool.infra.Contexts;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EpsSchool.Infra.Repositories
@@ -35,24 +37,24 @@ namespace EpsSchool.Infra.Repositories
             _context.SaveChanges();
         }
 
-        public Student GetById(int studentId, bool includeTeacher = false)
+        public async Task<Student> GetById(int studentId, bool includeTeacher = false)
         {
             IQueryable<Student> query = _context.Students;
 
             if (includeTeacher)
             {
-                query = query.Include(a => a.StudentsCoursesSubjects)
-                             .ThenInclude(acd => acd.CourseSubject)
-                             .ThenInclude(cd => cd.Subject)
-                             .ThenInclude(d => d.Teacher);
+                query = query.Include(s => s.StudentsCoursesSubjects)
+                             .ThenInclude(scs => scs.CourseSubject)
+                             .ThenInclude(cs => cs.Subject)
+                             .ThenInclude(sb => sb.Teacher);
             }
 
             query = query.AsNoTracking()
-                         .OrderBy(a => a.Id)
-                         .Where(aluno => aluno.Id.Equals(studentId));
+                         .OrderBy(s => s.Id)
+                         .Where(s => s.Id.Equals(studentId));
 
 
-            return query.FirstOrDefault();
+            return await query.FirstOrDefaultAsync();
         }
 
         public async Task<PageList<Student>> GetAllAsync(PageParams pageParams, bool includeTeacher = false)
@@ -61,29 +63,49 @@ namespace EpsSchool.Infra.Repositories
 
             if (includeTeacher)
             {
-                query = query.Include(a => a.StudentsCoursesSubjects)
-                             .ThenInclude(acd => acd.CourseSubject)
-                             .ThenInclude(cd => cd.Subject)
-                             .ThenInclude(d => d.Teacher);
+                query = query.Include(s => s.StudentsCoursesSubjects)
+                             .ThenInclude(scs => scs.CourseSubject)
+                             .ThenInclude(cs => cs.Subject)
+                             .ThenInclude(sb => sb.Teacher);
             }
 
-            query = query.AsNoTracking().OrderBy(a => a.Id);
+            query = query.AsNoTracking().OrderBy(s => s.Id);
 
             if (!string.IsNullOrEmpty(pageParams.Name))
-                query = query.Where(aluno => aluno.Name
+                query = query.Where(s => s.Name
                                                   .ToUpper()
                                                   .Contains(pageParams.Name.ToUpper()) ||
-                                             aluno.Surname
+                                                s.Surname
                                                   .ToUpper()
                                                   .Contains(pageParams.Name.ToUpper()));
 
             if (pageParams.Registration > 0)
-                query = query.Where(aluno => aluno.Registration == pageParams.Registration);
+                query = query.Where(s => s.Registration == pageParams.Registration);
 
             if (pageParams.Status != null)
-                query = query.Where(aluno => aluno.Status == (pageParams.Status != 0));
+                query = query.Where(s => s.Status == (pageParams.Status != 0));
 
             return await PageList<Student>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
+        }
+
+        public async Task<List<Student>> GetAllByCourseIdAsync(int courseId, bool includeTeacher = false)
+        {
+            IQueryable<Student> query = _context.Students;
+
+            if (includeTeacher)
+            {
+                query = query.Include(s => s.StudentsCoursesSubjects)
+                             .ThenInclude(scs => scs.CourseSubject)
+                             .ThenInclude(cs => cs.Subject)
+                             .ThenInclude(sb => sb.Teacher);
+            }
+
+            query = query.AsNoTracking()
+                         .OrderBy(s => s.Id)
+                         .Where(s => s.StudentsCoursesSubjects.Any(
+                             d => d.CourseSubject.CourseId == courseId));
+
+            return await query.ToListAsync();
         }
     }
 }

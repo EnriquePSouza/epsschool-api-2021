@@ -1,11 +1,10 @@
-using System.Threading.Tasks;
+using AutoMapper;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Repositories;
 using EpsSchool.Shared.Commands;
 using EpsSchool.Shared.Handlers;
 using Flunt.Notifications;
-using Microsoft.AspNetCore.Mvc;
 
 namespace EpsSchool.Domain.Handlers
 {
@@ -16,10 +15,12 @@ namespace EpsSchool.Domain.Handlers
         IHandler<ChangeStudentStatusCommand>
     {
         private readonly IStudentRepository _repository;
+        private readonly IMapper _mapper;
 
-        public StudentHandler(IStudentRepository repository)
+        public StudentHandler(IStudentRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public ICommandResult Handle(CreateStudentCommand command)
@@ -30,12 +31,11 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Aluno Invalido!", command.Notifications);
             
             // Creates the student object.
-            var student = new Student(command.Id, command.Registration, command.Name,
-                command.Surname, command.PhoneNumber, command.Birthdate);
+            var student = _mapper.Map<Student>(command);
 
             _repository.Create(student);
 
-            return new GenericCommandResult(true, "Aluno Salvo!", student);
+            return new GenericCommandResult(true, "Aluno Salvo!", command);
         }
 
         public ICommandResult Handle(UpdateStudentCommand command)
@@ -51,12 +51,12 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Aluno não encontrado!", student);
 
             // Update the student object with the new command data.
-            student = new Student(student.Id, student.Registration, command.Name,
-                command.Surname, command.PhoneNumber, student.Birthdate); // VERIFY
+            var studentsResult = student.Result;
+            studentsResult = _mapper.Map(command, studentsResult);
 
-            _repository.Update(student);
+            _repository.Update(studentsResult);
 
-            return new GenericCommandResult(true, "Aluno Salvo!", student);
+            return new GenericCommandResult(true, "Aluno Salvo!", command);
         }
 
         public ICommandResult Handle(ChangeStudentStatusCommand command)
@@ -69,23 +69,25 @@ namespace EpsSchool.Domain.Handlers
             // Check if the student exists.
             var student = _repository.GetById(command.Id);
             if (student == null)
-                return new GenericCommandResult(false, "Aluno não encontrado!", student);
+                return new GenericCommandResult(false, "Aluno não encontrado!", command);
 
-            // Update the student status. => student.ChangeStatus(command.Status); => Criar um método ou não?
+            // Update the student status.
+            var studentsResult = student.Result;
+
             if (command.Status.Equals(true))
             {
-                student.Status = true;
+                studentsResult.Status = true;
             }
             else
             {
-                student.Status = false;
+                studentsResult.Status = false;
             }
 
-            _repository.Update(student);
+            _repository.Update(studentsResult);
 
-            var msg = student.Status ? "ativado" : "desativado";
+            var msg = studentsResult.Status ? "ativado" : "desativado";
 
-            return new GenericCommandResult(true, $"Aluno {msg} com sucesso!", student);
+            return new GenericCommandResult(true, $"Aluno {msg} com sucesso!", command);
         }
     }
 }

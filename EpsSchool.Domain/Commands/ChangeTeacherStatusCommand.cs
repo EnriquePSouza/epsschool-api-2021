@@ -21,7 +21,7 @@ namespace EpsSchool.Domain.Commands
                 new Contract()
                     .Requires()
                     .IsNotNull(Status, "Status", "Informe se o Professor está ou não ativo na instituição!")
-                    .IsGreaterThan(0, Id, "Código do Professor", "Informe o Código do Professor!")
+                    .IsGreaterThan(Id, 0, "Código do Professor", "Informe o Código do Professor!")
             );
         }
     }

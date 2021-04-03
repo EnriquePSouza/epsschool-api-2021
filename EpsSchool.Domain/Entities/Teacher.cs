@@ -9,11 +9,6 @@ namespace EpsSchool.Domain.Entities
     {
         public Teacher(int id, int registration, string name, string surname, string phoneNumber)
             : base(id, registration, name, surname, phoneNumber) { }
-
-        [Required]
-        [Range(1, int.MaxValue)]
-        public int SubjectId { get; set; }
-        
-        public IEnumerable<Subject> Subjects { get; set; }
+        public IEnumerable<Subject> Subject { get; set; }
     }
 }

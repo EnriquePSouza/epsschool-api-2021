@@ -77,7 +77,7 @@ namespace EpsSchool.Domain.Commands
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .IsGreaterThan(0, Id, "Código do Aluno", "Informe um código de aluno válido!")
+                    .IsGreaterThan(Id, 0, "Código do aluno", "Informe um código de aluno válido!")
                     .HasMinLen(Name, 5, "Nome", "Informe o nome do aluno!")
                     .HasMaxLen(Name, 20,"Nome", "O nome não pode ter mais que 20 caracteres!")
                     .HasMinLen(Surname, 5, "Sobrenome", "Informe o sobrenome do aluno!")

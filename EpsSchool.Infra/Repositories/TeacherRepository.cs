@@ -41,7 +41,7 @@ namespace EpsSchool.Infra.Repositories
 
             if (includeStudents)
             {
-                query = query.Include(p => p.Subjects)
+                query = query.Include(p => p.Subject)
                              .ThenInclude(d => d.CoursesSubjects)
                              .ThenInclude(cd => cd.StudentsCoursesSubjects)
                              .ThenInclude(acd => acd.Student);
@@ -61,8 +61,8 @@ namespace EpsSchool.Infra.Repositories
 
             if (includeStudents)
             {
-                query = query.Include(p => p.Subjects)
-                             .ThenInclude(d => d.CoursesSubjects)
+                query = query.Include(t => t.Subject)
+                             .ThenInclude(s => s.CoursesSubjects)
                              .ThenInclude(cd => cd.StudentsCoursesSubjects)
                              .ThenInclude(acd => acd.Student);
             }
@@ -78,15 +78,15 @@ namespace EpsSchool.Infra.Repositories
 
             if (includeStudents)
             {
-                query = query.Include(p => p.Subjects)
+                query = query.Include(p => p.Subject)
                              .ThenInclude(d => d.CoursesSubjects)
                              .ThenInclude(cd => cd.StudentsCoursesSubjects)
                              .ThenInclude(acd => acd.Student);
             }
 
             query = query.AsNoTracking()
-                         .OrderBy(a => a.Id)
-                         .Where(professor => professor.Subjects.Any(
+                         .OrderBy(t => t.Id)
+                         .Where(t => t.Subject.Any(
                              d => d.CoursesSubjects.Any(
                              cd => cd.StudentsCoursesSubjects.Any(
                              acd => acd.StudentId == studentId))));

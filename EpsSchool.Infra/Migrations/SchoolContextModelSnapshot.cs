@@ -169,7 +169,7 @@ namespace EpsSchool.Infra.Migrations
                             Name = "Joana",
                             PhoneNumber = "33556699",
                             Registration = 1,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 145, DateTimeKind.Local).AddTicks(6664),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 821, DateTimeKind.Local).AddTicks(1314),
                             Status = true,
                             Surname = "Alves"
                         },
@@ -180,7 +180,7 @@ namespace EpsSchool.Infra.Migrations
                             Name = "Fernanda",
                             PhoneNumber = "33447789",
                             Registration = 2,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 145, DateTimeKind.Local).AddTicks(7547),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 821, DateTimeKind.Local).AddTicks(2525),
                             Status = true,
                             Surname = "Silva"
                         },
@@ -191,7 +191,7 @@ namespace EpsSchool.Infra.Migrations
                             Name = "Vanessa",
                             PhoneNumber = "99562341",
                             Registration = 3,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 145, DateTimeKind.Local).AddTicks(7989),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 821, DateTimeKind.Local).AddTicks(3054),
                             Status = true,
                             Surname = "Lisboa"
                         },
@@ -202,7 +202,7 @@ namespace EpsSchool.Infra.Migrations
                             Name = "Maria",
                             PhoneNumber = "99452417",
                             Registration = 4,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 145, DateTimeKind.Local).AddTicks(8366),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 821, DateTimeKind.Local).AddTicks(3491),
                             Status = true,
                             Surname = "Madalena"
                         },
@@ -213,7 +213,7 @@ namespace EpsSchool.Infra.Migrations
                             Name = "João",
                             PhoneNumber = "98564712",
                             Registration = 5,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 145, DateTimeKind.Local).AddTicks(8686),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 821, DateTimeKind.Local).AddTicks(3994),
                             Status = true,
                             Surname = "Paulo"
                         },
@@ -224,7 +224,7 @@ namespace EpsSchool.Infra.Migrations
                             Name = "Ananias",
                             PhoneNumber = "33589624",
                             Registration = 6,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 145, DateTimeKind.Local).AddTicks(9084),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 821, DateTimeKind.Local).AddTicks(4498),
                             Status = true,
                             Surname = "Fernandes"
                         },
@@ -235,7 +235,7 @@ namespace EpsSchool.Infra.Migrations
                             Name = "José",
                             PhoneNumber = "98745122",
                             Registration = 7,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 145, DateTimeKind.Local).AddTicks(9399),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 821, DateTimeKind.Local).AddTicks(4939),
                             Status = true,
                             Surname = "Arimatéia"
                         });
@@ -270,109 +270,109 @@ namespace EpsSchool.Infra.Migrations
                         {
                             StudentId = 1,
                             CourseSubjectId = 1,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(4648)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(969)
                         },
                         new
                         {
                             StudentId = 2,
                             CourseSubjectId = 1,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5827)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2530)
                         },
                         new
                         {
                             StudentId = 3,
                             CourseSubjectId = 1,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5864)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2575)
                         },
                         new
                         {
                             StudentId = 1,
                             CourseSubjectId = 2,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5868)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2581)
                         },
                         new
                         {
                             StudentId = 2,
                             CourseSubjectId = 2,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5870)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2584)
                         },
                         new
                         {
                             StudentId = 3,
                             CourseSubjectId = 2,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5876)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2592)
                         },
                         new
                         {
                             StudentId = 4,
                             CourseSubjectId = 3,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5878)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2595)
                         },
                         new
                         {
                             StudentId = 5,
                             CourseSubjectId = 3,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5880)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2597)
                         },
                         new
                         {
                             StudentId = 4,
                             CourseSubjectId = 4,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5882)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2600)
                         },
                         new
                         {
                             StudentId = 5,
                             CourseSubjectId = 4,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5886)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2605)
                         },
                         new
                         {
                             StudentId = 4,
                             CourseSubjectId = 5,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5888)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2608)
                         },
                         new
                         {
                             StudentId = 5,
                             CourseSubjectId = 5,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5890)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2610)
                         },
                         new
                         {
                             StudentId = 5,
                             CourseSubjectId = 6,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5892)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2613)
                         },
                         new
                         {
                             StudentId = 6,
                             CourseSubjectId = 6,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5894)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2693)
                         },
                         new
                         {
                             StudentId = 7,
                             CourseSubjectId = 6,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5897)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2700)
                         },
                         new
                         {
                             StudentId = 5,
                             CourseSubjectId = 7,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5899)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2703)
                         },
                         new
                         {
                             StudentId = 6,
                             CourseSubjectId = 7,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5901)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2706)
                         },
                         new
                         {
                             StudentId = 7,
                             CourseSubjectId = 7,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 146, DateTimeKind.Local).AddTicks(5904)
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 822, DateTimeKind.Local).AddTicks(2713)
                         });
                 });
 
@@ -466,9 +466,6 @@ namespace EpsSchool.Infra.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("SubjectId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("varchar(120) CHARACTER SET utf8mb4")
@@ -485,9 +482,8 @@ namespace EpsSchool.Infra.Migrations
                             Name = "José",
                             PhoneNumber = "44778899",
                             Registration = 1,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 141, DateTimeKind.Local).AddTicks(2692),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 816, DateTimeKind.Local).AddTicks(2761),
                             Status = true,
-                            SubjectId = 0,
                             Surname = "Roberto"
                         },
                         new
@@ -496,9 +492,8 @@ namespace EpsSchool.Infra.Migrations
                             Name = "Carlos",
                             PhoneNumber = "33568941",
                             Registration = 2,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 142, DateTimeKind.Local).AddTicks(1115),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 817, DateTimeKind.Local).AddTicks(4371),
                             Status = true,
-                            SubjectId = 0,
                             Surname = "Eduardo"
                         },
                         new
@@ -507,9 +502,8 @@ namespace EpsSchool.Infra.Migrations
                             Name = "Manuel",
                             PhoneNumber = "99587462",
                             Registration = 3,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 142, DateTimeKind.Local).AddTicks(1169),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 817, DateTimeKind.Local).AddTicks(4469),
                             Status = true,
-                            SubjectId = 0,
                             Surname = "Nobre"
                         },
                         new
@@ -518,9 +512,8 @@ namespace EpsSchool.Infra.Migrations
                             Name = "João",
                             PhoneNumber = "33506987",
                             Registration = 4,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 142, DateTimeKind.Local).AddTicks(1173),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 817, DateTimeKind.Local).AddTicks(4475),
                             Status = true,
-                            SubjectId = 0,
                             Surname = "Olavo"
                         },
                         new
@@ -529,9 +522,8 @@ namespace EpsSchool.Infra.Migrations
                             Name = "Lucas",
                             PhoneNumber = "33214896",
                             Registration = 5,
-                            StartDate = new DateTime(2021, 4, 2, 17, 38, 2, 142, DateTimeKind.Local).AddTicks(1176),
+                            StartDate = new DateTime(2021, 4, 3, 18, 30, 17, 817, DateTimeKind.Local).AddTicks(4478),
                             Status = true,
-                            SubjectId = 0,
                             Surname = "Ribas"
                         });
                 });
@@ -569,7 +561,7 @@ namespace EpsSchool.Infra.Migrations
             modelBuilder.Entity("EpsSchool.Domain.Entities.Subject", b =>
                 {
                     b.HasOne("EpsSchool.Domain.Entities.Teacher", "Teacher")
-                        .WithMany("Subjects")
+                        .WithMany("Subject")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

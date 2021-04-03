@@ -15,6 +15,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:EpsSchool.Api.Controllers.StudentController.GetByCourseId(EpsSchool.Domain.Repositories.IStudentRepository,System.Int32)">
+            <summary>
+            Método responsável por retornar um Aluno ao informar o seu Curso.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:EpsSchool.Api.Controllers.StudentController.GetById(System.Int32,EpsSchool.Domain.Repositories.IStudentRepository)">
             <summary>
             Método responsável por retornar um Aluno ao informar o seu id.

@@ -24,6 +24,7 @@ namespace EpsSchool.Api.Controllers
         {
             _mapper = mapper;
         }
+
         /// <summary>
         /// Método responsável por retornar todos os Alunos de Forma Assíncrona.
         /// </summary>
@@ -43,15 +44,30 @@ namespace EpsSchool.Api.Controllers
         }
 
         /// <summary>
+        /// Método responsável por retornar um Aluno ao informar o seu Curso.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("ByCourse/{id}")]
+        public async Task<IActionResult> GetByCourseId([FromServices] IStudentRepository repo, int id)
+        {
+            var students = await repo.GetAllByCourseIdAsync(id, false);
+            var studentsResult = _mapper.Map<IEnumerable<StudentCommand>>(students);
+            return Ok(studentsResult);
+        }
+
+        /// <summary>
         /// Método responsável por retornar um Aluno ao informar o seu id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public Student GetById(int id,
+        public async Task<ActionResult> GetById(int id,
             [FromServices] IStudentRepository repo)
         {
-            return repo.GetById(id, false);
+            var students = await repo.GetById(id, false);
+            var studentsResult = _mapper.Map<IEnumerable<StudentCommand>>(students);
+            
+            return Ok(studentsResult);
         }
 
         /// <summary>
@@ -106,7 +122,7 @@ namespace EpsSchool.Api.Controllers
             var student = repo.GetById(id);
             if (student == null) return BadRequest(new { message = "Aluno não encontrado!" });
 
-            repo.Delete(student);
+            repo.Delete(student.Result);
 
             return Ok(new { message = "Aluno detetado." });
         }
