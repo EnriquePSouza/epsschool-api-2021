@@ -35,7 +35,7 @@ namespace EpsSchool.Infra.Repositories
             _context.SaveChanges();
         }
 
-        public Teacher GetById(int teacherId, bool includeStudents = false)
+        public Task<Teacher> GetById(int teacherId, bool includeStudents = false)
         {
             IQueryable<Teacher> query = _context.Teachers;
 
@@ -52,7 +52,7 @@ namespace EpsSchool.Infra.Repositories
                          .Where(p => p.Id == teacherId);
 
 
-            return query.FirstOrDefault();
+            return query.FirstOrDefaultAsync();
         }
 
         public async Task<List<Teacher>> GetAll(bool includeStudents = false)
@@ -62,9 +62,12 @@ namespace EpsSchool.Infra.Repositories
             if (includeStudents)
             {
                 query = query.Include(t => t.Subject)
-                             .ThenInclude(s => s.CoursesSubjects)
-                             .ThenInclude(cd => cd.StudentsCoursesSubjects)
-                             .ThenInclude(acd => acd.Student);
+                                .ThenInclude(s => s.CoursesSubjects)
+                                .ThenInclude(cs => cs.Course)
+                             .Include(t => t.Subject)
+                                .ThenInclude(s => s.CoursesSubjects)
+                                .ThenInclude(cs => cs.StudentsCoursesSubjects)
+                                .ThenInclude(acd => acd.Student);
             }
 
             query = query.AsNoTracking().OrderBy(p => p.Id);

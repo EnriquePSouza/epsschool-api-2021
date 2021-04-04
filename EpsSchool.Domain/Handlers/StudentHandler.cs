@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using AutoMapper;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Entities;
@@ -46,12 +47,12 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Aluno Invalido!", command.Notifications);
             
             // Check if the student exists.
-            var student = _repository.GetById(command.Id);
+            var student = _repository.GetById(command.Id); // TODO - Change the method to async and resolve the task.
             if (student == null)
                 return new GenericCommandResult(false, "Aluno não encontrado!", student);
 
             // Update the student object with the new command data.
-            var studentsResult = student.Result;
+            var studentsResult = student.Result; // TODO - Change the method to async and resolve the task.
             studentsResult = _mapper.Map(command, studentsResult);
 
             _repository.Update(studentsResult);
@@ -67,12 +68,12 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Aluno Invalido!", command.Notifications);
             
             // Check if the student exists.
-            var student = _repository.GetById(command.Id);
+            var student = _repository.GetById(command.Id); // TODO - Change the method to async and resolve the task.
             if (student == null)
                 return new GenericCommandResult(false, "Aluno não encontrado!", command);
 
             // Update the student status.
-            var studentsResult = student.Result;
+            var studentsResult = student.Result; // TODO - Change the method to async and resolve the task.
 
             if (command.Status.Equals(true))
             {

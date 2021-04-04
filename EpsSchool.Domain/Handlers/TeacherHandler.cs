@@ -1,3 +1,4 @@
+using AutoMapper;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Repositories;
@@ -14,10 +15,12 @@ namespace EpsSchool.Domain.Handlers
         IHandler<ChangeTeacherStatusCommand>
     {
         private readonly ITeacherRepository _repository;
+        private readonly IMapper _mapper;
 
-        public TeacherHandler(ITeacherRepository repository)
+        public TeacherHandler(ITeacherRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public ICommandResult Handle(CreateTeacherCommand command)
@@ -48,11 +51,11 @@ namespace EpsSchool.Domain.Handlers
             if (teacher == null)
                 return new GenericCommandResult(false, "Professor não encontrado!", teacher);
 
-            // Update the teacher object with the new command data.
-            teacher = new Teacher(teacher.Id, teacher.Registration, command.Name,
-                command.Surname, command.PhoneNumber); // VERIFY
+            // Update the student object with the new command data.
+            var teachersResult = teacher.Result;
+            teachersResult = _mapper.Map(command, teachersResult);
 
-            _repository.Update(teacher);
+            _repository.Update(teachersResult);
 
             return new GenericCommandResult(true, "Professor Salvo!", teacher);
         }
@@ -69,19 +72,21 @@ namespace EpsSchool.Domain.Handlers
             if (teacher == null)
                 return new GenericCommandResult(false, "Professor não encontrado!", teacher);
             
-            // Update the teacher status. => teacher.ChangeStatus(command.Status); => Criar um método ou não?
+            // Update the student status.
+            var teachersResult = teacher.Result;
+
             if (command.Status.Equals(true))
             {
-                teacher.Status = true;
+                teachersResult.Status = true;
             }
             else
             {
-                teacher.Status = false;
+                teachersResult.Status = false;
             }
 
-            _repository.Update(teacher);
+            _repository.Update(teachersResult);
 
-            var msg = teacher.Status ? "ativado" : "desativado";
+            var msg = teachersResult.Status ? "ativado" : "desativado";
 
             return new GenericCommandResult(true, $"Professor {msg} com sucesso!", teacher);
         }

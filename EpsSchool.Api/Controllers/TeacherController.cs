@@ -18,15 +18,24 @@ namespace EpsSchool.Api.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class TeacherController : ControllerBase
     {
+        private readonly IMapper _mapper;
+        public TeacherController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
         /// <summary>
         /// Método responsável por retornar todos os Professores.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<List<Teacher>>> Get(
+        public async Task<ActionResult> Get(
             [FromServices] ITeacherRepository repo)
         {
-            return await repo.GetAll(true);
+            var teachers = await repo.GetAll(true);
+
+            var teachersResult = _mapper.Map<IEnumerable<TeacherCommand>>(teachers);
+
+            return Ok(teachersResult);
         }
 
         /// <summary>
@@ -38,7 +47,11 @@ namespace EpsSchool.Api.Controllers
         public async Task<ActionResult<List<Teacher>>> GetByStudentId(
             [FromServices] ITeacherRepository repo, int studentId)
         {
-            return await repo.GetByStudentId(studentId, true);
+            var teachers = await repo.GetByStudentId(studentId, true);
+
+            var teachersResult = _mapper.Map<IEnumerable<TeacherCommand>>(teachers);
+
+            return Ok(teachersResult);
         }
 
         /// <summary>
@@ -47,10 +60,14 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public Teacher GetById(int id,
+        public async Task<ActionResult> GetById(int id,
             [FromServices] ITeacherRepository repo)
         {
-            return repo.GetById(id, true);
+            var teachers = await repo.GetById(id, true);
+
+            var teachersResult = _mapper.Map<IEnumerable<TeacherCommand>>(teachers);
+
+            return Ok(teachersResult);
         }
 
         /// <summary>
@@ -63,7 +80,7 @@ namespace EpsSchool.Api.Controllers
             [FromBody] CreateTeacherCommand command,
             [FromServices] TeacherHandler handler)
         {
-            return (GenericCommandResult)handler.Handle(command);
+            return (GenericCommandResult)handler.Handle(command); // TODO - Change the method to async and resolve the task.
         }
 
         /// <summary>
@@ -78,7 +95,7 @@ namespace EpsSchool.Api.Controllers
             int id,
             [FromBody] UpdateTeacherCommand command)
         {
-            return (GenericCommandResult)handler.Handle(command);
+            return (GenericCommandResult)handler.Handle(command); // TODO - Change the method to async and resolve the task.
         }
 
         /// <summary>
@@ -92,7 +109,7 @@ namespace EpsSchool.Api.Controllers
             var teacher = repo.GetById(id);
             if (teacher == null) return BadRequest(new { message = "Professor não encontrado!" });
 
-            repo.Delete(teacher);
+            repo.Delete(teacher.Result); // TODO - Change the method to async and resolve the task.
 
             return Ok(new { message = "Professor detetado." });
         }

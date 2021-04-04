@@ -6,6 +6,6 @@ namespace EpsSchool.Domain.Commands
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public IEnumerable<SubjectCommand> Subjects { get; set; }
+        public IEnumerable<CourseSubjectCommand> CoursesSubjects { get; set; }
     }
 }

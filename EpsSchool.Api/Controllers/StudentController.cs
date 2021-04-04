@@ -80,7 +80,7 @@ namespace EpsSchool.Api.Controllers
             [FromBody] CreateStudentCommand command,
             [FromServices] StudentHandler handler)
         {
-            return (GenericCommandResult)handler.Handle(command);
+            return (GenericCommandResult)handler.Handle(command); // TODO - Change the method to async and resolve the task.
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace EpsSchool.Api.Controllers
             int id,
             [FromBody] UpdateStudentCommand command)
         {
-            return (GenericCommandResult)handler.Handle(command);
+            return (GenericCommandResult)handler.Handle(command); // TODO - Change the method to async and resolve the task.
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace EpsSchool.Api.Controllers
             [FromBody] ChangeStudentStatusCommand command,
             [FromServices] StudentHandler handler)
         {
-            return (GenericCommandResult)handler.Handle(command);
+            return (GenericCommandResult)handler.Handle(command); // TODO - Change the method to async and resolve the task.
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace EpsSchool.Api.Controllers
             var student = repo.GetById(id);
             if (student == null) return BadRequest(new { message = "Aluno não encontrado!" });
 
-            repo.Delete(student.Result);
+            repo.Delete(student.Result); // TODO - Change the method to async and resolve the task.
 
             return Ok(new { message = "Aluno detetado." });
         }

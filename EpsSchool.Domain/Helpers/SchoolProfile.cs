@@ -28,9 +28,11 @@ namespace EpsSchool.Domain.Helpers
                     );
             CreateMap<TeacherCommand, Teacher>();
             CreateMap<Teacher, CreateTeacherCommand>().ReverseMap();
+            CreateMap<Teacher, UpdateTeacherCommand>().ReverseMap();
 
             CreateMap<SubjectCommand, Subject>().ReverseMap();
             CreateMap<CourseCommand, Course>().ReverseMap();
+            CreateMap<CourseSubjectCommand, CourseSubject>().ReverseMap();
         }
     }
 }
