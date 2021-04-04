@@ -63,9 +63,9 @@ namespace EpsSchool.Api.Controllers
         public async Task<ActionResult> GetById(int id,
             [FromServices] ITeacherRepository repo)
         {
-            var teachers = await repo.GetById(id, true);
+            var teacher = await repo.GetById(id, true);
 
-            var teachersResult = _mapper.Map<IEnumerable<TeacherCommand>>(teachers);
+            var teachersResult = _mapper.Map<TeacherCommand>(teacher);
 
             return Ok(teachersResult);
         }
