@@ -65,7 +65,7 @@ namespace EpsSchool.Api.Controllers
             [FromServices] IStudentRepository repo)
         {
             var students = await repo.GetById(id, false);
-            var studentsResult = _mapper.Map<IEnumerable<StudentCommand>>(students);
+            var studentsResult = _mapper.Map<StudentCommand>(students);
             
             return Ok(studentsResult);
         }
