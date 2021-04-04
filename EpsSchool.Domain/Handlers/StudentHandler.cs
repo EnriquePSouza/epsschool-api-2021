@@ -34,7 +34,7 @@ namespace EpsSchool.Domain.Handlers
             // Creates the student object.
             var student = _mapper.Map<Student>(command);
 
-            _repository.Create(student);
+            _repository.Create(student); // TODO - Change the method to async and resolve the task.
 
             return new GenericCommandResult(true, "Aluno Salvo!", command);
         }
@@ -55,7 +55,7 @@ namespace EpsSchool.Domain.Handlers
             var studentsResult = student.Result; // TODO - Change the method to async and resolve the task.
             studentsResult = _mapper.Map(command, studentsResult);
 
-            _repository.Update(studentsResult);
+            _repository.Update(studentsResult); // TODO - Change the method to async and resolve the task.
 
             return new GenericCommandResult(true, "Aluno Salvo!", command);
         }
@@ -84,7 +84,7 @@ namespace EpsSchool.Domain.Handlers
                 studentsResult.Status = false;
             }
 
-            _repository.Update(studentsResult);
+            _repository.Update(studentsResult); // TODO - Change the method to async and resolve the task.
 
             var msg = studentsResult.Status ? "ativado" : "desativado";
 

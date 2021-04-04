@@ -31,10 +31,9 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Professor Invalido!", command.Notifications);
             
             // Creates the teacher object.
-            var teacher = new Teacher(command.Id, command.Registration, command.Name,
-                command.Surname, command.PhoneNumber);
+            var teacher = _mapper.Map<Teacher>(command);
 
-            _repository.Create(teacher);
+            _repository.Create(teacher); // TODO - Change the method to async and resolve the task.
 
             return new GenericCommandResult(true, "Professor Salvo!", teacher);
         }
@@ -47,15 +46,15 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Professor Invalido!", command.Notifications);
             
             // Check if the teacher exists.
-            var teacher = _repository.GetById(command.Id);
+            var teacher = _repository.GetById(command.Id); // TODO - Change the method to async and resolve the task.
             if (teacher == null)
                 return new GenericCommandResult(false, "Professor não encontrado!", teacher);
 
             // Update the student object with the new command data.
-            var teachersResult = teacher.Result;
+            var teachersResult = teacher.Result; // TODO - Change the method to async and resolve the task.
             teachersResult = _mapper.Map(command, teachersResult);
 
-            _repository.Update(teachersResult);
+            _repository.Update(teachersResult); // TODO - Change the method to async and resolve the task.
 
             return new GenericCommandResult(true, "Professor Salvo!", teacher);
         }
@@ -68,7 +67,7 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Professor Invalido!", command.Notifications);
             
             // Check if the teacher exists.
-            var teacher = _repository.GetById(command.Id);
+            var teacher = _repository.GetById(command.Id); // TODO - Change the method to async and resolve the task.
             if (teacher == null)
                 return new GenericCommandResult(false, "Professor não encontrado!", teacher);
             
@@ -84,7 +83,7 @@ namespace EpsSchool.Domain.Handlers
                 teachersResult.Status = false;
             }
 
-            _repository.Update(teachersResult);
+            _repository.Update(teachersResult); // TODO - Change the method to async and resolve the task.
 
             var msg = teachersResult.Status ? "ativado" : "desativado";
 
