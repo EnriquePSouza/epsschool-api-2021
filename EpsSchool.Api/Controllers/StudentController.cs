@@ -47,11 +47,11 @@ namespace EpsSchool.Api.Controllers
         /// Método responsável por retornar um Aluno ao informar o seu Curso.
         /// </summary>
         /// <returns></returns>
-        [HttpGet("ByCourse/{id}")]
+        [HttpGet("byCourse/{id}")]
         public async Task<IActionResult> GetByCourseId([FromServices] IStudentRepository repo, int id)
         {
             var students = await repo.GetAllByCourseIdAsync(id, false);
-            var studentsResult = _mapper.Map<IEnumerable<StudentCommand>>(students);
+            var studentsResult = _mapper.Map<IEnumerable<CreateStudentCommand>>(students);
             return Ok(studentsResult);
         }
 
@@ -65,7 +65,7 @@ namespace EpsSchool.Api.Controllers
             [FromServices] IStudentRepository repo)
         {
             var students = await repo.GetById(id, false);
-            var studentsResult = _mapper.Map<StudentCommand>(students);
+            var studentsResult = _mapper.Map<CreateStudentCommand>(students);
             
             return Ok(studentsResult);
         }
@@ -103,7 +103,7 @@ namespace EpsSchool.Api.Controllers
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPost("changeStatus")]
+        [HttpPut("changeStatus")]
         public GenericCommandResult ChangeStatus(
             [FromBody] ChangeStudentStatusCommand command,
             [FromServices] StudentHandler handler)

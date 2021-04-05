@@ -43,7 +43,7 @@ namespace EpsSchool.Api.Controllers
         /// </summary>
         /// <param name="studentId"></param>
         /// <returns></returns>
-        [HttpGet("bystudent/{studentId}")]
+        [HttpGet("byStudent/{studentId}")]
         public async Task<ActionResult<List<Teacher>>> GetByStudentId(
             [FromServices] ITeacherRepository repo, int studentId)
         {
