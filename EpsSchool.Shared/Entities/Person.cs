@@ -7,7 +7,8 @@ namespace EpsSchool.Shared.Entities
     {
         protected Person(string name, string surname, string phoneNumber)
         {
-            Registration = Guid.NewGuid().ToString().Substring(0, 8);
+            Registration = DateTime.Now.ToString("yydd") +
+                           Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
             Name = name;
             Surname = surname;
             PhoneNumber = phoneNumber;
@@ -31,7 +32,7 @@ namespace EpsSchool.Shared.Entities
         [Required]
         [MaxLength(120)]
         public string PhoneNumber { get; set; }
-        
+
         [Required]
         public DateTime StartDate { get; set; }
 

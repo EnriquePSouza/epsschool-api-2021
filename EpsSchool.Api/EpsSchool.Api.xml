@@ -15,13 +15,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.StudentController.GetByCourseId(EpsSchool.Domain.Repositories.IStudentRepository,System.Int32)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.GetByCourseId(EpsSchool.Domain.Repositories.IStudentRepository,System.Guid)">
             <summary>
             Método responsável por retornar um Aluno ao informar o seu Curso.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.StudentController.GetById(System.Int32,EpsSchool.Domain.Repositories.IStudentRepository)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.GetById(System.Guid,EpsSchool.Domain.Repositories.IStudentRepository)">
             <summary>
             Método responsável por retornar um Aluno ao informar o seu id.
             </summary>
@@ -50,7 +50,7 @@
             <param name="command"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.StudentController.Delete(EpsSchool.Domain.Repositories.IStudentRepository,System.Int32)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.Delete(EpsSchool.Domain.Repositories.IStudentRepository,System.Guid)">
             <summary>
             Método responsável por remover as informações de um Aluno do banco de dados.
             </summary>
@@ -68,14 +68,14 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.TeacherController.GetByStudentId(EpsSchool.Domain.Repositories.ITeacherRepository,System.Int32)">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.GetByStudentId(EpsSchool.Domain.Repositories.ITeacherRepository,System.Guid)">
             <summary>
             Método responsável por retornar um Professor ao informar o seu id de um Aluno.
             </summary>
             <param name="studentId"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.TeacherController.GetById(System.Int32,EpsSchool.Domain.Repositories.ITeacherRepository)">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.GetById(System.Guid,EpsSchool.Domain.Repositories.ITeacherRepository)">
             <summary>
             Método responsável por retornar um Professor ao informar o seu id.
             </summary>
@@ -97,7 +97,7 @@
             <param name="command"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.TeacherController.Delete(EpsSchool.Domain.Repositories.ITeacherRepository,System.Int32)">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.Delete(EpsSchool.Domain.Repositories.ITeacherRepository,System.Guid)">
             <summary>
             Método responsável por remover as informações de um Professor do banco de dados.
             </summary>
