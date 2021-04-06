@@ -17,8 +17,8 @@ namespace EpsSchool.Tests.EntityTests
 
             Assert.IsNotNull(student.Id);
 
-            Assert.IsNotNull(student.Registration);
-            Assert.AreEqual(8, student.Registration.Length);
+            Assert.IsNotNull(student.Enrollment);
+            Assert.AreEqual(8, student.Enrollment.Length);
 
             Assert.IsNotNull(student.StartDate);
             Assert.IsNull(student.EndDate);

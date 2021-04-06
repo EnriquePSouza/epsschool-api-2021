@@ -80,8 +80,8 @@ namespace EpsSchool.Infra.Repositories
                                                   .ToUpper()
                                                   .Contains(pageParams.Name.ToUpper()));
 
-            if (!string.IsNullOrEmpty(pageParams.Registration))
-                query = query.Where(s => s.Registration == pageParams.Registration);
+            if (!string.IsNullOrEmpty(pageParams.Enrollment))
+                query = query.Where(s => s.Enrollment == pageParams.Enrollment);
 
             if (!string.IsNullOrEmpty(pageParams.Status))
                 query = query.Where(s => s.Status == (pageParams.Equals(1)));

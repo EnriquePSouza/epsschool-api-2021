@@ -7,7 +7,7 @@ namespace EpsSchool.Shared.Entities
     {
         protected Person(string name, string surname, string phoneNumber)
         {
-            Registration = DateTime.Now.ToString("yydd") +
+            Enrollment = DateTime.Now.ToString("yydd") +
                            Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
             Name = name;
             Surname = surname;
@@ -19,7 +19,7 @@ namespace EpsSchool.Shared.Entities
 
         [Required]
         [Range(1, int.MaxValue)]
-        public string Registration { get; set; }
+        public string Enrollment { get; set; }
 
         [Required]
         [MaxLength(120)]

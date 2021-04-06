@@ -12,10 +12,10 @@ namespace EpsSchool.Domain.Commands
     {
         public CreateTeacherCommand() { }
 
-        public CreateTeacherCommand(int id, int registration, string name, string surname, string phoneNumber)
+        public CreateTeacherCommand(int id, int enrollment, string name, string surname, string phoneNumber)
         {
             Id = id;
-            Registration = registration;
+            Enrollment = enrollment;
             Name = name;
             Surname = surname;
             PhoneNumber = phoneNumber;
@@ -30,10 +30,10 @@ namespace EpsSchool.Domain.Commands
         /// <value></value>
         public int Id { get; set; }
         /// <summary>
-        /// Código identificador para outras atividades da instituição.
+        /// Código identificador de registro do professor na instituição.
         /// </summary>
         /// <value></value>
-        public int Registration { get; set; }
+        public int Enrollment { get; set; }
         /// <summary>
         /// Primeiro nome do professor.
         /// </summary>

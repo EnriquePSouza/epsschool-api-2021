@@ -13,7 +13,7 @@ namespace EpsSchool.Domain.Helpers
             set { pageSize = (value > MaxPageSize) ? MaxPageSize : value; }
         }
 
-        public string Registration { get; set; } = null;
+        public string Enrollment { get; set; } = null;
         public string Name { get; set; } = string.Empty;
         public string Status { get; set; } = null;
     }
