@@ -5,13 +5,13 @@ namespace EpsSchool.Shared.Entities
 {
     public abstract class Entity : IEquatable<Entity>
     {
-        public Entity(int id)
+        public Entity()
         {
-            Id = id;
+            Id = Guid.NewGuid();
         }
         
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public bool Equals(Entity other)
         {

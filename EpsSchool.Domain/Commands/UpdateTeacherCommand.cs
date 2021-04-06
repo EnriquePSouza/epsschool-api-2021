@@ -1,3 +1,4 @@
+using System;
 using EpsSchool.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
@@ -7,7 +8,7 @@ namespace EpsSchool.Domain.Commands
     public class UpdateTeacherCommand : Notifiable, ICommand
     {
         public UpdateTeacherCommand() { }
-        public UpdateTeacherCommand(int id, string name, string surname, string phoneNumber, bool status)
+        public UpdateTeacherCommand(Guid id, string name, string surname, string phoneNumber, bool status)
         {
             Id = id;
             Name = name;
@@ -16,7 +17,7 @@ namespace EpsSchool.Domain.Commands
             Status = true;
         }
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string PhoneNumber { get; set; }
@@ -27,7 +28,7 @@ namespace EpsSchool.Domain.Commands
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .IsGreaterThan(Id, 0, "Código do Professor", "Informe o código de professor válido!")
+                    .IsNotNull(Id, "Código do Professor", "Informe o código de professor válido!")
                     .HasMinLen(Name, 5, "Nome", "Informe o nome do professor!")
                     .HasMaxLen(Name, 20,"Nome", "O nome não pode ter mais que 20 caracteres!")
                     .HasMinLen(Surname, 5, "Sobrenome", "Informe o sobrenome do professor!")

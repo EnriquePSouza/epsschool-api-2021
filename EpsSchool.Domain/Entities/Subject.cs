@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using EpsSchool.Shared.Entities;
@@ -6,8 +7,9 @@ namespace EpsSchool.Domain.Entities
 {
     public class Subject : Entity
     {
-        public Subject(int id, string name, int teacherId) : base(id)
+        public Subject(string name, Guid teacherId)
         {
+            Workload = null;
             Name = name;
             TeacherId = teacherId;
         }
@@ -17,11 +19,11 @@ namespace EpsSchool.Domain.Entities
         public string Name { get; set; }
 
         [MaxLength(9999)]
-        public int Workload { get; set; }
+        public int? Workload { get; set; }
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int TeacherId { get; set; }
+        public Guid TeacherId { get; set; }
 
         public Teacher Teacher { get; set; }
         

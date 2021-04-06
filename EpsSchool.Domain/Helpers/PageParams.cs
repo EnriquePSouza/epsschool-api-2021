@@ -1,3 +1,5 @@
+using System;
+
 namespace EpsSchool.Domain.Helpers
 {
     public class PageParams
@@ -11,8 +13,8 @@ namespace EpsSchool.Domain.Helpers
             set { pageSize = (value > MaxPageSize) ? MaxPageSize : value; }
         }
 
-        public int? Registration { get; set; } = null;
+        public string Registration { get; set; } = null;
         public string Name { get; set; } = string.Empty;
-        public int? Status { get; set; } = null;
+        public string Status { get; set; } = null;
     }
 }

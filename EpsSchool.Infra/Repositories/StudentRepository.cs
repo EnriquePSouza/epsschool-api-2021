@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace EpsSchool.Infra.Repositories
             _context.SaveChanges();
         }
 
-        public async Task<Student> GetById(int studentId, bool includeTeacher = false)
+        public async Task<Student> GetById(Guid studentId, bool includeTeacher = false)
         {
             IQueryable<Student> query = _context.Students;
 
@@ -51,7 +52,7 @@ namespace EpsSchool.Infra.Repositories
 
             query = query.AsNoTracking()
                          .OrderBy(s => s.Id)
-                         .Where(s => s.Id.Equals(studentId));
+                         .Where(s => s.Id == studentId);
 
 
             return await query.FirstOrDefaultAsync();
@@ -79,16 +80,16 @@ namespace EpsSchool.Infra.Repositories
                                                   .ToUpper()
                                                   .Contains(pageParams.Name.ToUpper()));
 
-            if (pageParams.Registration > 0)
+            if (!string.IsNullOrEmpty(pageParams.Registration))
                 query = query.Where(s => s.Registration == pageParams.Registration);
 
-            if (pageParams.Status != null)
-                query = query.Where(s => s.Status == (pageParams.Status != 0));
+            if (!string.IsNullOrEmpty(pageParams.Status))
+                query = query.Where(s => s.Status == (pageParams.Equals(1)));
 
             return await PageList<Student>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }
 
-        public async Task<List<Student>> GetAllByCourseIdAsync(int courseId, bool includeTeacher = false)
+        public async Task<List<Student>> GetAllByCourseIdAsync(Guid courseId, bool includeTeacher = false)
         {
             IQueryable<Student> query = _context.Students;
 

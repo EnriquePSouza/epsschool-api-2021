@@ -74,14 +74,7 @@ namespace EpsSchool.Domain.Handlers
             // Update the student status.
             var teachersResult = teacher.Result;
 
-            if (command.Status.Equals(true))
-            {
-                teachersResult.Status = true;
-            }
-            else
-            {
-                teachersResult.Status = false;
-            }
+            teachersResult.Status = command.Status.Equals(true);
 
             _repository.Update(teachersResult); // TODO - Change the method to async and resolve the task.
 

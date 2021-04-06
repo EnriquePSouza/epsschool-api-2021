@@ -8,6 +8,7 @@ using EpsSchool.Domain.Commands;
 using EpsSchool.Shared.Commands;
 using System.Collections.Generic;
 using AutoMapper;
+using System;
 
 namespace EpsSchool.Api.Controllers
 {
@@ -48,7 +49,7 @@ namespace EpsSchool.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("byCourse/{id}")]
-        public async Task<IActionResult> GetByCourseId([FromServices] IStudentRepository repo, int id)
+        public async Task<IActionResult> GetByCourseId([FromServices] IStudentRepository repo, Guid id)
         {
             var students = await repo.GetAllByCourseIdAsync(id, false);
             var studentsResult = _mapper.Map<IEnumerable<CreateStudentCommand>>(students);
@@ -61,7 +62,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(int id,
+        public async Task<ActionResult> GetById(Guid id,
             [FromServices] IStudentRepository repo)
         {
             var students = await repo.GetById(id, false);
@@ -117,7 +118,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromServices]IStudentRepository repo, int id)
+        public IActionResult Delete([FromServices]IStudentRepository repo, Guid id)
         {
             var student = repo.GetById(id);
             if (student == null) return BadRequest(new { message = "Aluno não encontrado!" });

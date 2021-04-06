@@ -5,9 +5,9 @@ namespace EpsSchool.Shared.Entities
 {
     public abstract class Person : Entity
     {
-        protected Person(int id, int registration, string name, string surname, string phoneNumber) : base(id)
+        protected Person(string name, string surname, string phoneNumber)
         {
-            Registration = registration;
+            Registration = Guid.NewGuid().ToString().Substring(0, 8);
             Name = name;
             Surname = surname;
             PhoneNumber = phoneNumber;
@@ -18,7 +18,7 @@ namespace EpsSchool.Shared.Entities
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int Registration { get; set; }
+        public string Registration { get; set; }
 
         [Required]
         [MaxLength(120)]

@@ -7,8 +7,8 @@ namespace EpsSchool.Domain.Entities
 {
     public class Student : Person
     {
-        public Student(int id, int registration, string name, string surname, string phoneNumber, DateTime birthdate)
-            : base(id, registration, name, surname, phoneNumber)
+        public Student(string name, string surname, string phoneNumber, DateTime birthdate)
+            : base(name, surname, phoneNumber)
             {
                 Birthdate = birthdate;
             }

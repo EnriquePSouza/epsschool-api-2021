@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using EpsSchool.Domain.Handlers;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Shared.Commands;
+using System;
 
 namespace EpsSchool.Api.Controllers
 {
@@ -45,7 +46,7 @@ namespace EpsSchool.Api.Controllers
         /// <returns></returns>
         [HttpGet("byStudent/{studentId}")]
         public async Task<ActionResult<List<Teacher>>> GetByStudentId(
-            [FromServices] ITeacherRepository repo, int studentId)
+            [FromServices] ITeacherRepository repo, Guid studentId)
         {
             var teachers = await repo.GetByStudentId(studentId, true);
 
@@ -60,7 +61,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(int id,
+        public async Task<ActionResult> GetById(Guid id,
             [FromServices] ITeacherRepository repo)
         {
             var teacher = await repo.GetById(id, true);
@@ -104,7 +105,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromServices] ITeacherRepository repo, int id)
+        public IActionResult Delete([FromServices] ITeacherRepository repo, Guid id)
         {
             var teacher = repo.GetById(id);
             if (teacher == null) return BadRequest(new { message = "Professor não encontrado!" });

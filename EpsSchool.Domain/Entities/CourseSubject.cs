@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +8,7 @@ namespace EpsSchool.Domain.Entities
 {
     public class CourseSubject : Entity
     {
-        public CourseSubject(int id, int courseId, int subjectId) : base(id)
+        public CourseSubject(Guid courseId, Guid subjectId)
         {
             CourseId = courseId;
             SubjectId = subjectId;
@@ -15,13 +16,13 @@ namespace EpsSchool.Domain.Entities
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int CourseId { get; set; }
+        public Guid CourseId { get; set; }
 
         public Course Course { get; set; }
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int SubjectId { get; set; }
+        public Guid SubjectId { get; set; }
 
         public Subject Subject { get; set; }
         

@@ -29,20 +29,19 @@ namespace EpsSchool.Tests.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<List<Student>> GetAllByCourseIdAsync(int disciplinaId, bool includeProfessor = false)
+        public Student GetById(Guid id)
+        {
+            return new Student("Enrique", "Souza", "33458856", DateTime.Now);
+        }
+
+        public Task<Student> GetById(Guid studentId, bool includeTeacher = false)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Student> GetById(int studentId, bool includeTeacher = false)
+        public Task<List<Student>> GetAllByCourseIdAsync(Guid courseId, bool includeTeacher = false)
         {
             throw new NotImplementedException();
         }
-
-        public Student GetById(int id)
-        {
-            return new Student(1, 1, "Enrique", "Souza", "33458856", DateTime.Now);
-        }
-
     }
 }

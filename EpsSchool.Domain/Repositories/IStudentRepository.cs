@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EpsSchool.Domain.Entities;
@@ -11,8 +12,8 @@ namespace EpsSchool.Domain.Repositories
         void Create(Student student);
         void Update(Student student);
         void Delete(Student student);
-        Task<Student> GetById(int studentId, bool includeTeacher = false);
+        Task<Student> GetById(Guid studentId, bool includeTeacher = false);
         Task<PageList<Student>> GetAllAsync(PageParams pageParams, bool includeTeacher = false);
-        Task<List<Student>> GetAllByCourseIdAsync(int courseId, bool includeTeacher = false);
+        Task<List<Student>> GetAllByCourseIdAsync(Guid courseId, bool includeTeacher = false);
     }
 }

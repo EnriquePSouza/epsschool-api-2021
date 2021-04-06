@@ -6,7 +6,7 @@ namespace EpsSchool.Domain.Entities
 {
     public class StudentCourseSubject
     {
-        public StudentCourseSubject(int courseSubjectId, int studentId)
+        public StudentCourseSubject(Guid courseSubjectId, Guid studentId)
         {
             StudentId = studentId;
             CourseSubjectId = courseSubjectId;
@@ -24,13 +24,13 @@ namespace EpsSchool.Domain.Entities
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int CourseSubjectId { get; set; }
+        public Guid CourseSubjectId { get; set; }
 
         public CourseSubject CourseSubject { get; set; }
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int StudentId { get; set; }
+        public Guid StudentId { get; set; }
         
         public Student Student { get; set; }
     }

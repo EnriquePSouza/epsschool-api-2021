@@ -6,7 +6,7 @@ namespace EpsSchool.Domain.Entities
 {
     public class Course : Entity
     {
-        public Course(int id, string name) : base(id)
+        public Course(string name)
         {
             Name = name;
 
