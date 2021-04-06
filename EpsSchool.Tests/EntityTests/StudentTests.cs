@@ -7,12 +7,15 @@ namespace EpsSchool.Tests.EntityTests
     [TestClass]
     public class StudentTests
     {
-        private readonly Student _validStudent = new Student(1, 1, "Enrique", "Souza", "33458856", DateTime.Now);
 
         [TestMethod]
-        public void Dado_um_novo_aluno_o_mesmo_nao_pode_estar_inativo()
+        public void Dado_um_novo_aluno_o_mesmo_deve_ser_valido()
         {
-            Assert.AreEqual(_validStudent.Status, true);
+            var date = DateTime.Now;
+            var student = new Student(1, 1, "Enrique", "Souza", "33458856", DateTime.Now);
+            Assert.AreEqual(student.Status, true);
+            Assert.AreEqual(student.StartDate, date);
+            Assert.AreEqual(student.EndDate, null);
         }
     }
 }

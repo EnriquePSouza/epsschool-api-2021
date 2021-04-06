@@ -31,7 +31,8 @@ namespace EpsSchool.Shared.Entities
         [Required]
         [MaxLength(120)]
         public string PhoneNumber { get; set; }
-
+        
+        [Required]
         public DateTime StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }

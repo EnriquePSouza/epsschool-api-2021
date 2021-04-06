@@ -75,15 +75,8 @@ namespace EpsSchool.Domain.Handlers
             // Update the student status.
             var studentsResult = student.Result; // TODO - Change the method to async and resolve the task.
 
-            if (command.Status.Equals(true))
-            {
-                studentsResult.Status = true;
-            }
-            else
-            {
-                studentsResult.Status = false;
-            }
-
+            studentsResult.Status = command.Status.Equals(true);
+            
             _repository.Update(studentsResult); // TODO - Change the method to async and resolve the task.
 
             var msg = studentsResult.Status ? "ativado" : "desativado";
