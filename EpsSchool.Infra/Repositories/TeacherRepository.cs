@@ -36,7 +36,7 @@ namespace EpsSchool.Infra.Repositories
             _context.SaveChanges();
         }
 
-        public Task<Teacher> GetById(Guid teacherId, bool includeStudents = false)
+        public Teacher GetById(Guid teacherId, bool includeStudents = false)
         {
             IQueryable<Teacher> query = _context.Teachers;
 
@@ -56,7 +56,7 @@ namespace EpsSchool.Infra.Repositories
                          .Where(p => p.Id == teacherId);
 
 
-            return query.FirstOrDefaultAsync();
+            return query.FirstOrDefault();
         }
 
         public async Task<List<Teacher>> GetAll(bool includeStudents = false)

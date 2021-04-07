@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Helpers;
 using EpsSchool.Domain.Repositories;
@@ -38,7 +37,7 @@ namespace EpsSchool.Infra.Repositories
             _context.SaveChanges();
         }
 
-        public async Task<Student> GetById(Guid studentId, bool includeTeacher = false)
+        public Student GetById(Guid studentId, bool includeTeacher = false)
         {
             IQueryable<Student> query = _context.Students;
 
@@ -55,7 +54,7 @@ namespace EpsSchool.Infra.Repositories
                          .Where(s => s.Id == studentId);
 
 
-            return await query.FirstOrDefaultAsync();
+            return query.FirstOrDefault();
         }
 
         public async Task<PageList<Student>> GetAllAsync(PageParams pageParams, bool includeTeacher = false)

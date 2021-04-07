@@ -34,7 +34,7 @@ namespace EpsSchool.Domain.Handlers
 
             _repository.Create(student); // TODO - Change the method to async and resolve the task.
 
-            return new GenericCommandResult(true, "Aluno Salvo!", command);
+            return new GenericCommandResult(true, "Aluno Salvo!", student);
         }
 
         public ICommandResult Handle(UpdateStudentCommand command)
@@ -48,18 +48,17 @@ namespace EpsSchool.Domain.Handlers
             var student = _repository.GetById(command.Id); // TODO - Change the method to async and resolve the task.
             if (student == null)
                 return new GenericCommandResult(false, "Aluno não encontrado!", command);
-            
-            Student studentResult = student.Result; // TODO - Change the method to async and resolve the task.
 
+            // TODO - Make this a service method in one TeacherService, and test it.
             // Update the student object with the new command data.
-            studentResult.Name = command.Name;
-            studentResult.Surname = command.Surname;
-            studentResult.PhoneNumber = command.PhoneNumber;
-            studentResult.Status = command.Status;
+            student.Name = command.Name;
+            student.Surname = command.Surname;
+            student.PhoneNumber = command.PhoneNumber;
+            student.Status = command.Status;
 
-            _repository.Update(studentResult); // TODO - Change the method to async and resolve the task.
+            _repository.Update(student); // TODO - Change the method to async and resolve the task.
 
-            return new GenericCommandResult(true, "Aluno Salvo!", command);
+            return new GenericCommandResult(true, "Aluno Salvo!", student);
         }
 
         public ICommandResult Handle(ChangeStudentStatusCommand command)
@@ -74,25 +73,24 @@ namespace EpsSchool.Domain.Handlers
             if (student == null)
                 return new GenericCommandResult(false, "Aluno não encontrado!", command);
 
+            // TODO - Make this a service method in one StudentService, and test it.
             // Update the student status.
-            var studentsResult = student.Result; // TODO - Change the method to async and resolve the task.
-
              if(command.Status.Equals(true))
              {
-                 studentsResult.Status = true; 
-                 studentsResult.EndDate = null;
+                 student.Status = true; 
+                 student.EndDate = null;
              }
              else
              {
-                 studentsResult.Status = false;
-                 studentsResult.EndDate = DateTime.Now;
+                 student.Status = false;
+                 student.EndDate = DateTime.Now;
              }
             
-            _repository.Update(studentsResult); // TODO - Change the method to async and resolve the task.
+            _repository.Update(student); // TODO - Change the method to async and resolve the task.
 
-            var msg = studentsResult.Status ? "ativado" : "desativado";
+            var msg = student.Status ? "ativado" : "desativado";
 
-            return new GenericCommandResult(true, $"Aluno {msg} com sucesso!", command);
+            return new GenericCommandResult(true, $"Aluno {msg} com sucesso!", student);
         }
     }
 }

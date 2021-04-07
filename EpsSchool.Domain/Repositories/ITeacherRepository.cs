@@ -10,7 +10,7 @@ namespace EpsSchool.Domain.Repositories
         void Create(Teacher teacher);
         void Update(Teacher teacher);
         void Delete(Teacher teacher);
-        Task<Teacher> GetById(Guid teacherId, bool includeStudents = false);
+        Teacher GetById(Guid teacherId, bool includeStudents = false);
         Task<List<Teacher>> GetAll(bool includeStudents = false);
         Task<List<Teacher>> GetByStudentId(Guid studentId, bool includeStudents = false);
     }

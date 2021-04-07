@@ -4,6 +4,7 @@ using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Repositories;
 using EpsSchool.Domain.Helpers;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EpsSchool.Tests.Repositories
 {
@@ -16,24 +17,16 @@ namespace EpsSchool.Tests.Repositories
             throw new NotImplementedException();
         }
 
-        public void Update(Student student)
-        {
-            throw new NotImplementedException();
-        }
+        public void Update(Student student) { }
 
         public Task<PageList<Student>> GetAllAsync(PageParams pageParams, bool includeTeacher = false)
         {
             throw new NotImplementedException();
         }
 
-        public Student GetById(Guid id)
+        public Student GetById(Guid studentId, bool includeTeacher = false)
         {
             return new Student("Enrique", "Souza", "33458856", DateTime.Now);
-        }
-
-        public Task<Student> GetById(Guid studentId, bool includeTeacher = false)
-        {
-            throw new NotImplementedException();
         }
 
         public Task<List<Student>> GetAllByCourseIdAsync(Guid courseId, bool includeTeacher = false)

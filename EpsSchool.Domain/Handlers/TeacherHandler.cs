@@ -1,4 +1,4 @@
-using AutoMapper;
+using System;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Repositories;
@@ -15,12 +15,10 @@ namespace EpsSchool.Domain.Handlers
         IHandler<ChangeTeacherStatusCommand>
     {
         private readonly ITeacherRepository _repository;
-        private readonly IMapper _mapper;
 
-        public TeacherHandler(ITeacherRepository repository, IMapper mapper)
+        public TeacherHandler(ITeacherRepository repository)
         {
             _repository = repository;
-            _mapper = mapper;
         }
 
         public ICommandResult Handle(CreateTeacherCommand command)
@@ -31,7 +29,7 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Professor Invalido!", command.Notifications);
             
             // Creates the teacher object.
-            var teacher = _mapper.Map<Teacher>(command);
+            var teacher = new Teacher(command.Name, command.Surname, command.PhoneNumber);
 
             _repository.Create(teacher); // TODO - Change the method to async and resolve the task.
 
@@ -48,13 +46,16 @@ namespace EpsSchool.Domain.Handlers
             // Check if the teacher exists.
             var teacher = _repository.GetById(command.Id); // TODO - Change the method to async and resolve the task.
             if (teacher == null)
-                return new GenericCommandResult(false, "Professor não encontrado!", teacher);
+                return new GenericCommandResult(false, "Professor não encontrado!", command);
 
+            // TODO - Make this a service method in one TeacherService, and test it.
             // Update the student object with the new command data.
-            var teachersResult = teacher.Result; // TODO - Change the method to async and resolve the task.
-            teachersResult = _mapper.Map(command, teachersResult);
+            teacher.Name = command.Name;
+            teacher.Surname = command.Surname;
+            teacher.PhoneNumber = command.PhoneNumber;
+            teacher.Status = command.Status;
 
-            _repository.Update(teachersResult); // TODO - Change the method to async and resolve the task.
+            _repository.Update(teacher); // TODO - Change the method to async and resolve the task.
 
             return new GenericCommandResult(true, "Professor Salvo!", teacher);
         }
@@ -71,14 +72,22 @@ namespace EpsSchool.Domain.Handlers
             if (teacher == null)
                 return new GenericCommandResult(false, "Professor não encontrado!", teacher);
             
+            // TODO - Make this a service method in one TeacherService, and test it.
             // Update the student status.
-            var teachersResult = teacher.Result;
+             if(command.Status.Equals(true))
+             {
+                 teacher.Status = true; 
+                 teacher.EndDate = null;
+             }
+             else
+             {
+                 teacher.Status = false;
+                 teacher.EndDate = DateTime.Now;
+             }
 
-            teachersResult.Status = command.Status.Equals(true);
+            _repository.Update(teacher); // TODO - Change the method to async and resolve the task.
 
-            _repository.Update(teachersResult); // TODO - Change the method to async and resolve the task.
-
-            var msg = teachersResult.Status ? "ativado" : "desativado";
+            var msg = teacher.Status ? "ativado" : "desativado";
 
             return new GenericCommandResult(true, $"Professor {msg} com sucesso!", teacher);
         }

@@ -62,10 +62,10 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(Guid id,
+        public IActionResult GetById(Guid id,
             [FromServices] ITeacherRepository repo)
         {
-            var teacher = await repo.GetById(id, true);
+            var teacher = repo.GetById(id, true);
 
             var teachersResult = _mapper.Map<TeacherDto>(teacher);
 
@@ -121,7 +121,7 @@ namespace EpsSchool.Api.Controllers
             var teacher = repo.GetById(id);
             if (teacher == null) return BadRequest(new { message = "Professor não encontrado!" });
 
-            repo.Delete(teacher.Result); // TODO - Change the method to async and resolve the task.
+            repo.Delete(teacher); // TODO - Change the method to async and resolve the task.
 
             return Ok(new { message = "Professor detetado." });
         }
