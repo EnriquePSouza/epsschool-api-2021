@@ -74,7 +74,7 @@ namespace EpsSchool.Domain.Commands
                     .HasMaxLen(PhoneNumber, 12,"Telefone", "Informe um telefone válido contendo apenas numeros!")
                     .IsNotNull(BirthDate, "Data de nascimento", "Informe a data de nascimento do aluno!")
                     .IsNotNull(StartDate, "Data de Início", "Informe a data da matrícula do aluno na instituição!")
-                    .IsNotNull(Status, "Status", "Informe se o aluno está ou não ativo na instituição!")
+                    .IsNotNullOrEmpty(Status.ToString(), "Status", "Informe se o aluno está ou não ativo na instituição!")
             );
         }
     }

@@ -5,6 +5,7 @@ namespace EpsSchool.Shared.Entities
 {
     public abstract class Person : Entity
     {
+        protected Person() { }
         protected Person(string name, string surname, string phoneNumber)
         {
             Enrollment = DateTime.Now.ToString("yydd") +

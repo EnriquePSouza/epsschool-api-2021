@@ -21,8 +21,8 @@ namespace EpsSchool.Domain.Commands
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .IsNotNull(Status, "Status", "Informe se o Professor está ou não ativo na instituição!")
-                    .IsNotNull(Id, "Código do Professor", "Informe o Código do Professor!")
+                    .IsNotNullOrEmpty(Status.ToString(), "Status", "Informe se o Professor está ou não ativo na instituição!")
+                    .IsNotEmpty(Id, "Código do Professor", "Informe o Código do Professor!")
             );
         }
     }

@@ -9,10 +9,7 @@ namespace EpsSchool.Tests.Repositories
 {
     public class FakeStudentRepository : IStudentRepository
     {
-        public void Create(Student student)
-        {
-            throw new NotImplementedException();   
-        }
+        public void Create(Student student) { }
 
         public void Delete(Student student)
         {
@@ -21,7 +18,7 @@ namespace EpsSchool.Tests.Repositories
 
         public void Update(Student student)
         {
-            throw new NotImplementedException();   
+            throw new NotImplementedException();
         }
 
         public Task<PageList<Student>> GetAllAsync(PageParams pageParams, bool includeTeacher = false)

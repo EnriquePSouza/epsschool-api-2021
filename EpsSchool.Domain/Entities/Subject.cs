@@ -9,7 +9,6 @@ namespace EpsSchool.Domain.Entities
     {
         public Subject(string name, Guid teacherId)
         {
-            Workload = null;
             Name = name;
             TeacherId = teacherId;
         }
@@ -17,9 +16,6 @@ namespace EpsSchool.Domain.Entities
         [Required]
         [MaxLength(120)]
         public string Name { get; set; }
-
-        [MaxLength(9999)]
-        public int? Workload { get; set; }
 
         [Required]
         [Range(1, int.MaxValue)]

@@ -6,14 +6,14 @@ namespace EpsSchool.Domain.Entities
 {
     public class Student : Person
     {
+        public Student() { }
         public Student(string name, string surname, string phoneNumber, DateTime birthDate)
             : base(name, surname, phoneNumber)
-            {
-                BirthDate = birthDate;
-            }
+        {
+            BirthDate = birthDate;
+        }
+        public DateTime BirthDate { get; set; }
 
-            public DateTime BirthDate { get; set; }
-            
-            public IEnumerable<StudentCourseSubject> StudentsCoursesSubjects { get; set; }
+        public IEnumerable<StudentCourseSubject> StudentsCoursesSubjects { get; set; }
     }
 }

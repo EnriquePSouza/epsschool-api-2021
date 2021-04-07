@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Helpers;
 using EpsSchool.Domain.Repositories;

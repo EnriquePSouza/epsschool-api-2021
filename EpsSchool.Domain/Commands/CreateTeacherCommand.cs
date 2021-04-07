@@ -12,10 +12,8 @@ namespace EpsSchool.Domain.Commands
     {
         public CreateTeacherCommand() { }
 
-        public CreateTeacherCommand(int id, int enrollment, string name, string surname, string phoneNumber)
+        public CreateTeacherCommand(string name, string surname, string phoneNumber)
         {
-            Id = id;
-            Enrollment = enrollment;
             Name = name;
             Surname = surname;
             PhoneNumber = phoneNumber;
@@ -24,16 +22,6 @@ namespace EpsSchool.Domain.Commands
             Status = true;
 
         }
-        /// <summary>
-        /// Código identificador e chave do Banco.
-        /// </summary>
-        /// <value></value>
-        public int Id { get; set; }
-        /// <summary>
-        /// Código identificador de registro do professor na instituição.
-        /// </summary>
-        /// <value></value>
-        public int Enrollment { get; set; }
         /// <summary>
         /// Primeiro nome do professor.
         /// </summary>
@@ -70,14 +58,13 @@ namespace EpsSchool.Domain.Commands
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .IsGreaterThan(Id, 0, "Código do Professor", "Informe um código de professor válido!")
                     .HasMinLen(Name, 5, "Nome", "Informe o nome do professor!")
                     .HasMaxLen(Name, 20,"Nome", "O nome não pode ter mais que 20 caracteres!")
                     .HasMinLen(Surname, 5, "Sobrenome", "Informe o sobrenome do professor!")
                     .HasMaxLen(Surname, 20,"Sobrenome", "O sobrenome não pode ter mais que 20 caracteres!")
                     .HasMinLen(PhoneNumber, 8, "Telefone", "Informe um telefone válido contendo apenas numeros!")
                     .HasMaxLen(PhoneNumber, 12,"Telefone", "Informe um telefone válido contendo apenas numeros!")
-                    .IsNotNull(Status, "Status", "Informe se o professor está ou não ativo na instituição!")
+                    .IsNotNullOrEmpty(Status.ToString(), "Status", "Informe se o professor está ou não ativo na instituição!")
             );
         }
     }

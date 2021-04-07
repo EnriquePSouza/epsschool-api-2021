@@ -9,7 +9,7 @@ namespace EpsSchool.Shared.Entities
         {
             Id = Guid.NewGuid();
         }
-        
+
         [Key]
         public Guid Id { get; set; }
 

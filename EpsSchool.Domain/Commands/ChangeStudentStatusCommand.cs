@@ -7,7 +7,7 @@ namespace EpsSchool.Domain.Commands
 {
     public class ChangeStudentStatusCommand : Notifiable, ICommand
     {
-        public ChangeStudentStatusCommand(){}
+        public ChangeStudentStatusCommand() { }
         public ChangeStudentStatusCommand(Guid id, bool status)
         {
             Id = id;
@@ -21,8 +21,8 @@ namespace EpsSchool.Domain.Commands
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .IsNotNull(Status, "Status", "Informe se o Aluno está ou não ativo na instituição!")
-                    .IsNotNull(Id, "Código do Aluno", "Informe o Código do Aluno!")
+                    .IsNotNullOrEmpty(Status.ToString(), "Status", "Informe se o Aluno está ou não ativo na instituição!")
+                    .IsNotEmpty(Id, "Código do Aluno", "Informe o Código do Aluno!")
             );
         }
     }
