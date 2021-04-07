@@ -7,7 +7,7 @@ namespace EpsSchool.infra.Contexts
 {
     public class SchoolContext : DbContext
     {
-        private readonly DateTime _birthdate = DateTime.Parse("07/17/2005", new System.Globalization.CultureInfo("en-US"));
+        private readonly DateTime _birthDate = DateTime.Parse("07/17/2005", new System.Globalization.CultureInfo("en-US"));
         public SchoolContext(DbContextOptions<SchoolContext> options) : base(options) { }
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
@@ -19,15 +19,15 @@ namespace EpsSchool.infra.Contexts
         protected override void OnModelCreating(ModelBuilder builder)
         {
             #region Students
-            Student student1 = new Student("Joana", "Alves", "33556699", _birthdate);
-            Student student2 = new Student("Fernanda", "Silva", "33447789", _birthdate);
-            Student student3 = new Student("Vanessa", "Lisboa", "99562341", _birthdate);
-            Student student4 = new Student("Maria", "Madalena", "99452417", _birthdate);
-            Student student5 = new Student("João", "Paulo", "98564712", _birthdate);
-            Student student6 = new Student("Ananias", "Fernandes", "33589624", _birthdate);
-            Student student7 = new Student("José", "Arimatéia", "98745122", _birthdate);
-            Student student8 = new Student("Carlos", "Gaiado", "44558896", _birthdate);
-            Student student9 = new Student("Diogenes", "Finético", "22665588", _birthdate);
+            Student student1 = new Student("Joana", "Alves", "33556699", _birthDate);
+            Student student2 = new Student("Fernanda", "Silva", "33447789", _birthDate);
+            Student student3 = new Student("Vanessa", "Lisboa", "99562341", _birthDate);
+            Student student4 = new Student("Maria", "Madalena", "99452417", _birthDate);
+            Student student5 = new Student("João", "Paulo", "98564712", _birthDate);
+            Student student6 = new Student("Ananias", "Fernandes", "33589624", _birthDate);
+            Student student7 = new Student("José", "Arimatéia", "98745122", _birthDate);
+            Student student8 = new Student("Carlos", "Gaiado", "44558896", _birthDate);
+            Student student9 = new Student("Diogenes", "Finético", "22665588", _birthDate);
             #endregion
             #region Teachers
             Teacher teacher1 = new Teacher("José", "Roberto", "44778899");

@@ -13,7 +13,7 @@ namespace EpsSchool.Tests.EntityTests
         public void Dado_um_novo_aluno_o_mesmo_deve_ter_codigo_identificador_e_data_de_aniversario()
         {
             Assert.IsNotNull(_student.Id);
-            Assert.IsNotNull(_student.Birthdate);
+            Assert.IsNotNull(_student.BirthDate);
         }
 
         [TestMethod]

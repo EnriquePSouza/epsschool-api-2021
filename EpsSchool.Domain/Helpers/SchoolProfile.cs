@@ -16,7 +16,7 @@ namespace EpsSchool.Domain.Helpers
                 )
                 .ForMember(
                     dest => dest.Age,
-                    opt => opt.MapFrom(src => src.Birthdate.GetCurrentAge())
+                    opt => opt.MapFrom(src => src.BirthDate.GetCurrentAge())
                 );
             CreateMap<StudentDto, Student>();
             CreateMap<Student, CreateStudentCommand>().ReverseMap();

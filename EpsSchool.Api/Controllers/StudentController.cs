@@ -96,7 +96,17 @@ namespace EpsSchool.Api.Controllers
             int id,
             [FromBody] UpdateStudentCommand command)
         {
-            return (GenericCommandResult)handler.Handle(command); // TODO - Change the method to async and resolve the task.
+            GenericCommandResult studentResult;
+            ChangeStudentStatusCommand changeStatus;
+
+                studentResult = (GenericCommandResult)handler.Handle(command); // TODO - Change the method to async and resolve the task.
+                if(studentResult.Success.Equals(true))
+                {
+                    changeStatus = new ChangeStudentStatusCommand(command.Id, command.Status);
+                    studentResult = (GenericCommandResult)handler.Handle(changeStatus); // TODO - Change the method to async and resolve the task.
+                } 
+
+            return studentResult;
         }
 
         /// <summary>

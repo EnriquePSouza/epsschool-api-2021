@@ -21,7 +21,7 @@ namespace EpsSchool.Domain.Commands
         public string Name { get; set; }
         public string Surname { get; set; }
         public string PhoneNumber { get; set; }
-        public bool Status { get; set; }
+        public bool Status { get; set; } // TODO - Call the method to change this.
 
         public void Validate()
         {

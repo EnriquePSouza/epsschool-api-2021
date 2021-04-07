@@ -1,3 +1,4 @@
+using System;
 using AutoMapper;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Entities;
@@ -74,7 +75,16 @@ namespace EpsSchool.Domain.Handlers
             // Update the student status.
             var studentsResult = student.Result; // TODO - Change the method to async and resolve the task.
 
-            studentsResult.Status = command.Status.Equals(true);
+             if(command.Status.Equals(true))
+             {
+                 studentsResult.Status = true; 
+                 studentsResult.EndDate = null;
+             }
+             else
+             {
+                 studentsResult.Status = false;
+                 studentsResult.EndDate = DateTime.Now;
+             }
             
             _repository.Update(studentsResult); // TODO - Change the method to async and resolve the task.
 

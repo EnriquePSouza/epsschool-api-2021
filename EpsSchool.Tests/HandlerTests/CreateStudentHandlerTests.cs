@@ -11,8 +11,8 @@ namespace EpsSchool.Tests.HandlerTests
     [TestClass]
     public class CreateStudentHandlerTests
     {
-        private readonly CreateStudentCommand _invalidCommand = new CreateStudentCommand(0,0,"","","",DateTime.Now);
-        private readonly CreateStudentCommand _validCommand = new CreateStudentCommand(1, 1, "Enrique", "Souza", "33458856", DateTime.Now);
+        private readonly CreateStudentCommand _invalidCommand = new CreateStudentCommand("","","",DateTime.Now);
+        private readonly CreateStudentCommand _validCommand = new CreateStudentCommand("Enrique", "Souza", "33458856", DateTime.Now);
         private readonly StudentHandler _handler = new StudentHandler(new FakeStudentRepository(), new FakeMapperProfile());
         private GenericCommandResult _result = new GenericCommandResult();
 
