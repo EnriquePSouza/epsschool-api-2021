@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using EpsSchool.Shared.Entities;
 
 namespace EpsSchool.Domain.Entities

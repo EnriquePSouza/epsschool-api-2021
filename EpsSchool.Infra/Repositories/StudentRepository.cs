@@ -6,7 +6,6 @@ using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Helpers;
 using EpsSchool.Domain.Repositories;
 using EpsSchool.infra.Contexts;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EpsSchool.Infra.Repositories

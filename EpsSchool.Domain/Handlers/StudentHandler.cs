@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using AutoMapper;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Entities;

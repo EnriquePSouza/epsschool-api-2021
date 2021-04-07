@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Helpers;
-using Microsoft.AspNetCore.Mvc;
 
 namespace EpsSchool.Domain.Repositories
 {

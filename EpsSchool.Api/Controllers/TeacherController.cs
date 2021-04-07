@@ -8,6 +8,7 @@ using EpsSchool.Domain.Handlers;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Shared.Commands;
 using System;
+using EpsSchool.Domain.Dtos;
 
 namespace EpsSchool.Api.Controllers
 {
@@ -34,7 +35,7 @@ namespace EpsSchool.Api.Controllers
         {
             var teachers = await repo.GetAll(true);
 
-            var teachersResult = _mapper.Map<IEnumerable<TeacherCommand>>(teachers);
+            var teachersResult = _mapper.Map<IEnumerable<TeacherDto>>(teachers);
 
             return Ok(teachersResult);
         }
@@ -50,7 +51,7 @@ namespace EpsSchool.Api.Controllers
         {
             var teachers = await repo.GetByStudentId(studentId, true);
 
-            var teachersResult = _mapper.Map<IEnumerable<TeacherCommand>>(teachers);
+            var teachersResult = _mapper.Map<IEnumerable<TeacherDto>>(teachers);
 
             return Ok(teachersResult);
         }
@@ -66,7 +67,7 @@ namespace EpsSchool.Api.Controllers
         {
             var teacher = await repo.GetById(id, true);
 
-            var teachersResult = _mapper.Map<TeacherCommand>(teacher);
+            var teachersResult = _mapper.Map<TeacherDto>(teacher);
 
             return Ok(teachersResult);
         }

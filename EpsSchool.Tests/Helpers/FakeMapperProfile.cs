@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using AutoMapper;
 
-namespace EpsSchool.Tests.Mapper
+namespace EpsSchool.Tests.Helpers
 {
-    public class FakeMapper : IMapper
+    public class FakeMapperProfile : IMapper
     {
         public IConfigurationProvider ConfigurationProvider => throw new NotImplementedException();
 

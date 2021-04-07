@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using EpsSchool.Domain.Repositories;
 using EpsSchool.Domain.Helpers;
-using EpsSchool.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using EpsSchool.Domain.Handlers;
 using EpsSchool.Domain.Commands;
@@ -9,6 +8,7 @@ using EpsSchool.Shared.Commands;
 using System.Collections.Generic;
 using AutoMapper;
 using System;
+using EpsSchool.Domain.Dtos;
 
 namespace EpsSchool.Api.Controllers
 {
@@ -37,7 +37,7 @@ namespace EpsSchool.Api.Controllers
         {
             var students = await repo.GetAllAsync(pageParams, true);
             
-            var studentsResult = _mapper.Map<IEnumerable<StudentCommand>>(students);
+            var studentsResult = _mapper.Map<IEnumerable<StudentDto>>(students);
 
             Response.AddPagination(students.CurrentPage, students.PageSize, students.TotalCount, students.TotalPages);
 

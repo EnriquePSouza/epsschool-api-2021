@@ -1,8 +1,8 @@
 using System;
 
-namespace EpsSchool.Domain.Commands
+namespace EpsSchool.Domain.Dtos
 {
-    public class StudentCommand
+    public class StudentDto
     {
         public int Id { get; set; }
         public int Enrollment { get; set; }

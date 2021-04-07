@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using EpsSchool.Shared.Commands;
 
 namespace EpsSchool.Shared.Handlers
