@@ -35,17 +35,17 @@ namespace EpsSchool.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b3cc3945-3887-4a1e-a0df-eb4be8466572"),
+                            Id = new Guid("0e6ab627-003f-49ed-9a96-5433b0899de0"),
                             Name = "Informatica"
                         },
                         new
                         {
-                            Id = new Guid("d2778826-36f9-4406-a01f-1200ad2f8e7f"),
+                            Id = new Guid("cd9cb39e-4e77-47a5-abf5-82a3f76d56fe"),
                             Name = "Manutenção de Micros"
                         },
                         new
                         {
-                            Id = new Guid("819dd682-ae3e-4d2d-914b-d865c15dbb08"),
+                            Id = new Guid("598e17a7-3c98-4ba9-9878-0c2b2e78bb91"),
                             Name = "Redes de Computadores"
                         });
                 });
@@ -73,51 +73,51 @@ namespace EpsSchool.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a517371e-a838-4ab5-84dc-0c9f6fef6503"),
-                            CourseId = new Guid("b3cc3945-3887-4a1e-a0df-eb4be8466572"),
-                            SubjectId = new Guid("1cb8021a-acf2-4338-94b0-91a732cb9312")
+                            Id = new Guid("7eb9af3a-457f-4974-8a40-3b83a42bc527"),
+                            CourseId = new Guid("0e6ab627-003f-49ed-9a96-5433b0899de0"),
+                            SubjectId = new Guid("843d9700-a152-489f-b76c-921fe20e735b")
                         },
                         new
                         {
-                            Id = new Guid("11d49b82-dc77-431a-9a36-0e4969bee7ab"),
-                            CourseId = new Guid("b3cc3945-3887-4a1e-a0df-eb4be8466572"),
-                            SubjectId = new Guid("0149899a-f860-4cf2-91bc-fbace42a8671")
+                            Id = new Guid("b7c6472b-0562-4927-8eba-47e2c7495b5a"),
+                            CourseId = new Guid("0e6ab627-003f-49ed-9a96-5433b0899de0"),
+                            SubjectId = new Guid("9751581d-8951-41ea-8f6f-3ae459c72d6d")
                         },
                         new
                         {
-                            Id = new Guid("12c28ec5-bf08-46e1-a833-2517ed613738"),
-                            CourseId = new Guid("b3cc3945-3887-4a1e-a0df-eb4be8466572"),
-                            SubjectId = new Guid("9af66b65-f95b-4002-93b2-3016f023ba26")
+                            Id = new Guid("39e08dfd-f6d7-4bf6-8a82-f6593761b2b2"),
+                            CourseId = new Guid("0e6ab627-003f-49ed-9a96-5433b0899de0"),
+                            SubjectId = new Guid("c6f329fa-50c4-4471-bc28-ccd3780bd76c")
                         },
                         new
                         {
-                            Id = new Guid("d7b97ab0-124a-4b6c-87c9-a5c61e12107f"),
-                            CourseId = new Guid("d2778826-36f9-4406-a01f-1200ad2f8e7f"),
-                            SubjectId = new Guid("34a42bd6-2911-42b6-b22a-e4e53fcb3621")
+                            Id = new Guid("518adb37-b8a3-48ed-b0ac-5fa1d77051c6"),
+                            CourseId = new Guid("cd9cb39e-4e77-47a5-abf5-82a3f76d56fe"),
+                            SubjectId = new Guid("9ca5e0dd-1925-4aba-94b2-2c652ab0e36e")
                         },
                         new
                         {
-                            Id = new Guid("1ebac466-fae2-4944-9540-ffa47997d45e"),
-                            CourseId = new Guid("d2778826-36f9-4406-a01f-1200ad2f8e7f"),
-                            SubjectId = new Guid("0149899a-f860-4cf2-91bc-fbace42a8671")
+                            Id = new Guid("665f71d1-f2b6-474d-b79c-d1410114f684"),
+                            CourseId = new Guid("cd9cb39e-4e77-47a5-abf5-82a3f76d56fe"),
+                            SubjectId = new Guid("9751581d-8951-41ea-8f6f-3ae459c72d6d")
                         },
                         new
                         {
-                            Id = new Guid("49a407a3-44cb-4c6a-9970-b943e1d2b068"),
-                            CourseId = new Guid("819dd682-ae3e-4d2d-914b-d865c15dbb08"),
-                            SubjectId = new Guid("1cb8021a-acf2-4338-94b0-91a732cb9312")
+                            Id = new Guid("8bce8093-63ea-4404-a678-4d4c3108cb9f"),
+                            CourseId = new Guid("598e17a7-3c98-4ba9-9878-0c2b2e78bb91"),
+                            SubjectId = new Guid("843d9700-a152-489f-b76c-921fe20e735b")
                         },
                         new
                         {
-                            Id = new Guid("3d68ac1d-e91b-4b90-9424-9e8a9ae88eee"),
-                            CourseId = new Guid("819dd682-ae3e-4d2d-914b-d865c15dbb08"),
-                            SubjectId = new Guid("0149899a-f860-4cf2-91bc-fbace42a8671")
+                            Id = new Guid("edca5bb8-a68c-4870-aaf1-3e29378f92fa"),
+                            CourseId = new Guid("598e17a7-3c98-4ba9-9878-0c2b2e78bb91"),
+                            SubjectId = new Guid("9751581d-8951-41ea-8f6f-3ae459c72d6d")
                         },
                         new
                         {
-                            Id = new Guid("8612e33a-1540-46a2-ab61-d4709b078037"),
-                            CourseId = new Guid("819dd682-ae3e-4d2d-914b-d865c15dbb08"),
-                            SubjectId = new Guid("4d240841-08b0-4bc6-8b53-35e8d370ad9b")
+                            Id = new Guid("f84640c5-6b8d-4971-9c5d-f2cc0159690f"),
+                            CourseId = new Guid("598e17a7-3c98-4ba9-9878-0c2b2e78bb91"),
+                            SubjectId = new Guid("50e5eb5a-9cfb-477b-b99a-a1d886b9b987")
                         });
                 });
 
@@ -127,7 +127,7 @@ namespace EpsSchool.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime>("Birthdate")
+                    b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateTime?>("EndDate")
@@ -165,100 +165,100 @@ namespace EpsSchool.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("636b8127-2ea5-43aa-9927-c9f9d416d81b"),
-                            Birthdate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Enrollment = "21060102",
+                            Id = new Guid("79694048-3183-4c2f-9247-17ec7786d3ac"),
+                            BirthDate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Enrollment = "21081971",
                             Name = "Joana",
                             PhoneNumber = "33556699",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(5725),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(6285),
                             Status = true,
                             Surname = "Alves"
                         },
                         new
                         {
-                            Id = new Guid("fe7f4c67-ac16-4a34-863a-aaf558da73dd"),
-                            Birthdate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Enrollment = "21060166",
+                            Id = new Guid("435172d4-e829-4775-8b8b-7ca347ec7a17"),
+                            BirthDate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Enrollment = "21080133",
                             Name = "Fernanda",
                             PhoneNumber = "33447789",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(7885),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(8276),
                             Status = true,
                             Surname = "Silva"
                         },
                         new
                         {
-                            Id = new Guid("2ba7c6f5-a760-457c-b313-63840d466e2c"),
-                            Birthdate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Enrollment = "21060959",
+                            Id = new Guid("d3cb36ee-f1c2-48ec-a649-0b2e65eed2ad"),
+                            BirthDate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Enrollment = "21084193",
                             Name = "Vanessa",
                             PhoneNumber = "99562341",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(7973),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(8377),
                             Status = true,
                             Surname = "Lisboa"
                         },
                         new
                         {
-                            Id = new Guid("b98f7a83-c82f-46c9-b143-9bf155c3993f"),
-                            Birthdate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Enrollment = "21068265",
+                            Id = new Guid("6a8f5d01-4e5e-4920-a899-82b493146ac5"),
+                            BirthDate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Enrollment = "21081380",
                             Name = "Maria",
                             PhoneNumber = "99452417",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(7993),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(8391),
                             Status = true,
                             Surname = "Madalena"
                         },
                         new
                         {
-                            Id = new Guid("8ede74ff-2d41-4ab3-92b5-f97856922c34"),
-                            Birthdate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Enrollment = "21060200",
+                            Id = new Guid("2af684f2-9e20-499d-a548-7c4aff1ea340"),
+                            BirthDate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Enrollment = "21081773",
                             Name = "João",
                             PhoneNumber = "98564712",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(8014),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(8402),
                             Status = true,
                             Surname = "Paulo"
                         },
                         new
                         {
-                            Id = new Guid("b41eabe2-afeb-41d5-94b4-396974b31bce"),
-                            Birthdate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Enrollment = "21061391",
+                            Id = new Guid("7869c977-ac91-4cd2-9425-804a70adfdf7"),
+                            BirthDate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Enrollment = "21080198",
                             Name = "Ananias",
                             PhoneNumber = "33589624",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(8033),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(8421),
                             Status = true,
                             Surname = "Fernandes"
                         },
                         new
                         {
-                            Id = new Guid("3091bd0a-ccd5-4522-9ea1-2dd352bc7dac"),
-                            Birthdate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Enrollment = "21061826",
+                            Id = new Guid("4f5e8c46-462a-4510-80db-5835f2d5fee1"),
+                            BirthDate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Enrollment = "21080555",
                             Name = "José",
                             PhoneNumber = "98745122",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(8051),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(8436),
                             Status = true,
                             Surname = "Arimatéia"
                         },
                         new
                         {
-                            Id = new Guid("6b4d6ee5-7e6a-4921-b0dc-56cb4a95d18c"),
-                            Birthdate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Enrollment = "21061709",
+                            Id = new Guid("9b89bf54-4642-40eb-b5d5-5220b4826fd5"),
+                            BirthDate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Enrollment = "21087780",
                             Name = "Carlos",
                             PhoneNumber = "44558896",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(8092),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(8449),
                             Status = true,
                             Surname = "Gaiado"
                         },
                         new
                         {
-                            Id = new Guid("13c86ed1-546b-409f-b651-49ab0880ea57"),
-                            Birthdate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Enrollment = "21060134",
+                            Id = new Guid("331f2e60-858d-4b74-9872-86dd9d526562"),
+                            BirthDate = new DateTime(2005, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Enrollment = "21080947",
                             Name = "Diogenes",
                             PhoneNumber = "22665588",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(8114),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(8471),
                             Status = true,
                             Surname = "Finético"
                         });
@@ -291,147 +291,147 @@ namespace EpsSchool.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            StudentId = new Guid("636b8127-2ea5-43aa-9927-c9f9d416d81b"),
-                            CourseSubjectId = new Guid("a517371e-a838-4ab5-84dc-0c9f6fef6503"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(8001)
+                            StudentId = new Guid("79694048-3183-4c2f-9247-17ec7786d3ac"),
+                            CourseSubjectId = new Guid("7eb9af3a-457f-4974-8a40-3b83a42bc527"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(8363)
                         },
                         new
                         {
-                            StudentId = new Guid("636b8127-2ea5-43aa-9927-c9f9d416d81b"),
-                            CourseSubjectId = new Guid("11d49b82-dc77-431a-9a36-0e4969bee7ab"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9161)
+                            StudentId = new Guid("79694048-3183-4c2f-9247-17ec7786d3ac"),
+                            CourseSubjectId = new Guid("b7c6472b-0562-4927-8eba-47e2c7495b5a"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9546)
                         },
                         new
                         {
-                            StudentId = new Guid("636b8127-2ea5-43aa-9927-c9f9d416d81b"),
-                            CourseSubjectId = new Guid("12c28ec5-bf08-46e1-a833-2517ed613738"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9197)
+                            StudentId = new Guid("79694048-3183-4c2f-9247-17ec7786d3ac"),
+                            CourseSubjectId = new Guid("39e08dfd-f6d7-4bf6-8a82-f6593761b2b2"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9587)
                         },
                         new
                         {
-                            StudentId = new Guid("fe7f4c67-ac16-4a34-863a-aaf558da73dd"),
-                            CourseSubjectId = new Guid("a517371e-a838-4ab5-84dc-0c9f6fef6503"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9201)
+                            StudentId = new Guid("435172d4-e829-4775-8b8b-7ca347ec7a17"),
+                            CourseSubjectId = new Guid("7eb9af3a-457f-4974-8a40-3b83a42bc527"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9591)
                         },
                         new
                         {
-                            StudentId = new Guid("fe7f4c67-ac16-4a34-863a-aaf558da73dd"),
-                            CourseSubjectId = new Guid("11d49b82-dc77-431a-9a36-0e4969bee7ab"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9204)
+                            StudentId = new Guid("435172d4-e829-4775-8b8b-7ca347ec7a17"),
+                            CourseSubjectId = new Guid("b7c6472b-0562-4927-8eba-47e2c7495b5a"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9594)
                         },
                         new
                         {
-                            StudentId = new Guid("fe7f4c67-ac16-4a34-863a-aaf558da73dd"),
-                            CourseSubjectId = new Guid("12c28ec5-bf08-46e1-a833-2517ed613738"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9210)
+                            StudentId = new Guid("435172d4-e829-4775-8b8b-7ca347ec7a17"),
+                            CourseSubjectId = new Guid("39e08dfd-f6d7-4bf6-8a82-f6593761b2b2"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9600)
                         },
                         new
                         {
-                            StudentId = new Guid("2ba7c6f5-a760-457c-b313-63840d466e2c"),
-                            CourseSubjectId = new Guid("a517371e-a838-4ab5-84dc-0c9f6fef6503"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9213)
+                            StudentId = new Guid("d3cb36ee-f1c2-48ec-a649-0b2e65eed2ad"),
+                            CourseSubjectId = new Guid("7eb9af3a-457f-4974-8a40-3b83a42bc527"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9603)
                         },
                         new
                         {
-                            StudentId = new Guid("2ba7c6f5-a760-457c-b313-63840d466e2c"),
-                            CourseSubjectId = new Guid("11d49b82-dc77-431a-9a36-0e4969bee7ab"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9215)
+                            StudentId = new Guid("d3cb36ee-f1c2-48ec-a649-0b2e65eed2ad"),
+                            CourseSubjectId = new Guid("b7c6472b-0562-4927-8eba-47e2c7495b5a"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9606)
                         },
                         new
                         {
-                            StudentId = new Guid("2ba7c6f5-a760-457c-b313-63840d466e2c"),
-                            CourseSubjectId = new Guid("12c28ec5-bf08-46e1-a833-2517ed613738"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9218)
+                            StudentId = new Guid("d3cb36ee-f1c2-48ec-a649-0b2e65eed2ad"),
+                            CourseSubjectId = new Guid("39e08dfd-f6d7-4bf6-8a82-f6593761b2b2"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9608)
                         },
                         new
                         {
-                            StudentId = new Guid("b98f7a83-c82f-46c9-b143-9bf155c3993f"),
-                            CourseSubjectId = new Guid("d7b97ab0-124a-4b6c-87c9-a5c61e12107f"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9222)
+                            StudentId = new Guid("6a8f5d01-4e5e-4920-a899-82b493146ac5"),
+                            CourseSubjectId = new Guid("518adb37-b8a3-48ed-b0ac-5fa1d77051c6"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9613)
                         },
                         new
                         {
-                            StudentId = new Guid("b98f7a83-c82f-46c9-b143-9bf155c3993f"),
-                            CourseSubjectId = new Guid("1ebac466-fae2-4944-9540-ffa47997d45e"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9224)
+                            StudentId = new Guid("6a8f5d01-4e5e-4920-a899-82b493146ac5"),
+                            CourseSubjectId = new Guid("665f71d1-f2b6-474d-b79c-d1410114f684"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9616)
                         },
                         new
                         {
-                            StudentId = new Guid("8ede74ff-2d41-4ab3-92b5-f97856922c34"),
-                            CourseSubjectId = new Guid("d7b97ab0-124a-4b6c-87c9-a5c61e12107f"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9227)
+                            StudentId = new Guid("2af684f2-9e20-499d-a548-7c4aff1ea340"),
+                            CourseSubjectId = new Guid("518adb37-b8a3-48ed-b0ac-5fa1d77051c6"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9618)
                         },
                         new
                         {
-                            StudentId = new Guid("8ede74ff-2d41-4ab3-92b5-f97856922c34"),
-                            CourseSubjectId = new Guid("1ebac466-fae2-4944-9540-ffa47997d45e"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9229)
+                            StudentId = new Guid("2af684f2-9e20-499d-a548-7c4aff1ea340"),
+                            CourseSubjectId = new Guid("665f71d1-f2b6-474d-b79c-d1410114f684"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9621)
                         },
                         new
                         {
-                            StudentId = new Guid("b41eabe2-afeb-41d5-94b4-396974b31bce"),
-                            CourseSubjectId = new Guid("d7b97ab0-124a-4b6c-87c9-a5c61e12107f"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9231)
+                            StudentId = new Guid("7869c977-ac91-4cd2-9425-804a70adfdf7"),
+                            CourseSubjectId = new Guid("518adb37-b8a3-48ed-b0ac-5fa1d77051c6"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9623)
                         },
                         new
                         {
-                            StudentId = new Guid("b41eabe2-afeb-41d5-94b4-396974b31bce"),
-                            CourseSubjectId = new Guid("1ebac466-fae2-4944-9540-ffa47997d45e"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9234)
+                            StudentId = new Guid("7869c977-ac91-4cd2-9425-804a70adfdf7"),
+                            CourseSubjectId = new Guid("665f71d1-f2b6-474d-b79c-d1410114f684"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9626)
                         },
                         new
                         {
-                            StudentId = new Guid("3091bd0a-ccd5-4522-9ea1-2dd352bc7dac"),
-                            CourseSubjectId = new Guid("49a407a3-44cb-4c6a-9970-b943e1d2b068"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9236)
+                            StudentId = new Guid("4f5e8c46-462a-4510-80db-5835f2d5fee1"),
+                            CourseSubjectId = new Guid("8bce8093-63ea-4404-a678-4d4c3108cb9f"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9628)
                         },
                         new
                         {
-                            StudentId = new Guid("3091bd0a-ccd5-4522-9ea1-2dd352bc7dac"),
-                            CourseSubjectId = new Guid("3d68ac1d-e91b-4b90-9424-9e8a9ae88eee"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9238)
+                            StudentId = new Guid("4f5e8c46-462a-4510-80db-5835f2d5fee1"),
+                            CourseSubjectId = new Guid("edca5bb8-a68c-4870-aaf1-3e29378f92fa"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9631)
                         },
                         new
                         {
-                            StudentId = new Guid("3091bd0a-ccd5-4522-9ea1-2dd352bc7dac"),
-                            CourseSubjectId = new Guid("8612e33a-1540-46a2-ab61-d4709b078037"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9302)
+                            StudentId = new Guid("4f5e8c46-462a-4510-80db-5835f2d5fee1"),
+                            CourseSubjectId = new Guid("f84640c5-6b8d-4971-9c5d-f2cc0159690f"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9636)
                         },
                         new
                         {
-                            StudentId = new Guid("6b4d6ee5-7e6a-4921-b0dc-56cb4a95d18c"),
-                            CourseSubjectId = new Guid("49a407a3-44cb-4c6a-9970-b943e1d2b068"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9307)
+                            StudentId = new Guid("9b89bf54-4642-40eb-b5d5-5220b4826fd5"),
+                            CourseSubjectId = new Guid("8bce8093-63ea-4404-a678-4d4c3108cb9f"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9703)
                         },
                         new
                         {
-                            StudentId = new Guid("6b4d6ee5-7e6a-4921-b0dc-56cb4a95d18c"),
-                            CourseSubjectId = new Guid("3d68ac1d-e91b-4b90-9424-9e8a9ae88eee"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9310)
+                            StudentId = new Guid("9b89bf54-4642-40eb-b5d5-5220b4826fd5"),
+                            CourseSubjectId = new Guid("edca5bb8-a68c-4870-aaf1-3e29378f92fa"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9708)
                         },
                         new
                         {
-                            StudentId = new Guid("6b4d6ee5-7e6a-4921-b0dc-56cb4a95d18c"),
-                            CourseSubjectId = new Guid("8612e33a-1540-46a2-ab61-d4709b078037"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9312)
+                            StudentId = new Guid("9b89bf54-4642-40eb-b5d5-5220b4826fd5"),
+                            CourseSubjectId = new Guid("f84640c5-6b8d-4971-9c5d-f2cc0159690f"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9711)
                         },
                         new
                         {
-                            StudentId = new Guid("13c86ed1-546b-409f-b651-49ab0880ea57"),
-                            CourseSubjectId = new Guid("49a407a3-44cb-4c6a-9970-b943e1d2b068"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9315)
+                            StudentId = new Guid("331f2e60-858d-4b74-9872-86dd9d526562"),
+                            CourseSubjectId = new Guid("8bce8093-63ea-4404-a678-4d4c3108cb9f"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9713)
                         },
                         new
                         {
-                            StudentId = new Guid("13c86ed1-546b-409f-b651-49ab0880ea57"),
-                            CourseSubjectId = new Guid("3d68ac1d-e91b-4b90-9424-9e8a9ae88eee"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9317)
+                            StudentId = new Guid("331f2e60-858d-4b74-9872-86dd9d526562"),
+                            CourseSubjectId = new Guid("edca5bb8-a68c-4870-aaf1-3e29378f92fa"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9716)
                         },
                         new
                         {
-                            StudentId = new Guid("13c86ed1-546b-409f-b651-49ab0880ea57"),
-                            CourseSubjectId = new Guid("8612e33a-1540-46a2-ab61-d4709b078037"),
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 17, DateTimeKind.Local).AddTicks(9319)
+                            StudentId = new Guid("331f2e60-858d-4b74-9872-86dd9d526562"),
+                            CourseSubjectId = new Guid("f84640c5-6b8d-4971-9c5d-f2cc0159690f"),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 948, DateTimeKind.Local).AddTicks(9719)
                         });
                 });
 
@@ -449,10 +449,6 @@ namespace EpsSchool.Infra.Migrations
                     b.Property<Guid>("TeacherId")
                         .HasColumnType("char(36)");
 
-                    b.Property<int?>("Workload")
-                        .HasColumnType("int")
-                        .HasMaxLength(9999);
-
                     b.HasKey("Id");
 
                     b.HasIndex("TeacherId");
@@ -462,33 +458,33 @@ namespace EpsSchool.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1cb8021a-acf2-4338-94b0-91a732cb9312"),
+                            Id = new Guid("843d9700-a152-489f-b76c-921fe20e735b"),
                             Name = "Matemática",
-                            TeacherId = new Guid("1cdf6fff-3d53-4e96-a8f0-398ce6220694")
+                            TeacherId = new Guid("541e2320-a8ef-401d-a136-63b68946fccc")
                         },
                         new
                         {
-                            Id = new Guid("34a42bd6-2911-42b6-b22a-e4e53fcb3621"),
+                            Id = new Guid("9ca5e0dd-1925-4aba-94b2-2c652ab0e36e"),
                             Name = "Limpeza de Gabinete",
-                            TeacherId = new Guid("c4834f2e-37a3-45af-adfd-5abf955f978b")
+                            TeacherId = new Guid("af621e46-bf5f-4ed7-91b4-ca524787ed07")
                         },
                         new
                         {
-                            Id = new Guid("0149899a-f860-4cf2-91bc-fbace42a8671"),
+                            Id = new Guid("9751581d-8951-41ea-8f6f-3ae459c72d6d"),
                             Name = "Português",
-                            TeacherId = new Guid("82b75ab5-e90b-42c1-9202-b8c2d0523717")
+                            TeacherId = new Guid("90946f61-21dc-4b5f-9b3f-a0ffd002eb62")
                         },
                         new
                         {
-                            Id = new Guid("4d240841-08b0-4bc6-8b53-35e8d370ad9b"),
+                            Id = new Guid("50e5eb5a-9cfb-477b-b99a-a1d886b9b987"),
                             Name = "Arquitetura de Servidores",
-                            TeacherId = new Guid("bff67666-ff36-4ac7-9772-72dca089f6a8")
+                            TeacherId = new Guid("e79b39f1-2bde-4389-9d89-74bfb2aee6c5")
                         },
                         new
                         {
-                            Id = new Guid("9af66b65-f95b-4002-93b2-3016f023ba26"),
+                            Id = new Guid("c6f329fa-50c4-4471-bc28-ccd3780bd76c"),
                             Name = "Programação",
-                            TeacherId = new Guid("8d0c4a69-d717-4806-aa19-844472b19338")
+                            TeacherId = new Guid("8e40e177-454d-49c6-a771-a211715b9172")
                         });
                 });
 
@@ -533,51 +529,51 @@ namespace EpsSchool.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1cdf6fff-3d53-4e96-a8f0-398ce6220694"),
-                            Enrollment = "21061249",
+                            Id = new Guid("541e2320-a8ef-401d-a136-63b68946fccc"),
+                            Enrollment = "21081855",
                             Name = "José",
                             PhoneNumber = "44778899",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(8722),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(8966),
                             Status = true,
                             Surname = "Roberto"
                         },
                         new
                         {
-                            Id = new Guid("c4834f2e-37a3-45af-adfd-5abf955f978b"),
-                            Enrollment = "21060124",
+                            Id = new Guid("af621e46-bf5f-4ed7-91b4-ca524787ed07"),
+                            Enrollment = "21080126",
                             Name = "Carlos",
                             PhoneNumber = "33568941",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(8777),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(9002),
                             Status = true,
                             Surname = "Eduardo"
                         },
                         new
                         {
-                            Id = new Guid("82b75ab5-e90b-42c1-9202-b8c2d0523717"),
-                            Enrollment = "21063686",
+                            Id = new Guid("90946f61-21dc-4b5f-9b3f-a0ffd002eb62"),
+                            Enrollment = "21081182",
                             Name = "Manuel",
                             PhoneNumber = "99587462",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(8798),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(9015),
                             Status = true,
                             Surname = "Nobre"
                         },
                         new
                         {
-                            Id = new Guid("bff67666-ff36-4ac7-9772-72dca089f6a8"),
-                            Enrollment = "21060211",
+                            Id = new Guid("e79b39f1-2bde-4389-9d89-74bfb2aee6c5"),
+                            Enrollment = "21080562",
                             Name = "João",
                             PhoneNumber = "33506987",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(8819),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(9028),
                             Status = true,
                             Surname = "Olavo"
                         },
                         new
                         {
-                            Id = new Guid("8d0c4a69-d717-4806-aa19-844472b19338"),
-                            Enrollment = "21060118",
+                            Id = new Guid("8e40e177-454d-49c6-a771-a211715b9172"),
+                            Enrollment = "21080153",
                             Name = "Lucas",
                             PhoneNumber = "33214896",
-                            StartDate = new DateTime(2021, 4, 6, 19, 50, 1, 7, DateTimeKind.Local).AddTicks(8840),
+                            StartDate = new DateTime(2021, 4, 8, 13, 23, 53, 938, DateTimeKind.Local).AddTicks(9042),
                             Status = true,
                             Surname = "Ribas"
                         });

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Helpers;
+using EpsSchool.Domain.Queries;
 using EpsSchool.Domain.Repositories;
 using EpsSchool.infra.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -51,8 +52,7 @@ namespace EpsSchool.Infra.Repositories
 
             query = query.AsNoTracking()
                          .OrderBy(s => s.Id)
-                         .Where(s => s.Id == studentId);
-
+                         .Where(StudentQueries.GetStudentById(studentId));
 
             return query.FirstOrDefault();
         }
@@ -72,18 +72,13 @@ namespace EpsSchool.Infra.Repositories
             query = query.AsNoTracking().OrderBy(s => s.Id);
 
             if (!string.IsNullOrEmpty(pageParams.Name))
-                query = query.Where(s => s.Name
-                                                  .ToUpper()
-                                                  .Contains(pageParams.Name.ToUpper()) ||
-                                                s.Surname
-                                                  .ToUpper()
-                                                  .Contains(pageParams.Name.ToUpper()));
+                query = query.Where(StudentQueries.GetAllWhenPageParamsContainsName(pageParams));
 
             if (!string.IsNullOrEmpty(pageParams.Enrollment))
-                query = query.Where(s => s.Enrollment == pageParams.Enrollment);
+                query = query.Where(StudentQueries.GetAllWhenPageParamsContainsEnrollment(pageParams));
 
             if (!string.IsNullOrEmpty(pageParams.Status))
-                query = query.Where(s => s.Status == (pageParams.Equals(1)));
+                query = query.Where(StudentQueries.GetAllWhenPageParamsContainsStatus(pageParams));
 
             return await PageList<Student>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }
@@ -102,8 +97,7 @@ namespace EpsSchool.Infra.Repositories
 
             query = query.AsNoTracking()
                          .OrderBy(s => s.Id)
-                         .Where(s => s.StudentsCoursesSubjects.Any(
-                             d => d.CourseSubject.CourseId == courseId));
+                         .Where(StudentQueries.GetAllByCourseIdAsync(courseId));
 
             return await query.ToListAsync();
         }
