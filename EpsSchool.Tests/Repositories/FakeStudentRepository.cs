@@ -4,7 +4,6 @@ using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Repositories;
 using EpsSchool.Domain.Helpers;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EpsSchool.Tests.Repositories
 {

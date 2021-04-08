@@ -1,4 +1,3 @@
-using System;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Handlers;
 using EpsSchool.Shared.Commands;

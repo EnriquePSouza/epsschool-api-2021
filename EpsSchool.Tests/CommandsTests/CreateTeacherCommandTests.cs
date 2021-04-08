@@ -1,4 +1,3 @@
-using System;
 using EpsSchool.Domain.Commands;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
