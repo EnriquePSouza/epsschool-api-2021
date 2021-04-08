@@ -5,7 +5,7 @@ using EpsSchool.Shared.Commands;
 using EpsSchool.Tests.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EpsSchool.Tests.HandlerTests
+namespace EpsSchool.Tests.HandlersTests
 {
     [TestClass]
     public class ChangeTeacherStatusHandlerTests
@@ -17,6 +17,7 @@ namespace EpsSchool.Tests.HandlerTests
         private GenericCommandResult _result = new GenericCommandResult();
 
         [TestMethod]
+        [TestCategory("Handler")]
         public void Dado_um_comando_invalido_deve_interromper_a_execucao()
         {
             _result = (GenericCommandResult)_handler.Handle(_invalidCommand);
@@ -24,6 +25,7 @@ namespace EpsSchool.Tests.HandlerTests
         }
 
         [TestMethod]
+        [TestCategory("Handler")]
         public void Dado_um_comando_valido_deve_atualizar_o_registro_de_professor_inativo()
         {
             _result = (GenericCommandResult)_handler.Handle(_validCommandInactive);
@@ -31,6 +33,7 @@ namespace EpsSchool.Tests.HandlerTests
         }
 
         [TestMethod]
+        [TestCategory("Handler")]
         public void Dado_um_comando_valido_deve_atualizar_o_registro_de_professor_ativo()
         {
             _result = (GenericCommandResult)_handler.Handle(_validCommandActive);

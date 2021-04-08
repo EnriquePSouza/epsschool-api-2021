@@ -59,7 +59,7 @@ namespace EpsSchool.infra.Contexts
             CourseSubject courseSubject8 = new CourseSubject(course3.Id, subject4.Id);
             #endregion
             builder.Entity<StudentCourseSubject>()
-                .HasKey(AD => new { AD.StudentId, AD.CourseSubjectId });
+                .HasKey(scs => new { scs.StudentId, scs.CourseSubjectId });
 
             builder.Entity<Teacher>()
                 .HasData(new List<Teacher>() { teacher1, teacher2,
