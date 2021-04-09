@@ -17,7 +17,7 @@ namespace EpsSchool.Domain.Queries
         {
             return x => x.Name
                             .ToUpper()
-                            .Contains(y.Name.ToUpper()) &&
+                            .Contains(y.Name.ToUpper()) ||
                         x.Surname
                             .ToUpper()
                             .Contains(y.Name.ToUpper());

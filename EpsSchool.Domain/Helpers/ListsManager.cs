@@ -7,6 +7,74 @@ namespace EpsSchool.Domain.Helpers
 {
     public class ListsManager
     {
+        public static List<Student> LoadStudentQueriesTestsSampleData()
+        {
+            List<Student> output = new List<Student>();
+
+            Student studentQuery1 = StudentsSampleDataManager.student1;
+            Student studentQuery2 = StudentsSampleDataManager.student2;
+            Student studentQuery3 = StudentsSampleDataManager.student3;
+
+            CourseSubject courseSubjectQuery1;
+
+            List<StudentCourseSubject> studentCourseSubject1 = new List<StudentCourseSubject>();
+            List<StudentCourseSubject> studentCourseSubject2 = new List<StudentCourseSubject>();
+            List<StudentCourseSubject> studentCourseSubject3 = new List<StudentCourseSubject>();
+
+            studentQuery1.Id = new Guid("3d04b2dd-76f8-4baa-8a67-12064a7808b2");
+            studentQuery1.Enrollment = DateTime.Now.ToString("yydd") +
+                           studentQuery1.Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
+
+            studentQuery2.Id = new Guid("2ae369e0-632d-45db-ade9-ebbcc2a21bd9");
+            studentQuery2.Enrollment = DateTime.Now.ToString("yydd") +
+                           studentQuery2.Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
+
+            studentQuery3.Id = new Guid("bdad5b21-e879-45fd-9cb2-c7530c5d803a");
+            studentQuery3.Enrollment = DateTime.Now.ToString("yydd") +
+                           studentQuery3.Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
+            studentQuery3.Status = false;
+
+            courseSubjectQuery1 = new CourseSubject(new Guid("3a00bebe-ace3-42e8-ad35-4a4104ae2b72"),
+                                                    SubjectsSampleDataManager.subject1.Id);
+
+            studentCourseSubject1.Add(new StudentCourseSubject(courseSubjectQuery1.Id,
+                                                               studentQuery1.Id));
+            studentCourseSubject2.Add(new StudentCourseSubject(courseSubjectQuery1.Id,
+                                                               studentQuery2.Id));
+            studentCourseSubject3.Add(new StudentCourseSubject(courseSubjectQuery1.Id,
+                                                               studentQuery3.Id));
+
+            foreach (var x in studentCourseSubject1)
+            {
+                x.CourseSubject = courseSubjectQuery1;
+            }
+
+            foreach (var x in studentCourseSubject2)
+            {
+                x.CourseSubject = courseSubjectQuery1;
+            }
+
+            foreach (var x in studentCourseSubject3)
+            {
+                x.CourseSubject = courseSubjectQuery1;
+            }
+
+            studentQuery1.StudentsCoursesSubjects = studentCourseSubject1;
+            studentQuery2.StudentsCoursesSubjects = studentCourseSubject2;
+            studentQuery3.StudentsCoursesSubjects = studentCourseSubject3;
+
+            output.Add(studentQuery1);
+            output.Add(studentQuery2);
+            output.Add(studentQuery3);
+
+            return output;
+        }
+
+        public static List<Teacher> LoadTeacherQueriesTestsSampleData()
+        {
+            throw new NotImplementedException();
+        }
+
         public static List<Student> LoadStudentsSampleData()
         {
             List<Student> output = new List<Student>();
@@ -107,40 +175,6 @@ namespace EpsSchool.Domain.Helpers
             output.Add(StudentsCoursesSubjectsSampleDataManager.studentCourseSubject24);
 
             return output;
-        }
-
-        public static List<Student> LoadStudentQueriesTestsSampleData()
-        {
-            Student studentQuery1 = StudentsSampleDataManager.student1;
-            Student studentQuery2 = StudentsSampleDataManager.student2;
-            Student studentQuery3 = StudentsSampleDataManager.student3;
-
-            studentQuery1.Id = new Guid("3d04b2dd-76f8-4baa-8a67-12064a7808b2");
-            studentQuery1.Enrollment = DateTime.Now.ToString("yydd") +
-                           studentQuery1.Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
-            
-            studentQuery2.Id = new Guid("2ae369e0-632d-45db-ade9-ebbcc2a21bd9");
-            studentQuery2.Enrollment = DateTime.Now.ToString("yydd") +
-                           studentQuery2.Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
-            
-            studentQuery3.Id = new Guid("bdad5b21-e879-45fd-9cb2-c7530c5d803a");
-            studentQuery3.Enrollment = DateTime.Now.ToString("yydd") +
-                           studentQuery3.Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
-            studentQuery3.Status = false;
-
-
-            List<Student> output = new List<Student>();
-
-            output.Add(studentQuery1);
-            output.Add(studentQuery2);
-            output.Add(studentQuery3);
-
-            return output;
-        }
-
-        public static List<Teacher> LoadTeacherQueriesTestsSampleData()
-        {
-            throw new NotImplementedException();
         }
 
     }

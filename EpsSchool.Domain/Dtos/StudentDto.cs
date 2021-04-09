@@ -4,8 +4,8 @@ namespace EpsSchool.Domain.Dtos
 {
     public class StudentDto
     {
-        public int Id { get; set; }
-        public int Enrollment { get; set; }
+        public Guid Id { get; set; }
+        public string Enrollment { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
         public int Age { get; set; }
