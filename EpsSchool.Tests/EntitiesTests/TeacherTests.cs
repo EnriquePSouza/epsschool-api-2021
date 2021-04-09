@@ -17,9 +17,9 @@ namespace EpsSchool.Tests.EntitiesTests
 
         [TestMethod]
         [TestCategory("Entity")]
-        public void Dado_um_novo_professor_o_mesmo_deve_ter_registro_de_8_caracteres_e_estar_ativo()
+        public void Dado_um_novo_professor_o_mesmo_deve_ter_registro_de_9_caracteres_e_estar_ativo()
         {
-            Assert.AreEqual(8, _teacher.Enrollment.Length);
+            Assert.AreEqual(9, _teacher.Enrollment.Length);
             Assert.AreEqual(_teacher.Status, true);
         }
 

@@ -49,7 +49,7 @@ namespace EpsSchool.Tests.QueriesTests
             PageParams pageParam = new PageParams();
 
             pageParam.Enrollment = DateTime.Now.ToString("yydd") +
-                           _studentId.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
+                           _studentId.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
 
             _students = ListsManager.LoadStudentQueriesTestsSampleData();
 

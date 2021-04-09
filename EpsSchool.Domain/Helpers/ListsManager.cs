@@ -23,15 +23,15 @@ namespace EpsSchool.Domain.Helpers
 
             studentQuery1.Id = new Guid("3d04b2dd-76f8-4baa-8a67-12064a7808b2");
             studentQuery1.Enrollment = DateTime.Now.ToString("yydd") +
-                           studentQuery1.Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
+                           studentQuery1.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
 
             studentQuery2.Id = new Guid("2ae369e0-632d-45db-ade9-ebbcc2a21bd9");
             studentQuery2.Enrollment = DateTime.Now.ToString("yydd") +
-                           studentQuery2.Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
+                           studentQuery2.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
 
             studentQuery3.Id = new Guid("bdad5b21-e879-45fd-9cb2-c7530c5d803a");
             studentQuery3.Enrollment = DateTime.Now.ToString("yydd") +
-                           studentQuery3.Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
+                           studentQuery3.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
             studentQuery3.Status = false;
 
             courseSubjectQuery1 = new CourseSubject(new Guid("3a00bebe-ace3-42e8-ad35-4a4104ae2b72"),

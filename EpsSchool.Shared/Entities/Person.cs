@@ -9,7 +9,7 @@ namespace EpsSchool.Shared.Entities
         protected Person(string name, string surname, string phoneNumber)
         {
             Enrollment = DateTime.Now.ToString("yydd") +
-                           Id.GetHashCode().ToString().Replace("-", "0").Substring(0, 4);
+                           Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
             Name = name;
             Surname = surname;
             PhoneNumber = phoneNumber;
