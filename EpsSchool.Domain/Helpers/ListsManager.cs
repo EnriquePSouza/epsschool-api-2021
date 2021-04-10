@@ -11,11 +11,15 @@ namespace EpsSchool.Domain.Helpers
         {
             List<Student> output = new List<Student>();
 
+            CourseSubject courseSubjectQuery1;
+
             Student studentQuery1 = StudentsSampleDataManager.student1;
             Student studentQuery2 = StudentsSampleDataManager.student2;
             Student studentQuery3 = StudentsSampleDataManager.student3;
 
-            CourseSubject courseSubjectQuery1;
+            StudentCourseSubject studentCourseSubjectItem1;
+            StudentCourseSubject studentCourseSubjectItem2;
+            StudentCourseSubject studentCourseSubjectItem3;
 
             List<StudentCourseSubject> studentCourseSubject1 = new List<StudentCourseSubject>();
             List<StudentCourseSubject> studentCourseSubject2 = new List<StudentCourseSubject>();
@@ -37,27 +41,20 @@ namespace EpsSchool.Domain.Helpers
             courseSubjectQuery1 = new CourseSubject(new Guid("3a00bebe-ace3-42e8-ad35-4a4104ae2b72"),
                                                     SubjectsSampleDataManager.subject1.Id);
 
-            studentCourseSubject1.Add(new StudentCourseSubject(courseSubjectQuery1.Id,
-                                                               studentQuery1.Id));
-            studentCourseSubject2.Add(new StudentCourseSubject(courseSubjectQuery1.Id,
-                                                               studentQuery2.Id));
-            studentCourseSubject3.Add(new StudentCourseSubject(courseSubjectQuery1.Id,
-                                                               studentQuery3.Id));
+            studentCourseSubjectItem1 = new StudentCourseSubject(courseSubjectQuery1.Id,
+                                                                 studentQuery1.Id);
+            studentCourseSubjectItem2 = new StudentCourseSubject(courseSubjectQuery1.Id,
+                                                                 studentQuery2.Id);
+            studentCourseSubjectItem3 = new StudentCourseSubject(courseSubjectQuery1.Id,
+                                                                 studentQuery3.Id);
 
-            foreach (var x in studentCourseSubject1)
-            {
-                x.CourseSubject = courseSubjectQuery1;
-            }
+            studentCourseSubjectItem1.CourseSubject = courseSubjectQuery1;
+            studentCourseSubjectItem2.CourseSubject = courseSubjectQuery1;
+            studentCourseSubjectItem3.CourseSubject = courseSubjectQuery1;
 
-            foreach (var x in studentCourseSubject2)
-            {
-                x.CourseSubject = courseSubjectQuery1;
-            }
-
-            foreach (var x in studentCourseSubject3)
-            {
-                x.CourseSubject = courseSubjectQuery1;
-            }
+            studentCourseSubject1.Add(studentCourseSubjectItem1);
+            studentCourseSubject2.Add(studentCourseSubjectItem2);
+            studentCourseSubject3.Add(studentCourseSubjectItem3);
 
             studentQuery1.StudentsCoursesSubjects = studentCourseSubject1;
             studentQuery2.StudentsCoursesSubjects = studentCourseSubject2;
@@ -72,7 +69,49 @@ namespace EpsSchool.Domain.Helpers
 
         public static List<Teacher> LoadTeacherQueriesTestsSampleData()
         {
-            throw new NotImplementedException();
+            List<Teacher> output = new List<Teacher>();
+
+            Teacher teacherQuery1 = TeachersSampleDataManager.teacher1;
+            Student studentQuery1 = StudentsSampleDataManager.student1;
+
+            Subject subjectItemQuery1 = SubjectsSampleDataManager.subject1;
+            CourseSubject courseSubjectItemQuery1 = 
+                            new CourseSubject(new Guid("3a00bebe-ace3-42e8-ad35-4a4104ae2b72"), 
+                                              subjectItemQuery1.Id);
+
+            List<StudentCourseSubject> studentCourseSubject1 = new List<StudentCourseSubject>();
+            List<CourseSubject> courseSubjectQuery1 = new List<CourseSubject>();
+            List<Subject> subjectQuery1 = new List<Subject>();
+
+            teacherQuery1.Id = new Guid("b4fabc54-ce8c-4009-beb4-51d577563c65");
+            teacherQuery1.Enrollment = DateTime.Now.ToString("yydd") +
+                           teacherQuery1.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
+
+            studentQuery1.Id = new Guid("3d04b2dd-76f8-4baa-8a67-12064a7808b2");
+            studentQuery1.Enrollment = DateTime.Now.ToString("yydd") +
+                           studentQuery1.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
+
+            studentCourseSubject1.Add(new StudentCourseSubject(courseSubjectItemQuery1.Id, studentQuery1.Id));
+
+            courseSubjectItemQuery1.StudentsCoursesSubjects = studentCourseSubject1;
+
+            studentQuery1.StudentsCoursesSubjects = studentCourseSubject1;
+
+            courseSubjectItemQuery1.StudentsCoursesSubjects = studentCourseSubject1;
+
+            courseSubjectQuery1.Add(courseSubjectItemQuery1);
+
+            subjectItemQuery1.TeacherId = teacherQuery1.Id;
+
+            subjectItemQuery1.CoursesSubjects = courseSubjectQuery1;
+
+            subjectQuery1.Add(subjectItemQuery1);
+
+            teacherQuery1.Subject = subjectQuery1;
+
+            output.Add(teacherQuery1);
+
+            return output;
         }
 
         public static List<Student> LoadStudentsSampleData()

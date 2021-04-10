@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EpsSchool.Domain.Entities;
+using EpsSchool.Domain.Queries;
 using EpsSchool.Domain.Repositories;
 using EpsSchool.infra.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -48,12 +49,12 @@ namespace EpsSchool.Infra.Repositories
                              .Include(t => t.Subject)
                                 .ThenInclude(s => s.CoursesSubjects)
                                 .ThenInclude(cs => cs.StudentsCoursesSubjects)
-                                .ThenInclude(acd => acd.Student);
+                                .ThenInclude(scs => scs.Student);
             }
 
             query = query.AsNoTracking()
-                         .OrderBy(p => p.Id)
-                         .Where(p => p.Id == teacherId);
+                         .OrderBy(t => t.Id)
+                         .Where(TeacherQueries.GetTeacherById(teacherId));
 
 
             return query.FirstOrDefault();
@@ -96,10 +97,7 @@ namespace EpsSchool.Infra.Repositories
 
             query = query.AsNoTracking()
                          .OrderBy(t => t.Id)
-                         .Where(t => t.Subject.Any(
-                             d => d.CoursesSubjects.Any(
-                             cd => cd.StudentsCoursesSubjects.Any(
-                             acd => acd.StudentId == studentId))));
+                         .Where(TeacherQueries.GetAllByStudentIdAsync(studentId));
 
             return await query.ToListAsync();
         }
