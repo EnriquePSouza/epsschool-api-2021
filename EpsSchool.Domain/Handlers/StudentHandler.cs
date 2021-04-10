@@ -29,7 +29,7 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Aluno Invalido!", command.Notifications);
             
             // Creates the student object.
-            var student = new Student(command.Name, command.Surname, 
+            var student = new Student(command.FirstName, command.LastName, 
                 command.PhoneNumber, command.BirthDate);
 
             _repository.Create(student); // TODO - Change the method to async and resolve the task.
@@ -51,8 +51,8 @@ namespace EpsSchool.Domain.Handlers
 
             // TODO - Make this a service method in one TeacherService, and test it.
             // Update the student object with the new command data.
-            student.Name = command.Name;
-            student.Surname = command.Surname;
+            student.FirstName = command.FirstName;
+            student.LastName = command.LastName;
             student.PhoneNumber = command.PhoneNumber;
             student.Status = command.Status;
 

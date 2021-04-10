@@ -13,12 +13,9 @@ namespace EpsSchool.Domain.Queries
             return x => x.Id == id;
         }
 
-        public static Expression<Func<Teacher, bool>> GetAllByStudentIdAsync(Guid studentId)
+        public static Func<CourseSubject, bool> GetAllByStudentIdAsync(Guid studentId)
         {
-            return t => t.Subject.Any(
-                             d => d.CoursesSubjects.Any(
-                             cd => cd.StudentsCoursesSubjects.Any(
-                             acd => acd.StudentId == studentId)));
+            return cs => cs.StudentsCoursesSubjects.Any(scs => scs.StudentId == studentId);
         }
 
     }

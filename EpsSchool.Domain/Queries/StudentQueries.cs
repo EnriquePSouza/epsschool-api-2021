@@ -15,10 +15,10 @@ namespace EpsSchool.Domain.Queries
 
         public static Expression<Func<Student, bool>> GetAllWhenPageParamsContainsName(PageParams y)
         {
-            return x => x.Name
+            return x => x.FirstName
                             .ToUpper()
                             .Contains(y.Name.ToUpper()) ||
-                        x.Surname
+                        x.LastName
                             .ToUpper()
                             .Contains(y.Name.ToUpper());
         }

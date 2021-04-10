@@ -7,7 +7,7 @@ namespace EpsSchool.Tests.EntitiesTests
     [TestClass]
     public class SubjectTests
     {
-        private readonly Subject _subject = new Subject("Informática", Guid.NewGuid());
+        private readonly Subject _subject = new Subject("Informática");
 
         [TestMethod]
         [TestCategory("Entity")]

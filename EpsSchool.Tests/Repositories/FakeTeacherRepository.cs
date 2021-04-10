@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Repositories;
 using System.Collections.Generic;
+using EpsSchool.Domain.Helpers.SampleDataManagers;
 
 namespace EpsSchool.Tests.Repositories
 {
@@ -22,7 +23,7 @@ namespace EpsSchool.Tests.Repositories
 
         public Teacher GetById(Guid teacherId, bool includeStudents = false)
         {
-            return new Teacher("Enrique", "Souza", "33458856");
+            return new Teacher("Enrique", "Souza", "33458856", SubjectsSampleDataManager.subject1.Id);
         }
 
         public Task<List<Teacher>> GetByStudentId(Guid studentId, bool includeStudents = false)

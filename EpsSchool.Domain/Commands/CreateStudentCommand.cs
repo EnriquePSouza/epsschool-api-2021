@@ -12,11 +12,11 @@ namespace EpsSchool.Domain.Commands
     {
         public CreateStudentCommand() { }
 
-        public CreateStudentCommand(string name, string surname, string phoneNumber,
+        public CreateStudentCommand(string firstName, string lastName, string phoneNumber,
             DateTime birthDate)
         {
-            Name = name;
-            Surname = surname;
+            FirstName = firstName;
+            LastName = lastName;
             PhoneNumber = phoneNumber;
             BirthDate = birthDate;
             StartDate = DateTime.Now;
@@ -29,12 +29,12 @@ namespace EpsSchool.Domain.Commands
         /// Primeiro nome do aluno.
         /// </summary>
         /// <value></value>
-        public string Name { get; set; }
+        public string FirstName { get; set; }
         /// <summary>
         /// Segundo nome do aluno.
         /// </summary>
         /// <value></value>
-        public string Surname { get; set; }
+        public string LastName { get; set; }
         /// <summary>
         /// Telefone do aluno.
         /// </summary>
@@ -66,10 +66,10 @@ namespace EpsSchool.Domain.Commands
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .HasMinLen(Name, 5, "Nome", "Informe o nome do aluno!")
-                    .HasMaxLen(Name, 20,"Nome", "O nome não pode ter mais que 20 caracteres!")
-                    .HasMinLen(Surname, 5, "Sobrenome", "Informe o sobrenome do aluno!")
-                    .HasMaxLen(Surname, 20,"Sobrenome", "O sobrenome não pode ter mais que 20 caracteres!")
+                    .HasMinLen(FirstName, 5, "Nome", "Informe o nome do aluno!")
+                    .HasMaxLen(FirstName, 20,"Nome", "O nome não pode ter mais que 20 caracteres!")
+                    .HasMinLen(LastName, 5, "Sobrenome", "Informe o sobrenome do aluno!")
+                    .HasMaxLen(LastName, 20,"Sobrenome", "O sobrenome não pode ter mais que 20 caracteres!")
                     .HasMinLen(PhoneNumber, 8, "Telefone", "Informe um telefone válido contendo apenas numeros!")
                     .HasMaxLen(PhoneNumber, 12,"Telefone", "Informe um telefone válido contendo apenas numeros!")
                     .IsNotNull(BirthDate, "Data de nascimento", "Informe a data de nascimento do aluno!")

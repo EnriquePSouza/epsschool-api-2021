@@ -1,4 +1,5 @@
 using EpsSchool.Domain.Entities;
+using EpsSchool.Domain.Helpers.SampleDataManagers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EpsSchool.Tests.EntitiesTests
@@ -6,7 +7,8 @@ namespace EpsSchool.Tests.EntitiesTests
     [TestClass]
     public class TeacherTests
     {
-        private readonly Teacher _teacher = new Teacher("Enrique", "Souza", "33458856");
+        private readonly Teacher _teacher = new Teacher("Enrique", "Souza", "33458856",
+                                                         SubjectsSampleDataManager.subject1.Id);
 
         [TestMethod]
         [TestCategory("Entity")]

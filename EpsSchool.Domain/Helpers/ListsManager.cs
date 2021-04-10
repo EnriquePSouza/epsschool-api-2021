@@ -101,13 +101,7 @@ namespace EpsSchool.Domain.Helpers
 
             courseSubject1.Add(courseSubjectItem1);
 
-            subjectItem1.TeacherId = teacherData1.Id;
-
-            subjectItem1.CoursesSubjects = courseSubject1;
-
             subjectData1.Add(subjectItem1);
-
-            teacherData1.Subject = subjectData1;
 
             output.Add(teacherData1);
 

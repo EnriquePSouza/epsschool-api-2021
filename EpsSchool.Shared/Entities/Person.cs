@@ -6,12 +6,12 @@ namespace EpsSchool.Shared.Entities
     public abstract class Person : Entity
     {
         protected Person() { }
-        protected Person(string name, string surname, string phoneNumber)
+        protected Person(string firstName, string lastName, string phoneNumber)
         {
             Enrollment = DateTime.Now.ToString("yydd") +
                            Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
-            Name = name;
-            Surname = surname;
+            FirstName = firstName;
+            LastName = lastName;
             PhoneNumber = phoneNumber;
             StartDate = DateTime.Now;
             EndDate = null;
@@ -24,11 +24,11 @@ namespace EpsSchool.Shared.Entities
 
         [Required]
         [MaxLength(120)]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
 
         [Required]
         [MaxLength(120)]
-        public string Surname { get; set; }
+        public string LastName { get; set; }
 
         [Required]
         [MaxLength(120)]

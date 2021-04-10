@@ -11,8 +11,8 @@ namespace EpsSchool.Domain.Helpers
         {
             CreateMap<Student, StudentDto>()
                 .ForMember(
-                    dest => dest.Name,
-                    opt => opt.MapFrom(src => $"{src.Name} {src.Surname}")
+                    dest => dest.FullName,
+                    opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}")
                 )
                 .ForMember(
                     dest => dest.Age,
@@ -24,8 +24,8 @@ namespace EpsSchool.Domain.Helpers
 
             CreateMap<Teacher, TeacherDto>()
                 .ForMember(
-                    dest => dest.Name,
-                    opt => opt.MapFrom(src => $"{src.Name} {src.Surname}")
+                    dest => dest.FullName,
+                    opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}")
                     );
             CreateMap<TeacherDto, Teacher>();
             CreateMap<Teacher, CreateTeacherCommand>().ReverseMap();

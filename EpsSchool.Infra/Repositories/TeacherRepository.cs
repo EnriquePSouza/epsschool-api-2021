@@ -97,7 +97,9 @@ namespace EpsSchool.Infra.Repositories
 
             query = query.AsNoTracking()
                          .OrderBy(t => t.Id)
-                         .Where(TeacherQueries.GetAllByStudentIdAsync(studentId));
+                         .Include(t => t.Subject)
+                         .ThenInclude(sb => sb.CoursesSubjects
+                                     .Where(TeacherQueries.GetAllByStudentIdAsync(studentId)));
 
             return await query.ToListAsync();
         }
