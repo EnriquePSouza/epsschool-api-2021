@@ -84,18 +84,12 @@ namespace EpsSchool.Domain.Handlers
             var student = await _repository.GetById(command.Id);
             if (student == null)
                 return new GenericCommandResult(false, "Aluno não encontrado!", command);
-
+            
             // Update the student status.
-             if(command.Status.Equals(true))
-             {
-                 student.Status = true; 
-                 student.EndDate = null;
-             }
-             else
-             {
-                 student.Status = false;
-                 student.EndDate = DateTime.Now;
-             }
+            student.Status = command.Status.Equals(true);
+            student.EndDate = command.Status.Equals(true) ? null : DateTime.Now;
+
+            // Update the student status
             
             _repository.Update(student);
             await _repository.SaveAsync();

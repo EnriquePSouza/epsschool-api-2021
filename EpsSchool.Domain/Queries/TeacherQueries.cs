@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using EpsSchool.Domain.Entities;
-using EpsSchool.Domain.Helpers;
 
 namespace EpsSchool.Domain.Queries
 {

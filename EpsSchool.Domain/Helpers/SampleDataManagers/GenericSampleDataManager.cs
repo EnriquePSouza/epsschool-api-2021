@@ -1,5 +1,4 @@
 using System;
-using EpsSchool.Domain.Entities;
 
 namespace EpsSchool.Domain.Helpers
 {

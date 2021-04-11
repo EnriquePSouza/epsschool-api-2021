@@ -1,13 +1,11 @@
 using System;
 using System.Threading.Tasks;
-using AutoMapper;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Repositories;
 using EpsSchool.Shared.Commands;
 using EpsSchool.Shared.Handlers;
 using Flunt.Notifications;
-using Microsoft.AspNetCore.Mvc;
 
 namespace EpsSchool.Domain.Handlers
 {
@@ -55,7 +53,7 @@ namespace EpsSchool.Domain.Handlers
             if (teacher == null)
                 return new GenericCommandResult(false, "Professor não encontrado!", command);
 
-            // Update the student object with the new command data.
+            // Update the teacher object with the new command data.
             // TODO - Use automapper to make this object.
             teacher.FirstName = command.FirstName;
             teacher.LastName = command.LastName;
@@ -83,19 +81,11 @@ namespace EpsSchool.Domain.Handlers
             var teacher = await _repository.GetById(command.Id);
             if (teacher == null)
                 return new GenericCommandResult(false, "Professor não encontrado!", teacher);
-            
-            // Update the student status.
-             if(command.Status.Equals(true))
-             {
-                 teacher.Status = true; 
-                 teacher.EndDate = null;
-             }
-             else
-             {
-                 teacher.Status = false;
-                 teacher.EndDate = DateTime.Now;
-             }
 
+            // Update the teacher status.
+            teacher.Status = command.Status.Equals(true);
+            teacher.EndDate = command.Status.Equals(true) ? null : DateTime.Now;
+             
             _repository.Update(teacher);
             await _repository.SaveAsync();
 
