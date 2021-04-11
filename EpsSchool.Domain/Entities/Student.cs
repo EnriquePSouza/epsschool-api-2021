@@ -15,5 +15,17 @@ namespace EpsSchool.Domain.Entities
         public DateTime BirthDate { get; set; }
 
         public IEnumerable<StudentCourseSubject> StudentsCoursesSubjects { get; set; }
+
+        public void IsActive()
+        {
+            Status = true; 
+            EndDate = null;
+        }
+
+        public void IsInactive()
+        {
+            Status = false;
+            EndDate = DateTime.Now;
+        }
     }
 }

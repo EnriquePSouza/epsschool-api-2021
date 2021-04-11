@@ -5,8 +5,8 @@ namespace EpsSchool.Shared.Entities
 {
     public abstract class Person : Entity
     {
-        protected Person() { }
-        protected Person(string firstName, string lastName, string phoneNumber)
+        public Person() { }
+        public Person(string firstName, string lastName, string phoneNumber)
         {
             Enrollment = DateTime.Now.ToString("yydd") +
                            Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
