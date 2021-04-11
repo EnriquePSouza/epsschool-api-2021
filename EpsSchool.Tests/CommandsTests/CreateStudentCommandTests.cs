@@ -1,5 +1,6 @@
 using System;
 using EpsSchool.Domain.Commands;
+using EpsSchool.Domain.Helpers.SampleDataManagers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EpsSchool.Tests.CommandsTests
@@ -7,8 +8,12 @@ namespace EpsSchool.Tests.CommandsTests
     [TestClass]
     public class CreateStudentCommandTests
     {
-        private readonly CreateStudentCommand _invalidCommand = new CreateStudentCommand("","","",DateTime.Now);
-        private readonly CreateStudentCommand _validCommand = new CreateStudentCommand("Enrique", "Souza", "33458856", DateTime.Now);
+        private readonly CreateStudentCommand _invalidCommand = new CreateStudentCommand
+                                                                ("","","",DateTime.Now,
+                                                                 CoursesSampleDataManager.course1.Id);
+        private readonly CreateStudentCommand _validCommand = new CreateStudentCommand
+                                                              ("Enrique", "Souza", "33458856",
+                                                                DateTime.Now, CoursesSampleDataManager.course1.Id);
 
         public CreateStudentCommandTests()
         {

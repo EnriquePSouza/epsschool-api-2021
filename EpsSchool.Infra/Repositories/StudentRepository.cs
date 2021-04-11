@@ -23,22 +23,24 @@ namespace EpsSchool.Infra.Repositories
         public void Create(Student student)
         {
             _context.Students.Add(student);
-            _context.SaveChanges();
         }
 
         public void Update(Student student)
         {
             _context.Entry(student).State = EntityState.Modified;
-            _context.SaveChanges();
         }
 
         public void Delete(Student student)
         {
             _context.Entry(student).State = EntityState.Deleted;
-            _context.SaveChanges();
         }
 
-        public Student GetById(Guid studentId, bool includeTeacher = false)
+        public async Task SaveAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<Student> GetById(Guid studentId, bool includeTeacher = false)
         {
             IQueryable<Student> query = _context.Students;
 
@@ -54,7 +56,7 @@ namespace EpsSchool.Infra.Repositories
                          .OrderBy(s => s.Id)
                          .Where(StudentQueries.GetStudentById(studentId));
 
-            return query.FirstOrDefault();
+            return await query.FirstOrDefaultAsync();
         }
 
         public async Task<PageList<Student>> GetAllAsync(PageParams pageParams, bool includeTeacher = false)

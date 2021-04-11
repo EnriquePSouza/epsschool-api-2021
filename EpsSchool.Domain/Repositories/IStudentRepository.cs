@@ -11,7 +11,8 @@ namespace EpsSchool.Domain.Repositories
         void Create(Student student);
         void Update(Student student);
         void Delete(Student student);
-        Student GetById(Guid studentId, bool includeTeacher = false);
+        Task SaveAsync();
+        Task<Student> GetById(Guid studentId, bool includeTeacher = false);
         Task<PageList<Student>> GetAllAsync(PageParams pageParams, bool includeTeacher = false);
         Task<List<Student>> GetAllByCourseIdAsync(Guid courseId, bool includeTeacher = false);
     }

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Handlers;
 using EpsSchool.Shared.Commands;
@@ -17,17 +18,17 @@ namespace EpsSchool.Tests.HandlersTests
 
         [TestMethod]
         [TestCategory("Handler")]
-        public void Dado_um_comando_invalido_deve_interromper_a_execucao()
+        public async Task Dado_um_comando_invalido_deve_interromper_a_execucao()
         {
-            _result = (GenericCommandResult)_handler.Handle(_invalidCommand);
+            _result = (GenericCommandResult) await _handler.Handle(_invalidCommand);
             Assert.AreEqual(_result.Success, false);
         }
 
         [TestMethod]
         [TestCategory("Handler")]
-        public void Dado_um_comando_valido_deve_atualizar_o_registro_de_professor()
+        public async Task Dado_um_comando_valido_deve_atualizar_o_registro_de_professor()
         {
-            _result = (GenericCommandResult)_handler.Handle(_validCommand);
+            _result = (GenericCommandResult) await _handler.Handle(_validCommand);
             Assert.AreEqual(_result.Success, true);
         }
     }

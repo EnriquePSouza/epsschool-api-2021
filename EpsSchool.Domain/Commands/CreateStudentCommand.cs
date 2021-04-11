@@ -13,7 +13,7 @@ namespace EpsSchool.Domain.Commands
         public CreateStudentCommand() { }
 
         public CreateStudentCommand(string firstName, string lastName, string phoneNumber,
-            DateTime birthDate)
+            DateTime birthDate, Guid courseId)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -22,7 +22,7 @@ namespace EpsSchool.Domain.Commands
             StartDate = DateTime.Now;
             EndDate = null;
             Status = true;
-            // TODO - Add course id. 
+            CourseId = courseId; 
 
         }
         /// <summary>
@@ -60,6 +60,11 @@ namespace EpsSchool.Domain.Commands
         /// </summary>
         /// <value></value>
         public bool Status { get; set; }
+        /// <summary>
+        /// Informa em qual curso o aluno foi matrículado.
+        /// </summary>
+        /// <value></value>
+        public Guid CourseId { get; set; }
 
         public void Validate()
         {
@@ -75,6 +80,7 @@ namespace EpsSchool.Domain.Commands
                     .IsNotNull(BirthDate, "Data de nascimento", "Informe a data de nascimento do aluno!")
                     .IsNotNull(StartDate, "Data de Início", "Informe a data da matrícula do aluno na instituição!")
                     .IsNotNullOrEmpty(Status.ToString(), "Status", "Informe se o aluno está ou não ativo na instituição!")
+                    .IsNotEmpty(CourseId, "Código do Curso", "Informe o código do curso em que o aluno será matriculado!")
             );
         }
     }

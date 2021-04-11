@@ -30,7 +30,7 @@ namespace EpsSchool.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult> Get(
+        public async Task<IActionResult> Get(
             [FromServices] ITeacherRepository repo)
         {
             var teachers = await repo.GetAll(true);
@@ -62,10 +62,10 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public IActionResult GetById(Guid id,
+        public async Task<IActionResult> GetById(Guid id,
             [FromServices] ITeacherRepository repo)
         {
-            var teacher = repo.GetById(id, true);
+            var teacher = await repo.GetById(id, true);
 
             var teachersResult = _mapper.Map<TeacherDto>(teacher);
 
@@ -78,11 +78,11 @@ namespace EpsSchool.Api.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
-        public GenericCommandResult Create(
+        public async Task<GenericCommandResult> Create(
             [FromBody] CreateTeacherCommand command,
             [FromServices] TeacherHandler handler)
         {
-            return (GenericCommandResult)handler.Handle(command); // TODO - Change the method to async and resolve the task.
+            return (GenericCommandResult) await handler.Handle(command);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace EpsSchool.Api.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public GenericCommandResult Update(
+        public async Task<GenericCommandResult> Update(
             [FromServices] TeacherHandler handler,
             int id,
             [FromBody] UpdateTeacherCommand command)
@@ -100,11 +100,11 @@ namespace EpsSchool.Api.Controllers
             GenericCommandResult teacherResult;
             ChangeTeacherStatusCommand changeStatus;
 
-                teacherResult = (GenericCommandResult)handler.Handle(command); // TODO - Change the method to async and resolve the task.
+                teacherResult = (GenericCommandResult) await handler.Handle(command); 
                 if(teacherResult.Success.Equals(true))
                 {
                     changeStatus = new ChangeTeacherStatusCommand(command.Id, command.Status);
-                    teacherResult = (GenericCommandResult)handler.Handle(changeStatus); // TODO - Change the method to async and resolve the task.
+                    teacherResult = (GenericCommandResult) await handler.Handle(changeStatus);
                 } 
 
             return teacherResult;
@@ -116,12 +116,13 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromServices] ITeacherRepository repo, Guid id)
+        public async Task<IActionResult> Delete([FromServices] ITeacherRepository repo, Guid id)
         {
-            var teacher = repo.GetById(id);
+            var teacher = await repo.GetById(id);
             if (teacher == null) return BadRequest(new { message = "Professor não encontrado!" });
 
-            repo.Delete(teacher); // TODO - Change the method to async and resolve the task.
+            repo.Delete(teacher);
+            await repo.SaveAsync();
 
             return Ok(new { message = "Professor detetado." });
         }

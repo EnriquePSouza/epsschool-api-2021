@@ -53,7 +53,7 @@ namespace EpsSchool.Domain.Commands
         /// <value></value>
         public bool Status { get; set; }
         /// <summary>
-        /// Código identificador da matéria que o professor leciona.
+        /// Informa qual matéria que o professor leciona.
         /// </summary>
         /// <value></value>
         public Guid SubjectId { get; set; }

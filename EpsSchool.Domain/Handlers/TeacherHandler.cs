@@ -1,10 +1,13 @@
 using System;
+using System.Threading.Tasks;
+using AutoMapper;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Repositories;
 using EpsSchool.Shared.Commands;
 using EpsSchool.Shared.Handlers;
 using Flunt.Notifications;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EpsSchool.Domain.Handlers
 {
@@ -21,7 +24,7 @@ namespace EpsSchool.Domain.Handlers
             _repository = repository;
         }
 
-        public ICommandResult Handle(CreateTeacherCommand command)
+        public async Task<ICommandResult> Handle(CreateTeacherCommand command)
         {
             // Fail Fast Validation
             command.Validate();
@@ -29,14 +32,18 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Professor Invalido!", command.Notifications);
             
             // Creates the teacher object.
+            // TODO - Use automapper to make this object.
             var teacher = new Teacher(command.FirstName, command.LastName, command.PhoneNumber, command.SubjectId);
 
-            _repository.Create(teacher); // TODO - Change the method to async and resolve the task.
+            _repository.Create(teacher);
+            await _repository.SaveAsync();
+
+            // TODO - Use automapper to make a more visible teacherReturn item for UI use.
 
             return new GenericCommandResult(true, "Professor Salvo!", teacher);
         }
 
-        public ICommandResult Handle(UpdateTeacherCommand command)
+        public async Task<ICommandResult> Handle(UpdateTeacherCommand command)
         {
             // Fail Fast Validation
             command.Validate();
@@ -44,23 +51,28 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Professor Invalido!", command.Notifications);
             
             // Check if the teacher exists.
-            var teacher = _repository.GetById(command.Id); // TODO - Change the method to async and resolve the task.
+            var teacher = await _repository.GetById(command.Id);
             if (teacher == null)
                 return new GenericCommandResult(false, "Professor não encontrado!", command);
 
-            // TODO - Make this a service method in one TeacherService, and test it.
             // Update the student object with the new command data.
+            // TODO - Use automapper to make this object.
             teacher.FirstName = command.FirstName;
             teacher.LastName = command.LastName;
             teacher.PhoneNumber = command.PhoneNumber;
             teacher.Status = command.Status;
 
-            _repository.Update(teacher); // TODO - Change the method to async and resolve the task.
+            // TODO - Verify if needs to update subject too.
+
+            _repository.Update(teacher);
+            await _repository.SaveAsync();
+
+            // TODO - Use automapper to make a more visible teacherReturn item for UI use.
 
             return new GenericCommandResult(true, "Professor Salvo!", teacher);
         }
 
-        public ICommandResult Handle(ChangeTeacherStatusCommand command)
+        public async Task<ICommandResult> Handle(ChangeTeacherStatusCommand command)
         {
             // Fail Fast Validation
             command.Validate();
@@ -68,11 +80,10 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Professor Invalido!", command.Notifications);
             
             // Check if the teacher exists.
-            var teacher = _repository.GetById(command.Id); // TODO - Change the method to async and resolve the task.
+            var teacher = await _repository.GetById(command.Id);
             if (teacher == null)
                 return new GenericCommandResult(false, "Professor não encontrado!", teacher);
             
-            // TODO - Make this a service method in one TeacherService, and test it.
             // Update the student status.
              if(command.Status.Equals(true))
              {
@@ -85,7 +96,10 @@ namespace EpsSchool.Domain.Handlers
                  teacher.EndDate = DateTime.Now;
              }
 
-            _repository.Update(teacher); // TODO - Change the method to async and resolve the task.
+            _repository.Update(teacher);
+            await _repository.SaveAsync();
+
+            // TODO - Use automapper to make a more visible teacherReturn item for UI use.
 
             var msg = teacher.Status ? "ativado" : "desativado";
 
