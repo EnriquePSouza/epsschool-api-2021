@@ -72,6 +72,20 @@ namespace EpsSchool.Domain.Helpers
             List<Teacher> output = new List<Teacher>();
 
             Teacher teacherData1 = TeachersSampleDataManager.teacher1;
+            
+            teacherData1.Id = new Guid("b4fabc54-ce8c-4009-beb4-51d577563c65");
+            teacherData1.Enrollment = DateTime.Now.ToString("yydd") +
+                           teacherData1.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
+
+            output.Add(teacherData1);
+
+            return output;
+        }
+
+        public static List<CourseSubject> LoadCourseSubjectQueriesTestsSampleData()
+        {
+            List<CourseSubject> output = new List<CourseSubject>();
+
             Student studentData1 = StudentsSampleDataManager.student1;
 
             Subject subjectItem1 = SubjectsSampleDataManager.subject1;
@@ -81,11 +95,6 @@ namespace EpsSchool.Domain.Helpers
 
             List<StudentCourseSubject> studentCourseSubject1 = new List<StudentCourseSubject>();
             List<CourseSubject> courseSubject1 = new List<CourseSubject>();
-            List<Subject> subjectData1 = new List<Subject>();
-
-            teacherData1.Id = new Guid("b4fabc54-ce8c-4009-beb4-51d577563c65");
-            teacherData1.Enrollment = DateTime.Now.ToString("yydd") +
-                           teacherData1.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
 
             studentData1.Id = new Guid("3d04b2dd-76f8-4baa-8a67-12064a7808b2");
             studentData1.Enrollment = DateTime.Now.ToString("yydd") +
@@ -99,11 +108,7 @@ namespace EpsSchool.Domain.Helpers
 
             courseSubjectItem1.StudentsCoursesSubjects = studentCourseSubject1;
 
-            courseSubject1.Add(courseSubjectItem1);
-
-            subjectData1.Add(subjectItem1);
-
-            output.Add(teacherData1);
+            output.Add(courseSubjectItem1);;
 
             return output;
         }

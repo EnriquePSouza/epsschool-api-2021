@@ -12,6 +12,7 @@ namespace EpsSchool.Tests.QueriesTests
     public class TeacherQueriesTests
     {
         private IList<Teacher> _teachers;
+        private IList<CourseSubject> _coursesSubjects;
         private readonly Guid _teacherId = new Guid("b4fabc54-ce8c-4009-beb4-51d577563c65");
         private readonly Guid _studentId = new Guid("3d04b2dd-76f8-4baa-8a67-12064a7808b2");
 
@@ -31,14 +32,12 @@ namespace EpsSchool.Tests.QueriesTests
         [TestCategory("Query")]
         public void Dado_a_consulta_de_professores_por_codigo_identificador_de_aluno_deve_retornar_1()
         {
-            Assert.Fail();
-            //_teachers = ListsManager.LoadTeacherQueriesTestsSampleData();
+            _coursesSubjects = ListsManager.LoadCourseSubjectQueriesTestsSampleData();
 
-            // TODO - Correct the mass of data for that query.
-            // var result = _teachers.AsQueryable()
-            //                       .Where(TeacherQueries.GetAllByStudentIdAsync(_studentId));
+            var result = _coursesSubjects.AsQueryable()
+                                  .Where(TeacherQueries.GetAllByStudentIdAsync(_studentId));
 
-            //Assert.AreEqual(result.Count(), 1);
+            Assert.AreEqual(result.Count(), 1);
         }
         
     }
