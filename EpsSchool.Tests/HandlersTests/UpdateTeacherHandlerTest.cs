@@ -20,7 +20,7 @@ namespace EpsSchool.Tests.HandlersTests
 
         [TestMethod]
         [TestCategory("Handler")]
-        public void Dado_um_comando_invalido_deve_interromper_a_execucao()
+        public void Dado_um_comando_invalido_o_manipulador_deve_interromper_a_execucao()
         {
             Assert.Fail();
             // async Task > This TestMethod need to be asynchronous.
@@ -30,7 +30,7 @@ namespace EpsSchool.Tests.HandlersTests
 
         [TestMethod]
         [TestCategory("Handler")]
-        public void Dado_um_comando_valido_deve_atualizar_o_registro_de_professor()
+        public void Dado_um_comando_valido_o_manipulador_deve_atualizar_o_registro_de_professor()
         {
             Assert.Fail();
             // async Task > This TestMethod need to be asynchronous.
