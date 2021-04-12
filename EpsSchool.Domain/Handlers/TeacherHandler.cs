@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using AutoMapper;
 using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Repositories;
@@ -16,10 +17,12 @@ namespace EpsSchool.Domain.Handlers
         IHandler<ChangeTeacherStatusCommand>
     {
         private readonly ITeacherRepository _repository;
+        private readonly IMapper _mapper;
 
-        public TeacherHandler(ITeacherRepository repository)
+        public TeacherHandler(ITeacherRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task<ICommandResult> Handle(CreateTeacherCommand command)
@@ -30,15 +33,14 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Professor Invalido!", command.Notifications);
             
             // Creates the teacher object.
-            // TODO - Use automapper to make this object.
-            var teacher = new Teacher(command.FirstName, command.LastName, command.PhoneNumber, command.SubjectId);
+            var teacher = _mapper.Map<Teacher>(command);
 
             _repository.Create(teacher);
             await _repository.SaveAsync();
 
-            // TODO - Use automapper to make a more visible teacherReturn item for UI use.
+            var teacherResult = _mapper.Map<CreateTeacherCommand>(teacher);
 
-            return new GenericCommandResult(true, "Professor Salvo!", teacher);
+            return new GenericCommandResult(true, "Professor Salvo!", teacherResult);
         }
 
         public async Task<ICommandResult> Handle(UpdateTeacherCommand command)
@@ -54,20 +56,16 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false, "Professor não encontrado!", command);
 
             // Update the teacher object with the new command data.
-            // TODO - Use automapper to make this object.
-            teacher.FirstName = command.FirstName;
-            teacher.LastName = command.LastName;
-            teacher.PhoneNumber = command.PhoneNumber;
-            teacher.Status = command.Status;
+            teacher = _mapper.Map<Teacher>(command);
 
             // TODO - Verify if needs to update subject too.
 
             _repository.Update(teacher);
             await _repository.SaveAsync();
 
-            // TODO - Use automapper to make a more visible teacherReturn item for UI use.
+            var teacherResult = _mapper.Map<CreateTeacherCommand>(teacher);
 
-            return new GenericCommandResult(true, "Professor Salvo!", teacher);
+            return new GenericCommandResult(true, "Professor Salvo!", teacherResult);
         }
 
         public async Task<ICommandResult> Handle(ChangeTeacherStatusCommand command)
@@ -89,11 +87,11 @@ namespace EpsSchool.Domain.Handlers
             _repository.Update(teacher);
             await _repository.SaveAsync();
 
-            // TODO - Use automapper to make a more visible teacherReturn item for UI use.
-
             var msg = teacher.Status ? "ativado" : "desativado";
 
-            return new GenericCommandResult(true, $"Professor {msg} com sucesso!", teacher);
+            var teacherResult = _mapper.Map<CreateTeacherCommand>(teacher);
+
+            return new GenericCommandResult(true, $"Professor {msg} com sucesso!", teacherResult);
         }
     }
 }

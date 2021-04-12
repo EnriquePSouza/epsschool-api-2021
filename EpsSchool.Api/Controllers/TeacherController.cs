@@ -51,7 +51,7 @@ namespace EpsSchool.Api.Controllers
         {
             var teachers = await repo.GetByStudentId(studentId, true);
 
-            var teachersResult = _mapper.Map<IEnumerable<TeacherDto>>(teachers);
+            var teachersResult = _mapper.Map<IEnumerable<CreateTeacherCommand>>(teachers);
 
             return Ok(teachersResult);
         }
@@ -67,7 +67,7 @@ namespace EpsSchool.Api.Controllers
         {
             var teacher = await repo.GetById(id, true);
 
-            var teachersResult = _mapper.Map<TeacherDto>(teacher);
+            var teachersResult = _mapper.Map<CreateTeacherCommand>(teacher);
 
             return Ok(teachersResult);
         }
@@ -116,15 +116,17 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromServices] ITeacherRepository repo, Guid id)
+        public async Task<GenericCommandResult> Delete([FromServices] ITeacherRepository repo, Guid id)
         {
             var teacher = await repo.GetById(id);
-            if (teacher == null) return BadRequest(new { message = "Professor não encontrado!" });
+            if (teacher == null) return new GenericCommandResult(false, "Professor não encontrado!", "TeacherId: " + id);            
 
             repo.Delete(teacher);
             await repo.SaveAsync();
 
-            return Ok(new { message = "Professor detetado." });
+            var teacherResult = _mapper.Map<CreateTeacherCommand>(teacher);
+            
+            return new GenericCommandResult(false, "Professor detetado!", teacherResult);
         }
 
     }
