@@ -3,6 +3,7 @@ using EpsSchool.Domain.Commands;
 using EpsSchool.Domain.Handlers;
 using EpsSchool.Domain.Helpers.SampleDataManagers;
 using EpsSchool.Shared.Commands;
+using EpsSchool.Tests.Helpers;
 using EpsSchool.Tests.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,29 +16,23 @@ namespace EpsSchool.Tests.HandlersTests
                                                                                           SubjectsSampleDataManager.subject1.Id);
         private readonly CreateTeacherCommand _validCommand = new CreateTeacherCommand("Enrique", "Souza", "33458856",
                                                                                         SubjectsSampleDataManager.subject1.Id);
-
-        // TODO - Make the mock for the mapper.
-        // private readonly TeacherHandler _handler = new TeacherHandler(new FakeTeacherRepository());
+        private readonly TeacherHandler _handler = new TeacherHandler(new FakeTeacherRepository(), FakeMapper.mapper );
         private GenericCommandResult _result = new GenericCommandResult();
 
         [TestMethod]
         [TestCategory("Handler")]
-        public void Dado_um_comando_invalido_o_manipulador_deve_interromper_a_execucao()
+        public async Task Dado_um_comando_invalido_o_manipulador_deve_interromper_a_execucao()
         {
-            Assert.Fail();
-            // async Task > This TestMethod need to be asynchronous.
-            // _result = (GenericCommandResult) await _handler.Handle(_invalidCommand);
-            // Assert.AreEqual(_result.Success, false);
+            _result = (GenericCommandResult) await _handler.Handle(_invalidCommand);
+            Assert.AreEqual(_result.Success, false);
         }
 
         [TestMethod]
         [TestCategory("Handler")]
-        public void Dado_um_comando_valido_o_manipulador_deve_criar_o_registro_de_professor()
+        public async Task Dado_um_comando_valido_o_manipulador_deve_criar_o_registro_de_professor()
         {
-            Assert.Fail();
-            // async Task > This TestMethod need to be asynchronous.
-            // _result = (GenericCommandResult) await _handler.Handle(_validCommand);
-            // Assert.AreEqual(_result.Success, true);
+            _result = (GenericCommandResult) await _handler.Handle(_validCommand);
+            Assert.AreEqual(_result.Success, true);
         }
     }
 }
