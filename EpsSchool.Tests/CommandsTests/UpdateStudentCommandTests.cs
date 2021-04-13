@@ -7,8 +7,12 @@ namespace EpsSchool.Tests.CommandsTests
     [TestClass]
     public class UpdateStudentCommandTests
     {
-        private readonly UpdateStudentCommand _invalidCommand = new UpdateStudentCommand(Guid.NewGuid(), "", "", "", true);
-        private readonly UpdateStudentCommand _validCommand = new UpdateStudentCommand(Guid.NewGuid(), "Enrique", "Souza", "33458856", true);
+        private readonly UpdateStudentCommand _invalidCommand = 
+                                                new UpdateStudentCommand(Guid.NewGuid(),
+                                                        "", "", "", true);
+        private readonly UpdateStudentCommand _validCommand = 
+                                                new UpdateStudentCommand(Guid.NewGuid(),
+                                                        "Enrique", "Souza", "33458856", true);
 
         public UpdateStudentCommandTests()
         {

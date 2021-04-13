@@ -31,17 +31,28 @@ namespace EpsSchool.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get(
+        public async Task<IActionResult> GetAll(
             [FromQuery] PageParams pageParams,
             [FromServices] IStudentRepository repo)
         {
-            var students = await repo.GetAllAsync(pageParams, true);
-            
-            var studentsResult = _mapper.Map<IEnumerable<StudentDto>>(students);
+            try
+            {
+                var students = await repo.GetAllAsync(pageParams, true);
 
-            Response.AddPagination(students.CurrentPage, students.PageSize, students.TotalCount, students.TotalPages);
+                var studentsResult = _mapper.Map<IEnumerable<StudentDto>>(students);
 
-            return Ok(studentsResult);
+                Response.AddPagination(students.CurrentPage, students.PageSize,
+                                        students.TotalCount, students.TotalPages);
+
+                return Ok(studentsResult);
+            }
+            catch (Exception ex)
+            {
+                var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetAll: {ex.Message}";
+                var studentsResult = new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails);
+                return StatusCode(500, studentsResult);
+            }
         }
 
         /// <summary>
@@ -51,11 +62,19 @@ namespace EpsSchool.Api.Controllers
         [HttpGet("byCourse/{id}")]
         public async Task<IActionResult> GetByCourseId([FromServices] IStudentRepository repo, Guid id)
         {
-            var students = await repo.GetAllByCourseIdAsync(id, false);
-
-            var studentsResult = _mapper.Map<IEnumerable<CreateStudentCommand>>(students);
-
-            return Ok(studentsResult);
+            try
+            {
+                var students = await repo.GetAllByCourseIdAsync(id, false);
+                var studentsResult = _mapper.Map<IEnumerable<CreateStudentCommand>>(students);
+                return Ok(studentsResult);
+            }
+            catch (Exception ex)
+            {
+                var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetByCourseId: {ex.Message}";
+                var studentsResult = new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails);
+                return StatusCode(500, studentsResult);
+            }
         }
 
         /// <summary>
@@ -67,10 +86,19 @@ namespace EpsSchool.Api.Controllers
         public async Task<IActionResult> GetById(Guid id,
             [FromServices] IStudentRepository repo)
         {
-            var students = await repo.GetById(id, false);
-            var studentsResult = _mapper.Map<CreateStudentCommand>(students);
-            
-            return Ok(studentsResult);
+            try
+            {
+                var students = await repo.GetById(id, false);
+                var studentResult = _mapper.Map<CreateStudentCommand>(students);
+                return Ok(studentResult);
+            }
+            catch (Exception ex)
+            {
+                var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetById: {ex.Message}";
+                var studentResult = new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails);
+                return StatusCode(500, studentResult);
+            }
         }
 
         /// <summary>
@@ -79,11 +107,22 @@ namespace EpsSchool.Api.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<GenericCommandResult> Create(
+        public async Task<IActionResult> Create(
             [FromBody] CreateStudentCommand command,
             [FromServices] StudentHandler handler)
         {
-            return (GenericCommandResult) await handler.Handle(command);
+            try
+            {
+                var studentResult = (GenericCommandResult)await handler.Handle(command);
+                return Ok(studentResult);
+            }
+            catch (Exception ex)
+            {
+                var errorDetails = $"Algo de errado aconteceu ao axecutar a ação Create: {ex.Message}";
+                var studentResult = new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails);
+                return StatusCode(500, studentResult);
+            }
         }
 
         /// <summary>
@@ -93,22 +132,29 @@ namespace EpsSchool.Api.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<GenericCommandResult> Update(
+        public async Task<IActionResult> Update(
             [FromServices] StudentHandler handler,
             int id,
             [FromBody] UpdateStudentCommand command)
         {
-            GenericCommandResult studentResult;
-            ChangeStudentStatusCommand changeStatus;
-
-                studentResult = (GenericCommandResult) await handler.Handle(command);
-                if(studentResult.Success.Equals(true))
+            try
+            {
+                var studentResult = (GenericCommandResult)await handler.Handle(command);
+                if (studentResult.Success.Equals(true))
                 {
-                    changeStatus = new ChangeStudentStatusCommand(command.Id, command.Status);
-                    studentResult = (GenericCommandResult) await handler.Handle(changeStatus);
-                } 
+                    var changeStatus = new ChangeStudentStatusCommand(command.Id, command.Status);
+                    studentResult = (GenericCommandResult)await handler.Handle(changeStatus);
+                }
 
-            return studentResult;
+                return Ok(studentResult);
+            }
+            catch (Exception ex)
+            {
+                var errorDetails = $"Algo de errado aconteceu ao axecutar a ação Update: {ex.Message}";
+                var studentResult = new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails);
+                return StatusCode(500, studentResult);
+            }
         }
 
         /// <summary>
@@ -117,11 +163,22 @@ namespace EpsSchool.Api.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("changeStatus")]
-        public async Task<GenericCommandResult> ChangeStatus(
+        public async Task<IActionResult> ChangeStatus(
             [FromBody] ChangeStudentStatusCommand command,
             [FromServices] StudentHandler handler)
         {
-            return (GenericCommandResult) await handler.Handle(command);
+            try
+            {
+                var studentResult = (GenericCommandResult)await handler.Handle(command);
+                return Ok(studentResult);
+            }
+            catch (Exception ex)
+            {
+                var errorDetails = $"Algo de errado aconteceu ao axecutar a ação ChangeStatus: {ex.Message}";
+                var studentResult = new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails);
+                return StatusCode(500, studentResult);
+            }
         }
 
         /// <summary>
@@ -130,17 +187,31 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<GenericCommandResult> Delete([FromServices]IStudentRepository repo, Guid id)
+        public async Task<IActionResult> Delete([FromServices] IStudentRepository repo, Guid id)
         {
-            var student = await repo.GetById(id);
-            if (student == null) return new GenericCommandResult(false, "Aluno não encontrado!", "StudentId: " + id);            
+            try
+            {
+                var student = await repo.GetById(id);
+                if (student == null)
+                    return NotFound(new GenericCommandResult(false,
+                                        "Aluno não encontrado!", "StudentId: " + id));
 
-            repo.Delete(student);
-            await repo.SaveAsync();
+                repo.Delete(student);
+                await repo.SaveAsync();
 
-            var studentResult = _mapper.Map<CreateStudentCommand>(student);
-            
-            return new GenericCommandResult(false, "Aluno detetado!", studentResult);
+                var deletedStudent = _mapper.Map<CreateStudentCommand>(student);
+                var studentResult = new GenericCommandResult(false,
+                                        "Aluno detetado!", deletedStudent);
+
+                return Ok(studentResult);
+            }
+            catch (Exception ex)
+            {
+                var errorDetails = $"Algo de errado aconteceu ao axecutar a ação Delete: {ex.Message}";
+                var studentResult = new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails);
+                return StatusCode(500, studentResult);
+            }
         }
 
     }

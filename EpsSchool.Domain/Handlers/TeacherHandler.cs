@@ -30,7 +30,8 @@ namespace EpsSchool.Domain.Handlers
             // Fail Fast Validation
             command.Validate();
             if (command.Invalid)
-                return new GenericCommandResult(false, "Professor Invalido!", command.Notifications);
+                return new GenericCommandResult(false,
+                            "Professor Invalido!", command.Notifications);
             
             // Creates the teacher object.
             var teacher = _mapper.Map<Teacher>(command);
@@ -40,7 +41,8 @@ namespace EpsSchool.Domain.Handlers
 
             var teacherResult = _mapper.Map<CreateTeacherCommand>(teacher);
 
-            return new GenericCommandResult(true, "Professor Salvo!", teacherResult);
+            return new GenericCommandResult(true,
+                        "Professor Salvo!", teacherResult);
         }
 
         public async Task<ICommandResult> Handle(UpdateTeacherCommand command)
@@ -48,12 +50,14 @@ namespace EpsSchool.Domain.Handlers
             // Fail Fast Validation
             command.Validate();
             if (command.Invalid)
-                return new GenericCommandResult(false, "Professor Invalido!", command.Notifications);
+                return new GenericCommandResult(false,
+                            "Professor Invalido!", command.Notifications);
             
             // Check if the teacher exists.
             var teacher = await _repository.GetById(command.Id);
             if (teacher == null)
-                return new GenericCommandResult(false, "Professor não encontrado!", command);
+                return new GenericCommandResult(false,
+                            "Professor não encontrado!", command);
 
             // Update the teacher object with the new command data.
             teacher = _mapper.Map<Teacher>(command);
@@ -65,7 +69,8 @@ namespace EpsSchool.Domain.Handlers
 
             var teacherResult = _mapper.Map<CreateTeacherCommand>(teacher);
 
-            return new GenericCommandResult(true, "Professor Salvo!", teacherResult);
+            return new GenericCommandResult(true,
+                        "Professor Salvo!", teacherResult);
         }
 
         public async Task<ICommandResult> Handle(ChangeTeacherStatusCommand command)
@@ -73,12 +78,14 @@ namespace EpsSchool.Domain.Handlers
             // Fail Fast Validation
             command.Validate();
             if (command.Invalid)
-                return new GenericCommandResult(false, "Professor Invalido!", command.Notifications);
+                return new GenericCommandResult(false,
+                            "Professor Invalido!", command.Notifications);
             
             // Check if the teacher exists.
             var teacher = await _repository.GetById(command.Id);
             if (teacher == null)
-                return new GenericCommandResult(false, "Professor não encontrado!", teacher);
+                return new GenericCommandResult(false,
+                            "Professor não encontrado!", teacher);
 
             // Update the teacher status.
             teacher.Status = command.Status.Equals(true);
@@ -91,7 +98,8 @@ namespace EpsSchool.Domain.Handlers
 
             var teacherResult = _mapper.Map<CreateTeacherCommand>(teacher);
 
-            return new GenericCommandResult(true, $"Professor {msg} com sucesso!", teacherResult);
+            return new GenericCommandResult(true,
+                        $"Professor {msg} com sucesso!", teacherResult);
         }
     }
 }

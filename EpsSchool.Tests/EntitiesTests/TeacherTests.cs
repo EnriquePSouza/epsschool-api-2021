@@ -7,8 +7,9 @@ namespace EpsSchool.Tests.EntitiesTests
     [TestClass]
     public class TeacherTests
     {
-        private readonly Teacher _teacher = new Teacher("Enrique", "Souza", "33458856",
-                                                         SubjectsSampleDataManager.subject1.Id);
+        private readonly Teacher _teacher = 
+                                    new Teacher("Enrique", "Souza", "33458856",
+                                            SubjectsSampleDataManager.subject1.Id);
 
         [TestMethod]
         [TestCategory("Entity")]

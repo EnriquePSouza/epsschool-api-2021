@@ -13,24 +13,24 @@ namespace EpsSchool.Domain.Queries
             return x => x.Id == id;
         }
 
-        public static Expression<Func<Student, bool>> GetAllWhenPageParamsContainsName(PageParams y)
+        public static Expression<Func<Student, bool>> GetAllByName(string name)
         {
             return x => x.FirstName
                             .ToUpper()
-                            .Contains(y.Name.ToUpper()) ||
+                            .Contains(name.ToUpper()) ||
                         x.LastName
                             .ToUpper()
-                            .Contains(y.Name.ToUpper());
+                            .Contains(name.ToUpper());
         }
 
-        public static Expression<Func<Student, bool>> GetAllWhenPageParamsContainsEnrollment(PageParams y)
+        public static Expression<Func<Student, bool>> GetAllByEnrollment(string enrollment)
         {
-            return x => x.Enrollment == y.Enrollment;
+            return x => x.Enrollment == enrollment;
         }
 
-        public static Expression<Func<Student, bool>> GetAllWhenPageParamsContainsStatus(PageParams y)
+        public static Expression<Func<Student, bool>> GetAllByStatus(string status)
         {
-            return x => x.Status == (y.Status.Equals(1));
+            return x => x.Status == (status.Equals(1));
         }
 
         public static Expression<Func<Student, bool>> GetAllByCourseIdAsync(Guid courseId)

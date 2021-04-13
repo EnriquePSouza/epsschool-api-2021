@@ -7,8 +7,11 @@ namespace EpsSchool.Tests.CommandsTests
     [TestClass]
     public class ChangeStudentStatusCommandTests
     {
-        private readonly ChangeStudentStatusCommand _invalidCommand = new ChangeStudentStatusCommand();
-        private readonly ChangeStudentStatusCommand _validCommand = new ChangeStudentStatusCommand(Guid.NewGuid(), true);
+        private readonly ChangeStudentStatusCommand _invalidCommand = 
+                                                        new ChangeStudentStatusCommand();
+        private readonly ChangeStudentStatusCommand _validCommand = 
+                                                        new ChangeStudentStatusCommand(
+                                                                    Guid.NewGuid(), true);
 
         public ChangeStudentStatusCommandTests()
         {

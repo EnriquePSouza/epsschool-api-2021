@@ -27,24 +27,31 @@ namespace EpsSchool.Domain.Helpers
 
             studentData1.Id = new Guid("3d04b2dd-76f8-4baa-8a67-12064a7808b2");
             studentData1.Enrollment = DateTime.Now.ToString("yydd") +
-                           studentData1.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
+                            studentData1.Id.GetHashCode()
+                                            .ToString().Replace("-", "51").Substring(0, 5);
 
             studentData2.Id = new Guid("2ae369e0-632d-45db-ade9-ebbcc2a21bd9");
             studentData2.Enrollment = DateTime.Now.ToString("yydd") +
-                           studentData2.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
+                            studentData2.Id.GetHashCode()
+                                            .ToString().Replace("-", "51").Substring(0, 5);
 
             studentData3.Id = new Guid("bdad5b21-e879-45fd-9cb2-c7530c5d803a");
             studentData3.Enrollment = DateTime.Now.ToString("yydd") +
-                           studentData3.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
+                            studentData3.Id.GetHashCode()
+                                            .ToString().Replace("-", "51").Substring(0, 5);
+
             studentData3.Status = false;
 
-            courseSubject1 = new CourseSubject(new Guid("3a00bebe-ace3-42e8-ad35-4a4104ae2b72"),
-                                                    SubjectsSampleDataManager.subject1.Id);
+            courseSubject1 = new CourseSubject(
+                                    new Guid("3a00bebe-ace3-42e8-ad35-4a4104ae2b72"),
+                                            SubjectsSampleDataManager.subject1.Id);
 
             studentCourseSubjectItem1 = new StudentCourseSubject(courseSubject1.Id,
                                                                  studentData1.Id);
+
             studentCourseSubjectItem2 = new StudentCourseSubject(courseSubject1.Id,
                                                                  studentData2.Id);
+
             studentCourseSubjectItem3 = new StudentCourseSubject(courseSubject1.Id,
                                                                  studentData3.Id);
 
@@ -72,10 +79,12 @@ namespace EpsSchool.Domain.Helpers
             List<Teacher> output = new List<Teacher>();
 
             Teacher teacherData1 = TeachersSampleDataManager.teacher1;
-            
+
             teacherData1.Id = new Guid("b4fabc54-ce8c-4009-beb4-51d577563c65");
             teacherData1.Enrollment = DateTime.Now.ToString("yydd") +
-                           teacherData1.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
+                            teacherData1.Id.GetHashCode()
+                                            .ToString()
+                                            .Replace("-", "51").Substring(0, 5);
 
             output.Add(teacherData1);
 
@@ -89,18 +98,22 @@ namespace EpsSchool.Domain.Helpers
             Student studentData1 = StudentsSampleDataManager.student1;
 
             Subject subjectItem1 = SubjectsSampleDataManager.subject1;
-            CourseSubject courseSubjectItem1 = 
-                            new CourseSubject(new Guid("3a00bebe-ace3-42e8-ad35-4a4104ae2b72"), 
-                                              subjectItem1.Id);
+
+            CourseSubject courseSubjectItem1 =
+                            new CourseSubject(
+                                    new Guid("3a00bebe-ace3-42e8-ad35-4a4104ae2b72"),
+                                            subjectItem1.Id);
 
             List<StudentCourseSubject> studentCourseSubject1 = new List<StudentCourseSubject>();
             List<CourseSubject> courseSubject1 = new List<CourseSubject>();
 
             studentData1.Id = new Guid("3d04b2dd-76f8-4baa-8a67-12064a7808b2");
             studentData1.Enrollment = DateTime.Now.ToString("yydd") +
-                           studentData1.Id.GetHashCode().ToString().Replace("-", "51").Substring(0, 5);
+                            studentData1.Id.GetHashCode()
+                                            .ToString().Replace("-", "51").Substring(0, 5);
 
-            studentCourseSubject1.Add(new StudentCourseSubject(courseSubjectItem1.Id, studentData1.Id));
+            studentCourseSubject1.Add(new StudentCourseSubject(
+                                            courseSubjectItem1.Id, studentData1.Id));
 
             courseSubjectItem1.StudentsCoursesSubjects = studentCourseSubject1;
 
@@ -108,7 +121,7 @@ namespace EpsSchool.Domain.Helpers
 
             courseSubjectItem1.StudentsCoursesSubjects = studentCourseSubject1;
 
-            output.Add(courseSubjectItem1);;
+            output.Add(courseSubjectItem1); ;
 
             return output;
         }

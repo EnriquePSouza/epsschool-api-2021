@@ -74,13 +74,13 @@ namespace EpsSchool.Infra.Repositories
             query = query.AsNoTracking().OrderBy(s => s.Id);
 
             if (!string.IsNullOrEmpty(pageParams.Name))
-                query = query.Where(StudentQueries.GetAllWhenPageParamsContainsName(pageParams));
+                query = query.Where(StudentQueries.GetAllByName(pageParams.Name));
 
             if (!string.IsNullOrEmpty(pageParams.Enrollment))
-                query = query.Where(StudentQueries.GetAllWhenPageParamsContainsEnrollment(pageParams));
+                query = query.Where(StudentQueries.GetAllByEnrollment(pageParams.Enrollment));
 
             if (!string.IsNullOrEmpty(pageParams.Status))
-                query = query.Where(StudentQueries.GetAllWhenPageParamsContainsStatus(pageParams));
+                query = query.Where(StudentQueries.GetAllByStatus(pageParams.Status));
 
             return await PageList<Student>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }

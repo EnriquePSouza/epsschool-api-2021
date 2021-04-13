@@ -27,7 +27,8 @@ namespace EpsSchool.Domain.Helpers
         {
             // Counts the total quantity of items.
             var count = await source.CountAsync();
-            // The -1 is because it starts at zero and then always decreases 1 to know how many items to skip when paging.
+            // The -1 is because it starts at zero and then 
+            // always decreases 1 to know how many items to skip when paging.
             var items = await source.Skip((pageNumber-1) * pageSize) 
                                      .Take(pageSize)
                                      .ToListAsync();

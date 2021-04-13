@@ -7,7 +7,8 @@ namespace EpsSchool.Tests.EntitiesTests
     [TestClass]
     public class CourseSubjectTests
     {
-        private readonly CourseSubject _courseSubject = new CourseSubject(Guid.NewGuid(), Guid.NewGuid());
+        private readonly CourseSubject _courseSubject =
+                                            new CourseSubject(Guid.NewGuid(), Guid.NewGuid());
 
         [TestMethod]
         [TestCategory("Entity")]

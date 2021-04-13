@@ -7,10 +7,12 @@ namespace EpsSchool.Tests.CommandsTests
     [TestClass]
     public class CreateTeacherCommandTests
     {
-        private readonly CreateTeacherCommand _invalidCommand = new CreateTeacherCommand("","","",
-                                                                                         SubjectsSampleDataManager.subject1.Id);
-        private readonly CreateTeacherCommand _validCommand = new CreateTeacherCommand("Enrique", "Souza", "33458856",
-                                                                                        SubjectsSampleDataManager.subject1.Id);
+        private readonly CreateTeacherCommand _invalidCommand =
+                                                new CreateTeacherCommand("", "", "",
+                                                        SubjectsSampleDataManager.subject1.Id);
+        private readonly CreateTeacherCommand _validCommand =
+                                                new CreateTeacherCommand("Enrique", "Souza",
+                                                        "33458856", SubjectsSampleDataManager.subject1.Id);
 
         public CreateTeacherCommandTests()
         {

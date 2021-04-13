@@ -13,9 +13,13 @@ namespace EpsSchool.Tests.HandlersTests
     public class ChangeTeacherStatusHandlerTests
     {
         private readonly ChangeTeacherStatusCommand _invalidCommand = new ChangeTeacherStatusCommand();
-        private readonly ChangeTeacherStatusCommand _validCommandActive = new ChangeTeacherStatusCommand(Guid.NewGuid(), true);
-        private readonly ChangeTeacherStatusCommand _validCommandInactive = new ChangeTeacherStatusCommand(Guid.NewGuid(), false);
-        private readonly TeacherHandler _handler = new TeacherHandler(new FakeTeacherRepository(), FakeMapper.mapper );
+        private readonly ChangeTeacherStatusCommand _validCommandActive = 
+                                                        new ChangeTeacherStatusCommand(Guid.NewGuid(), true);
+        private readonly ChangeTeacherStatusCommand _validCommandInactive = 
+                                                        new ChangeTeacherStatusCommand(Guid.NewGuid(), false);
+        private readonly TeacherHandler _handler = 
+                                            new TeacherHandler(
+                                                    new FakeTeacherRepository(), FakeMapper.mapper );
         private GenericCommandResult _result = new GenericCommandResult();
 
         [TestMethod]

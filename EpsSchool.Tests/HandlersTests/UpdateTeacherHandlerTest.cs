@@ -12,9 +12,15 @@ namespace EpsSchool.Tests.HandlersTests
     [TestClass]
     public class UpdateTeacherHandlerTests
     {
-        private readonly UpdateTeacherCommand _invalidCommand = new UpdateTeacherCommand(Guid.NewGuid(), "", "", "", true);
-        private readonly UpdateTeacherCommand _validCommand = new UpdateTeacherCommand(Guid.NewGuid(), "Enrique", "Souza", "33458856", true);
-        private readonly TeacherHandler _handler = new TeacherHandler(new FakeTeacherRepository(), FakeMapper.mapper );
+        private readonly UpdateTeacherCommand _invalidCommand = 
+                                                new UpdateTeacherCommand(Guid.NewGuid(),
+                                                        "", "", "", true);
+        private readonly UpdateTeacherCommand _validCommand = 
+                                                new UpdateTeacherCommand(Guid.NewGuid(),
+                                                        "Enrique", "Souza", "33458856", true);
+        private readonly TeacherHandler _handler = 
+                                            new TeacherHandler(
+                                                    new FakeTeacherRepository(), FakeMapper.mapper );
         private GenericCommandResult _result = new GenericCommandResult();
 
         [TestMethod]

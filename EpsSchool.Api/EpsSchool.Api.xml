@@ -9,7 +9,7 @@
             Versão 1 do controlador de Alunos.
             </summary>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.StudentController.Get(EpsSchool.Domain.Helpers.PageParams,EpsSchool.Domain.Repositories.IStudentRepository)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.GetAll(EpsSchool.Domain.Helpers.PageParams,EpsSchool.Domain.Repositories.IStudentRepository)">
             <summary>
             Método responsável por retornar todos os Alunos de Forma Assíncrona.
             </summary>
@@ -62,7 +62,7 @@
             Versão 1 do controlador de Professores.
             </summary>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.TeacherController.Get(EpsSchool.Domain.Repositories.ITeacherRepository)">
+        <member name="M:EpsSchool.Api.Controllers.TeacherController.GetAll(EpsSchool.Domain.Repositories.ITeacherRepository)">
             <summary>
             Método responsável por retornar todos os Professores.
             </summary>
