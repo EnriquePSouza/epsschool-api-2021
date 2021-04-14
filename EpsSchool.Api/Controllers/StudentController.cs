@@ -38,7 +38,6 @@ namespace EpsSchool.Api.Controllers
             try
             {
                 var students = await repo.GetAllAsync(pageParams, true);
-
                 var studentsResult = _mapper.Map<IEnumerable<StudentDto>>(students);
 
                 Response.AddPagination(students.CurrentPage, students.PageSize,
@@ -49,9 +48,8 @@ namespace EpsSchool.Api.Controllers
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetAll: {ex.Message}";
-                var studentsResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, studentsResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 
@@ -66,14 +64,14 @@ namespace EpsSchool.Api.Controllers
             {
                 var students = await repo.GetAllByCourseIdAsync(id, false);
                 var studentsResult = _mapper.Map<IEnumerable<CreateStudentCommand>>(students);
+
                 return Ok(studentsResult);
             }
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetByCourseId: {ex.Message}";
-                var studentsResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, studentsResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 
@@ -90,14 +88,14 @@ namespace EpsSchool.Api.Controllers
             {
                 var students = await repo.GetById(id, false);
                 var studentResult = _mapper.Map<CreateStudentCommand>(students);
+
                 return Ok(studentResult);
             }
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetById: {ex.Message}";
-                var studentResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, studentResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 
@@ -114,14 +112,14 @@ namespace EpsSchool.Api.Controllers
             try
             {
                 var studentResult = (GenericCommandResult)await handler.Handle(command);
+
                 return Ok(studentResult);
             }
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação Create: {ex.Message}";
-                var studentResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, studentResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 
@@ -151,9 +149,8 @@ namespace EpsSchool.Api.Controllers
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação Update: {ex.Message}";
-                var studentResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, studentResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 
@@ -170,14 +167,14 @@ namespace EpsSchool.Api.Controllers
             try
             {
                 var studentResult = (GenericCommandResult)await handler.Handle(command);
+                
                 return Ok(studentResult);
             }
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação ChangeStatus: {ex.Message}";
-                var studentResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, studentResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 
@@ -214,18 +211,14 @@ namespace EpsSchool.Api.Controllers
                 repoStudent.Delete(student);
                 await repoStudent.SaveAsync();
 
-                var deletedStudent = _mapper.Map<CreateStudentCommand>(student);
-                var studentResult = new GenericCommandResult(false,
-                                        "Aluno detetado!", deletedStudent);
-
-                return Ok(studentResult);
+                return Ok(new GenericCommandResult(false,
+                                        "Aluno detetado!", "StudentId: " + id));
             }
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação Delete: {ex.Message}";
-                var studentResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, studentResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 

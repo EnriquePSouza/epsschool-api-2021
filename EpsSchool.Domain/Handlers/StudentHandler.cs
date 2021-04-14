@@ -20,7 +20,7 @@ namespace EpsSchool.Domain.Handlers
         private readonly IStudentCourseSubjectRepository _repoScs;
         private readonly IMapper _mapper;
 
-        public StudentHandler(IStudentRepository repoStudent, IStudentCourseSubjectRepository repoScs,IMapper mapper)
+        public StudentHandler(IStudentRepository repoStudent, IStudentCourseSubjectRepository repoScs, IMapper mapper)
         {
             _repoStudent = repoStudent;
             _repoScs = repoScs;
@@ -34,7 +34,7 @@ namespace EpsSchool.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false,
                             "Aluno Invalido!", command.Notifications);
-            
+
             // Creates the student object.
             var student = _mapper.Map<Student>(command);
 
@@ -55,10 +55,7 @@ namespace EpsSchool.Domain.Handlers
                 await _repoScs.SaveAsync();
             }
 
-            var studentResult = _mapper.Map<CreateStudentCommand>(student);
-
-            return new GenericCommandResult(true,
-                        "Aluno Salvo!", studentResult);
+            return new GenericCommandResult(true, "Aluno Salvo!", command);
         }
 
         public async Task<ICommandResult> Handle(UpdateStudentCommand command)
@@ -68,7 +65,7 @@ namespace EpsSchool.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false,
                             "Aluno Invalido!", command.Notifications);
-            
+
             // Check if the student exists.
             var student = await _repoStudent.GetById(command.Id);
             if (student == null)
@@ -81,10 +78,7 @@ namespace EpsSchool.Domain.Handlers
             _repoStudent.Update(student);
             await _repoStudent.SaveAsync();
 
-            var studentResult = _mapper.Map<CreateStudentCommand>(student);
-
-            return new GenericCommandResult(true,
-                        "Aluno Salvo!", studentResult);
+            return new GenericCommandResult(true, "Aluno Salvo!", command);
         }
 
         public async Task<ICommandResult> Handle(ChangeStudentStatusCommand command)
@@ -94,13 +88,13 @@ namespace EpsSchool.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false,
                             "Aluno Invalido!", command.Notifications);
-            
+
             // Check if the student exists.
             var student = await _repoStudent.GetById(command.Id);
             if (student == null)
                 return new GenericCommandResult(false,
                             "Aluno não encontrado!", command);
-            
+
             // Update the student status.
             student.Status = command.Status.Equals(true);
             student.EndDate = command.Status.Equals(true) ? null : DateTime.Now;
@@ -110,10 +104,7 @@ namespace EpsSchool.Domain.Handlers
 
             var msg = student.Status ? "ativado" : "desativado";
 
-            var studentResult = _mapper.Map<CreateStudentCommand>(student);
-
-            return new GenericCommandResult(true,
-                        $"Aluno {msg} com sucesso!", studentResult);
+            return new GenericCommandResult(true, $"Aluno {msg} com sucesso!", command);
         }
     }
 }

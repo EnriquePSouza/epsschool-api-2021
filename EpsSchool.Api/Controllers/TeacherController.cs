@@ -37,14 +37,14 @@ namespace EpsSchool.Api.Controllers
             {
                 var teachers = await repo.GetAll(true);
                 var teachersResult = _mapper.Map<IEnumerable<TeacherDto>>(teachers);
+
                 return Ok(teachersResult);
             }
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetAll: {ex.Message}";
-                var teachersResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, teachersResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 
@@ -61,14 +61,14 @@ namespace EpsSchool.Api.Controllers
             {
                 var teachers = await repo.GetByStudentId(studentId, true);
                 var teachersResult = _mapper.Map<IEnumerable<CreateTeacherCommand>>(teachers);
+
                 return Ok(teachersResult);
             }
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetAll: {ex.Message}";
-                var teachersResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, teachersResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 
@@ -85,14 +85,14 @@ namespace EpsSchool.Api.Controllers
             {
                 var teacher = await repo.GetById(id, true);
                 var teacherResult = _mapper.Map<CreateTeacherCommand>(teacher);
+
                 return Ok(teacherResult);
             }
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetAll: {ex.Message}";
-                var teacherResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, teacherResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 
@@ -109,14 +109,14 @@ namespace EpsSchool.Api.Controllers
             try
             {
                 var teacherResult = (GenericCommandResult)await handler.Handle(command);
+                
                 return Ok(teacherResult);
             }
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetAll: {ex.Message}";
-                var teacherResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, teacherResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
 
         }
@@ -147,9 +147,8 @@ namespace EpsSchool.Api.Controllers
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetAll: {ex.Message}";
-                var teacherResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, teacherResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 
@@ -170,19 +169,15 @@ namespace EpsSchool.Api.Controllers
 
                 repo.Delete(teacher);
                 await repo.SaveAsync();
-
-                var deletedTeacher = _mapper.Map<CreateTeacherCommand>(teacher);
-                var teacherResult = new GenericCommandResult(false,
-                                        "Professor detetado!", deletedTeacher);
                 
-                return Ok(teacherResult);
+                return Ok(new GenericCommandResult(false,
+                                "Professor detetado!", "TeacherId: " + id));
             }
             catch (Exception ex)
             {
                 var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetAll: {ex.Message}";
-                var teacherResult = new GenericCommandResult(false,
-                                        "Erro interno do servidor.", errorDetails);
-                return StatusCode(500, teacherResult);
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
             }
         }
 

@@ -71,9 +71,9 @@ namespace EpsSchool.Domain.Commands
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .HasMinLen(FirstName, 5, "Nome", "Informe o nome do aluno!")
+                    .HasMinLen(FirstName, 3, "Nome", "Informe o nome do aluno!")
                     .HasMaxLen(FirstName, 20,"Nome", "O nome não pode ter mais que 20 caracteres!")
-                    .HasMinLen(LastName, 5, "Sobrenome", "Informe o sobrenome do aluno!")
+                    .HasMinLen(LastName, 3, "Sobrenome", "Informe o sobrenome do aluno!")
                     .HasMaxLen(LastName, 20,"Sobrenome", "O sobrenome não pode ter mais que 20 caracteres!")
                     .HasMinLen(PhoneNumber, 8, "Telefone", "Informe um telefone válido contendo apenas numeros!")
                     .HasMaxLen(PhoneNumber, 12,"Telefone", "Informe um telefone válido contendo apenas numeros!")

@@ -50,7 +50,7 @@
             <param name="command"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.StudentController.Delete(EpsSchool.Domain.Repositories.IStudentRepository,System.Guid)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.Delete(EpsSchool.Domain.Repositories.IStudentRepository,EpsSchool.Domain.Repositories.IStudentCourseSubjectRepository,System.Guid)">
             <summary>
             Método responsável por remover as informações de um Aluno do banco de dados.
             </summary>

@@ -47,6 +47,7 @@ namespace EpsSchool.Api
             // AddScoped creates a DataContext per request and reuses it, avoiding unnecessary connections with the database.
             // When he finish the DataContext using, he destroys it and closes the connection.
             services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IStudentCourseSubjectRepository, StudentCourseSubjectRepository>();
             services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddScoped<StudentHandler, StudentHandler>();
             services.AddScoped<TeacherHandler, TeacherHandler>();

@@ -29,7 +29,7 @@ namespace EpsSchool.Domain.Commands
                 new Contract()
                     .Requires()
                     .IsNotEmpty(Id, "Código do Aluno", "Informe o código de aluno válido!")
-                    .HasMinLen(FirstName, 5, "Nome", "Informe o nome do aluno!")
+                    .HasMinLen(FirstName, 3, "Nome", "Informe o nome do aluno!")
                     .HasMaxLen(FirstName, 20,"Nome", "O nome não pode ter mais que 20 caracteres!")
                     .HasMinLen(LastName, 5, "Sobrenome", "Informe o sobrenome do aluno!")
                     .HasMaxLen(LastName, 20,"Sobrenome", "O sobrenome não pode ter mais que 20 caracteres!")
