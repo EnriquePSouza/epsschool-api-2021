@@ -21,7 +21,9 @@ namespace EpsSchool.Tests.HandlersTests
                                                         DateTime.Now, CoursesSampleDataManager.course1.Id);
         private readonly StudentHandler _handler = 
                                             new StudentHandler(
-                                                    new FakeStudentRepository(), FakeMapper.mapper);
+                                                    new FakeStudentRepository(),
+                                                    new FakeStudentCourseSubjectRepository(),
+                                                    FakeMapper.mapper );
         private GenericCommandResult _result = new GenericCommandResult();
 
         [TestMethod]

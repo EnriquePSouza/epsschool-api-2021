@@ -19,7 +19,9 @@ namespace EpsSchool.Tests.HandlersTests
                                                         new ChangeStudentStatusCommand(Guid.NewGuid(), false);
         private readonly StudentHandler _handler = 
                                             new StudentHandler(
-                                                    new FakeStudentRepository(), FakeMapper.mapper );
+                                                    new FakeStudentRepository(),
+                                                    new FakeStudentCourseSubjectRepository(),
+                                                    FakeMapper.mapper );
         private GenericCommandResult _result = new GenericCommandResult();
 
         [TestMethod]

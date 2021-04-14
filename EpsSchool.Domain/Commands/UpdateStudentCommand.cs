@@ -23,8 +23,6 @@ namespace EpsSchool.Domain.Commands
         public string PhoneNumber { get; set; }
         public bool Status { get; set; }
 
-        // TODO - Verify if needs to update course too.
-
         public void Validate()
         {
             AddNotifications(

@@ -187,17 +187,32 @@ namespace EpsSchool.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromServices] IStudentRepository repo, Guid id)
+        public async Task<IActionResult> Delete(
+            [FromServices] IStudentRepository repoStudent,
+            [FromServices] IStudentCourseSubjectRepository repoScs, Guid id)
         {
             try
             {
-                var student = await repo.GetById(id);
+                var student = await repoStudent.GetById(id);
                 if (student == null)
                     return NotFound(new GenericCommandResult(false,
                                         "Aluno não encontrado!", "StudentId: " + id));
 
-                repo.Delete(student);
-                await repo.SaveAsync();
+                var studentCoursesSubjects = await repoScs.GetAllByStudentIdAsync(id);
+                if (studentCoursesSubjects == null)
+                    return NotFound(new GenericCommandResult(false,
+                                        "O Aluno não está matriculado em nenhum curso!",
+                                        "StudentId: " + id));
+
+                // Deletes the student course enrollment.
+                foreach (var studentCourseSubject in studentCoursesSubjects)
+                {
+                    repoScs.Delete(studentCourseSubject);
+                    await repoScs.SaveAsync();
+                }
+
+                repoStudent.Delete(student);
+                await repoStudent.SaveAsync();
 
                 var deletedStudent = _mapper.Map<CreateStudentCommand>(student);
                 var studentResult = new GenericCommandResult(false,

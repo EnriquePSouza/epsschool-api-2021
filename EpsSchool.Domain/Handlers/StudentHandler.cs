@@ -16,12 +16,14 @@ namespace EpsSchool.Domain.Handlers
         IHandler<UpdateStudentCommand>,
         IHandler<ChangeStudentStatusCommand>
     {
-        private readonly IStudentRepository _repository;
+        private readonly IStudentRepository _repoStudent;
+        private readonly IStudentCourseSubjectRepository _repoScs;
         private readonly IMapper _mapper;
 
-        public StudentHandler(IStudentRepository repository, IMapper mapper)
+        public StudentHandler(IStudentRepository repoStudent, IStudentCourseSubjectRepository repoScs,IMapper mapper)
         {
-            _repository = repository;
+            _repoStudent = repoStudent;
+            _repoScs = repoScs;
             _mapper = mapper;
         }
 
@@ -36,10 +38,22 @@ namespace EpsSchool.Domain.Handlers
             // Creates the student object.
             var student = _mapper.Map<Student>(command);
 
-            // TODO - Insert the student in one course.
+            var coursesSubjects = await _repoScs.GetAllByCourseIdAsync(command.CourseId);
+            if (coursesSubjects == null)
+                return new GenericCommandResult(false,
+                            "Curso não encontrado!", command);
 
-            _repository.Create(student);
-            await _repository.SaveAsync();
+            _repoStudent.Create(student);
+            await _repoStudent.SaveAsync();
+
+            // Creates the student course enrollment.
+            foreach (var courseSubject in coursesSubjects)
+            {
+                var studentCourseSubject = new StudentCourseSubject(courseSubject.Id, student.Id);
+
+                _repoScs.Create(studentCourseSubject);
+                await _repoScs.SaveAsync();
+            }
 
             var studentResult = _mapper.Map<CreateStudentCommand>(student);
 
@@ -56,7 +70,7 @@ namespace EpsSchool.Domain.Handlers
                             "Aluno Invalido!", command.Notifications);
             
             // Check if the student exists.
-            var student = await _repository.GetById(command.Id);
+            var student = await _repoStudent.GetById(command.Id);
             if (student == null)
                 return new GenericCommandResult(false,
                             "Aluno não encontrado!", command);
@@ -64,10 +78,8 @@ namespace EpsSchool.Domain.Handlers
             // Update the student object with the new command data.
             student = _mapper.Map<Student>(command);
 
-            // TODO - Verify if needs to update course too.
-
-            _repository.Update(student);
-            await _repository.SaveAsync();
+            _repoStudent.Update(student);
+            await _repoStudent.SaveAsync();
 
             var studentResult = _mapper.Map<CreateStudentCommand>(student);
 
@@ -84,7 +96,7 @@ namespace EpsSchool.Domain.Handlers
                             "Aluno Invalido!", command.Notifications);
             
             // Check if the student exists.
-            var student = await _repository.GetById(command.Id);
+            var student = await _repoStudent.GetById(command.Id);
             if (student == null)
                 return new GenericCommandResult(false,
                             "Aluno não encontrado!", command);
@@ -93,8 +105,8 @@ namespace EpsSchool.Domain.Handlers
             student.Status = command.Status.Equals(true);
             student.EndDate = command.Status.Equals(true) ? null : DateTime.Now;
 
-            _repository.Update(student);
-            await _repository.SaveAsync();
+            _repoStudent.Update(student);
+            await _repoStudent.SaveAsync();
 
             var msg = student.Status ? "ativado" : "desativado";
 
