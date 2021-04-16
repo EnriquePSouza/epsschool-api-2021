@@ -2,11 +2,12 @@ using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Helpers;
 using Microsoft.EntityFrameworkCore;
 
-namespace EpsSchool.infra.Contexts
+namespace EpsSchool.Infra.Contexts
 {
     public class SchoolContext : DbContext
     {
         public SchoolContext(DbContextOptions<SchoolContext> options) : base(options) { }
+        public DbSet<User> Users { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Course> Courses { get; set; }

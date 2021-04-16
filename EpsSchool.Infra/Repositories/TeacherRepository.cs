@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using EpsSchool.Domain.Entities;
 using EpsSchool.Domain.Queries;
 using EpsSchool.Domain.Repositories;
-using EpsSchool.infra.Contexts;
+using EpsSchool.Infra.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace EpsSchool.Infra.Repositories

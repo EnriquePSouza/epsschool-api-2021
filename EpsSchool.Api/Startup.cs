@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using AutoMapper;
 using EpsSchool.Domain.Repositories;
-using EpsSchool.infra.Contexts;
+using EpsSchool.Infra.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
