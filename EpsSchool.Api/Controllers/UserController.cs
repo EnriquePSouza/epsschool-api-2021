@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using EpsSchool.Infra.Contexts;
 using EpsSchool.Domain.Entities;
+using EpsSchool.Domain.Services;
 
 namespace EpsSchool.Api.Controllers
 {
@@ -23,17 +24,17 @@ namespace EpsSchool.Api.Controllers
         [AllowAnonymous]
         public async Task<ActionResult<User>> Post(
             [FromServices] SchoolContext context,
-            [FromBody] User user)
+            [FromBody] User model)
         {
             if (!ModelState.IsValid) // Change to command and make one handler
                 return BadRequest(ModelState);
 
             try
             {
-                context.Users.Add(user);
+                context.Users.Add(model);
                 await context.SaveChangesAsync();
 
-                return user;
+                return model;
             }
             catch (Exception)
             {
@@ -45,10 +46,22 @@ namespace EpsSchool.Api.Controllers
         [Route("login")]
         public async Task<ActionResult<dynamic>> Authenticate(
             [FromServices] SchoolContext context,
-            [FromBody] User user)
+            [FromBody] User model)
         {
-            // TODO > Make the authenticate method.
-            return await Task.Factory.StartNew(() => { return user; });
+            var user = await context.Users
+                    .AsNoTracking()
+                    .Where(x => x.Username == model.Username && x.Password == model.Password)
+                    .FirstOrDefaultAsync();
+
+            if (user == null)
+                return NotFound(new { message = "Usuário ou senha inválidos" });
+
+            var token = TokenService.GenerateToken(user);
+            return new 
+            {
+                user = user,
+                token = token
+            };
         }
     }
 }

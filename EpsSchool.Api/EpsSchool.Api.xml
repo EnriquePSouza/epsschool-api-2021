@@ -15,6 +15,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:EpsSchool.Api.Controllers.StudentController.GenerateStudentRepot(EpsSchool.Domain.Helpers.PageParams,EpsSchool.Domain.Repositories.IStudentRepository)">
+            <summary>
+            Método responsável por retornar todos os Alunos em uma planilha excel.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:EpsSchool.Api.Controllers.StudentController.GetByCourseId(EpsSchool.Domain.Repositories.IStudentRepository,System.Guid)">
             <summary>
             Método responsável por retornar um Aluno ao informar o seu Curso.
@@ -103,6 +109,11 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="T:EpsSchool.Api.Controllers.UserController">
+            <summary>
+            Versão 1 do controlador de Acesso de Usuários.
+            </summary>
         </member>
     </members>
 </doc>

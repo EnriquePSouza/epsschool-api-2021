@@ -9,6 +9,13 @@ using System.Collections.Generic;
 using AutoMapper;
 using System;
 using EpsSchool.Domain.Dtos;
+using System.Data;
+using NPOI.HSSF.UserModel;
+using Newtonsoft.Json;
+using System.IO;
+using EpsSchool.Domain.Entities;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 
 namespace EpsSchool.Api.Controllers
 {
@@ -44,6 +51,63 @@ namespace EpsSchool.Api.Controllers
                                         students.TotalCount, students.TotalPages);
 
                 return Ok(studentsResult);
+            }
+            catch (Exception ex)
+            {
+                var errorDetails = $"Algo de errado aconteceu ao axecutar a ação GetAll: {ex.Message}";
+                return StatusCode(500, new GenericCommandResult(false,
+                                        "Erro interno do servidor.", errorDetails));
+            }
+        }
+
+        /// <summary>
+        /// Método responsável por retornar todos os Alunos em uma planilha excel.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("studentReport")]
+        public async Task<IActionResult> GenerateStudentRepot(
+            [FromQuery] PageParams pageParams,
+            [FromServices] IStudentRepository repo)
+        {
+            try
+            {
+                var pathExcelFile = Settings.pathExcelFileIsDevelopment + "Students.xlsx";
+
+                var students = await repo.GetAllAsync(pageParams, true);
+                var studentsResult = _mapper.Map<IEnumerable<StudentReportDto>>(students);
+
+                using (var fs = new FileStream(pathExcelFile, FileMode.Create, FileAccess.Write))
+                {
+                    IWorkbook workbook = new XSSFWorkbook();
+                    ISheet excelSheet = workbook.CreateSheet("Students");
+                    List<string> columns = new List<string>();
+                    IRow row = excelSheet.CreateRow(0);
+                    int columnIndex = 0;
+
+                    foreach (System.Data.DataColumn column in studentsResult.ToDataTable().Columns)
+                    {
+                        columns.Add(column.ColumnName);
+                        row.CreateCell(columnIndex).SetCellValue(column.ColumnName);
+                        columnIndex++;
+                    }
+
+                    int rowIndex = 1;
+                    foreach (DataRow dsrow in students.ToDataTable().Rows)
+                    {
+                        row = excelSheet.CreateRow(rowIndex);
+                        int cellIndex = 0;
+                        foreach (String col in columns)
+                        {
+                            row.CreateCell(cellIndex).SetCellValue(dsrow[col].ToString());
+                            cellIndex++;
+                        }
+
+                        rowIndex++;
+                    }
+                    workbook.Write(fs);
+                }
+
+                return Ok(new { message = "Relatório de alunos criado com sucesso!" });
             }
             catch (Exception ex)
             {
@@ -167,7 +231,7 @@ namespace EpsSchool.Api.Controllers
             try
             {
                 var studentResult = (GenericCommandResult)await handler.Handle(command);
-                
+
                 return Ok(studentResult);
             }
             catch (Exception ex)
