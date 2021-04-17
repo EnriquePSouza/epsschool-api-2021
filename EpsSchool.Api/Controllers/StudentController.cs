@@ -71,6 +71,7 @@ namespace EpsSchool.Api.Controllers
         {
             try
             {
+                // TODO - Make one report service for this.
                 var pathExcelFile = Settings.pathExcelFileIsDevelopment + "Students.xlsx";
 
                 var students = await repo.GetAllAsync(pageParams, true);
@@ -176,11 +177,10 @@ namespace EpsSchool.Api.Controllers
         {
             try
             {
-                var studentResult = (GenericCommandResult)await handler.Handle(command);
+                var studentResult = (CreateStudentComandResult)await handler.Handle(command);
                 if (studentResult.Success.Equals(true))
                 {
-                    var student = _mapper.Map<Student>(studentResult.Data);
-                    
+                    // TODO - Make a handler for this and if necessary utilize one MediatoR to manage the handlers.
                     var coursesSubjects = await repoScs.GetAllByCourseIdAsync(command.CourseId);
                     if (coursesSubjects == null)
                         return NotFound(new GenericCommandResult(false,
@@ -189,7 +189,7 @@ namespace EpsSchool.Api.Controllers
                     // Creates the student course enrollment.
                     foreach (var courseSubject in coursesSubjects)
                     {
-                        var studentCourseSubject = new StudentCourseSubject(courseSubject.Id, student.Id);
+                        var studentCourseSubject = new StudentCourseSubject(courseSubject.Id, studentResult.Id);
 
                         repoScs.Create(studentCourseSubject);
                         await repoScs.SaveAsync();

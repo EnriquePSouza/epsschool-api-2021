@@ -22,7 +22,6 @@ namespace EpsSchool.Domain.Helpers
             CreateMap<Student, CreateStudentCommand>().ReverseMap();
             CreateMap<Student, UpdateStudentCommand>().ReverseMap();
             CreateMap<Student, StudentReportDto>().ReverseMap();
-            CreateMap<object, Student>().ReverseMap();
 
             CreateMap<Teacher, TeacherDto>()
                 .ForMember(

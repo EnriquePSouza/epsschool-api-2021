@@ -39,7 +39,7 @@ namespace EpsSchool.Domain.Handlers
             _repoStudent.Create(student);
             await _repoStudent.SaveAsync();
 
-            return new GenericCommandResult(true, "Aluno Salvo!", student);
+            return new CreateStudentComandResult(true, "Aluno Salvo!", student.Id);
         }
 
         public async Task<ICommandResult> Handle(UpdateStudentCommand command)
