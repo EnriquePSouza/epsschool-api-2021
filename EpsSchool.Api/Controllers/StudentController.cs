@@ -171,11 +171,31 @@ namespace EpsSchool.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(
             [FromBody] CreateStudentCommand command,
+            [FromServices] IStudentCourseSubjectRepository repoScs,
             [FromServices] StudentHandler handler)
         {
             try
             {
                 var studentResult = (GenericCommandResult)await handler.Handle(command);
+                if (studentResult.Success.Equals(true))
+                {
+                    var student = _mapper.Map<Student>(studentResult.Data);
+                    
+                    var coursesSubjects = await repoScs.GetAllByCourseIdAsync(command.CourseId);
+                    if (coursesSubjects == null)
+                        return NotFound(new GenericCommandResult(false,
+                                    "Curso não encontrado!", command));
+
+                    // Creates the student course enrollment.
+                    foreach (var courseSubject in coursesSubjects)
+                    {
+                        var studentCourseSubject = new StudentCourseSubject(courseSubject.Id, student.Id);
+
+                        repoScs.Create(studentCourseSubject);
+                        await repoScs.SaveAsync();
+                    }
+                }
+
 
                 return Ok(studentResult);
             }

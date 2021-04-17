@@ -17,13 +17,11 @@ namespace EpsSchool.Domain.Handlers
         IHandler<ChangeStudentStatusCommand>
     {
         private readonly IStudentRepository _repoStudent;
-        private readonly IStudentCourseSubjectRepository _repoScs;
         private readonly IMapper _mapper;
 
-        public StudentHandler(IStudentRepository repoStudent, IStudentCourseSubjectRepository repoScs, IMapper mapper)
+        public StudentHandler(IStudentRepository repoStudent, IMapper mapper)
         {
             _repoStudent = repoStudent;
-            _repoScs = repoScs;
             _mapper = mapper;
         }
 
@@ -38,24 +36,10 @@ namespace EpsSchool.Domain.Handlers
             // Creates the student object.
             var student = _mapper.Map<Student>(command);
 
-            var coursesSubjects = await _repoScs.GetAllByCourseIdAsync(command.CourseId);
-            if (coursesSubjects == null)
-                return new GenericCommandResult(false,
-                            "Curso não encontrado!", command);
-
             _repoStudent.Create(student);
             await _repoStudent.SaveAsync();
 
-            // Creates the student course enrollment.
-            foreach (var courseSubject in coursesSubjects)
-            {
-                var studentCourseSubject = new StudentCourseSubject(courseSubject.Id, student.Id);
-
-                _repoScs.Create(studentCourseSubject);
-                await _repoScs.SaveAsync();
-            }
-
-            return new GenericCommandResult(true, "Aluno Salvo!", command);
+            return new GenericCommandResult(true, "Aluno Salvo!", student);
         }
 
         public async Task<ICommandResult> Handle(UpdateStudentCommand command)
