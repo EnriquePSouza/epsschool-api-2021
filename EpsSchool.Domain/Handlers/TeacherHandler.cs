@@ -81,7 +81,7 @@ namespace EpsSchool.Domain.Handlers
 
             // Update the teacher status.
             teacher.Status = command.Status.Equals(true);
-            teacher.EndDate = command.Status.Equals(true) ? null : DateTime.Now;
+            teacher.EndDate = command.Status.Equals(true) ? (DateTime?)null : (DateTime?)DateTime.Now;
 
             _repository.Update(teacher);
             await _repository.SaveAsync();

@@ -4,6 +4,11 @@
         <name>EpsSchool.Api</name>
     </assembly>
     <members>
+        <member name="T:EpsSchool.Api.Controllers.CourseController">
+            <summary>
+            Versão 1 do controlador de Cursos.
+            </summary>
+        </member>
         <member name="T:EpsSchool.Api.Controllers.StudentController">
             <summary>
             Versão 1 do controlador de Alunos.
@@ -34,7 +39,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:EpsSchool.Api.Controllers.StudentController.Create(EpsSchool.Domain.Commands.CreateStudentCommand,EpsSchool.Domain.Handlers.StudentHandler)">
+        <member name="M:EpsSchool.Api.Controllers.StudentController.Create(EpsSchool.Domain.Commands.CreateStudentCommand,EpsSchool.Domain.Repositories.IStudentCourseSubjectRepository,EpsSchool.Domain.Handlers.StudentHandler)">
             <summary>
             Método responsável por inserir as informações de um Aluno no banco de dados.
             </summary>
@@ -62,6 +67,11 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="T:EpsSchool.Api.Controllers.SubjectController">
+            <summary>
+            Versão 1 do controlador de Disciplinas.
+            </summary>
         </member>
         <member name="T:EpsSchool.Api.Controllers.TeacherController">
             <summary>
