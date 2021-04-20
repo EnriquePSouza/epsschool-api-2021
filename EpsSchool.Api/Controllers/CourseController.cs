@@ -10,6 +10,5 @@ namespace EpsSchool.Api.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class CourseController : ControllerBase
     {
-        // Make mehods to create courses.
     }
 }
