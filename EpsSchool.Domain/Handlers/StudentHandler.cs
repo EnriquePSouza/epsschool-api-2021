@@ -27,11 +27,16 @@ namespace EpsSchool.Domain.Handlers
 
         public async Task<ICommandResult> Handle(CreateStudentCommand command)
         {
+            CreateStudentComandResult studentResult;
+            
             // Fail Fast Validation
             command.Validate();
             if (command.Invalid)
-                return new GenericCommandResult(false,
-                            "Aluno Invalido!", command.Notifications);
+            {
+                studentResult = new CreateStudentComandResult(false,
+                                    "Aluno Invalido!", command.Notifications);
+                return studentResult;
+            }
 
             // Creates the student object.
             var student = _mapper.Map<Student>(command);
@@ -39,7 +44,11 @@ namespace EpsSchool.Domain.Handlers
             _repoStudent.Create(student);
             await _repoStudent.SaveAsync();
 
-            return new CreateStudentComandResult(true, "Aluno Salvo!", student.Id);
+            studentResult = new CreateStudentComandResult(true,
+                                "Aluno Salvo!", command.Notifications);
+            studentResult.Id = student.Id;
+
+            return studentResult;
         }
 
         public async Task<ICommandResult> Handle(UpdateStudentCommand command)
@@ -81,14 +90,17 @@ namespace EpsSchool.Domain.Handlers
 
             // Update the student status.
             student.Status = command.Status.Equals(true);
-            student.EndDate = command.Status.Equals(true) ? (DateTime?)null : (DateTime?)DateTime.Now;
+            student.EndDate = command.Status.Equals(true) 
+                                                ? (DateTime?)null 
+                                                : (DateTime?)DateTime.Now;
 
             _repoStudent.Update(student);
             await _repoStudent.SaveAsync();
 
             var msg = student.Status ? "ativado" : "desativado";
 
-            return new GenericCommandResult(true, $"Aluno {msg} com sucesso!", command);
+            return new GenericCommandResult(true, 
+                        $"Aluno {msg} com sucesso!", command);
         }
     }
 }
