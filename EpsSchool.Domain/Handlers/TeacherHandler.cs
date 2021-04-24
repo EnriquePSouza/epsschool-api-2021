@@ -12,9 +12,9 @@ namespace EpsSchool.Domain.Handlers
 {
     public class TeacherHandler :
         Notifiable,
-        IHandler<CreateTeacherCommand>,
-        IHandler<UpdateTeacherCommand>,
-        IHandler<ChangeTeacherStatusCommand>
+        ITeacherHandler<CreateTeacherCommand>,
+        ITeacherHandler<UpdateTeacherCommand>,
+        ITeacherHandler<ChangeTeacherStatusCommand>
     {
         private readonly ITeacherRepository _repository;
         private readonly IMapper _mapper;
@@ -25,7 +25,7 @@ namespace EpsSchool.Domain.Handlers
             _mapper = mapper;
         }
 
-        public async Task<ICommandResult> Handle(CreateTeacherCommand command)
+        public async Task<ICommandResult> TeacherHandle(CreateTeacherCommand command)
         {
             // Fail Fast Validation
             command.Validate();
@@ -42,7 +42,7 @@ namespace EpsSchool.Domain.Handlers
             return new GenericCommandResult(true, "Professor Salvo!", command);
         }
 
-        public async Task<ICommandResult> Handle(UpdateTeacherCommand command)
+        public async Task<ICommandResult> TeacherHandle(UpdateTeacherCommand command)
         {
             // Fail Fast Validation
             command.Validate();
@@ -65,7 +65,7 @@ namespace EpsSchool.Domain.Handlers
             return new GenericCommandResult(true, "Professor Salvo!", command);
         }
 
-        public async Task<ICommandResult> Handle(ChangeTeacherStatusCommand command)
+        public async Task<ICommandResult> TeacherHandle(ChangeTeacherStatusCommand command)
         {
             // Fail Fast Validation
             command.Validate();

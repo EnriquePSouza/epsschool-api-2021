@@ -108,7 +108,7 @@ namespace EpsSchool.Api.Controllers
         {
             try
             {
-                var teacherResult = (GenericCommandResult)await handler.Handle(command);
+                var teacherResult = (GenericCommandResult)await handler.TeacherHandle(command);
                 
                 return Ok(teacherResult);
             }
@@ -135,11 +135,11 @@ namespace EpsSchool.Api.Controllers
         {
             try
             {
-                var teacherResult = (GenericCommandResult)await handler.Handle(command);
+                var teacherResult = (GenericCommandResult)await handler.TeacherHandle(command);
                 if (teacherResult.Success.Equals(true))
                 {
                     var changeStatus = new ChangeTeacherStatusCommand(command.Id, command.Status);
-                    teacherResult = (GenericCommandResult)await handler.Handle(changeStatus);
+                    teacherResult = (GenericCommandResult)await handler.TeacherHandle(changeStatus);
                 }
 
                 return Ok(teacherResult);

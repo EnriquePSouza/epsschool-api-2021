@@ -12,9 +12,9 @@ namespace EpsSchool.Domain.Handlers
 {
     public class StudentHandler :
         Notifiable,
-        IHandler<CreateStudentCommand>,
-        IHandler<UpdateStudentCommand>,
-        IHandler<ChangeStudentStatusCommand>
+        IStudentHandler<CreateStudentCommand>,
+        IStudentHandler<UpdateStudentCommand>,
+        IStudentHandler<ChangeStudentStatusCommand>
     {
         private readonly IStudentRepository _repoStudent;
         private readonly IMapper _mapper;
@@ -25,7 +25,7 @@ namespace EpsSchool.Domain.Handlers
             _mapper = mapper;
         }
 
-        public async Task<ICommandResult> Handle(CreateStudentCommand command)
+        public async Task<ICommandResult> StudentHandle(CreateStudentCommand command)
         {
             CreateStudentComandResult studentResult;
             
@@ -51,7 +51,7 @@ namespace EpsSchool.Domain.Handlers
             return studentResult;
         }
 
-        public async Task<ICommandResult> Handle(UpdateStudentCommand command)
+        public async Task<ICommandResult> StudentHandle(UpdateStudentCommand command)
         {
             // Fail Fast Validation
             command.Validate();
@@ -74,7 +74,7 @@ namespace EpsSchool.Domain.Handlers
             return new GenericCommandResult(true, "Aluno Salvo!", command);
         }
 
-        public async Task<ICommandResult> Handle(ChangeStudentStatusCommand command)
+        public async Task<ICommandResult> StudentHandle(ChangeStudentStatusCommand command)
         {
             // Fail Fast Validation
             command.Validate();

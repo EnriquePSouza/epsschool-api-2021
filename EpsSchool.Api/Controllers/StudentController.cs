@@ -175,7 +175,7 @@ namespace EpsSchool.Api.Controllers
         {
             try
             {
-                var studentResult = (CreateStudentComandResult)await handler.Handle(command);
+                var studentResult = (CreateStudentComandResult)await handler.StudentHandle(command);
                 if (studentResult.Success.Equals(true))
                 {
                     // TODO - Make a handler for this and if necessary utilize one MediatoR to manage the handlers.
@@ -219,11 +219,11 @@ namespace EpsSchool.Api.Controllers
         {
             try
             {
-                var studentResult = (GenericCommandResult)await handler.Handle(command);
+                var studentResult = (GenericCommandResult)await handler.StudentHandle(command);
                 if (studentResult.Success.Equals(true))
                 {
                     var changeStatus = new ChangeStudentStatusCommand(command.Id, command.Status);
-                    studentResult = (GenericCommandResult)await handler.Handle(changeStatus);
+                    studentResult = (GenericCommandResult)await handler.StudentHandle(changeStatus);
                 }
 
                 return Ok(studentResult);
@@ -248,7 +248,7 @@ namespace EpsSchool.Api.Controllers
         {
             try
             {
-                var studentResult = (GenericCommandResult)await handler.Handle(command);
+                var studentResult = (GenericCommandResult)await handler.StudentHandle(command);
 
                 return Ok(studentResult);
             }

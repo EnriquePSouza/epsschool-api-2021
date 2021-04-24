@@ -28,7 +28,7 @@ namespace EpsSchool.Tests.HandlersTests
         [TestCategory("Handler")]
         public async Task Dado_um_comando_invalido_o_manipulador_deve_interromper_a_execucao()
         {
-            _result = (GenericCommandResult) await _handler.Handle(_invalidCommand);
+            _result = (GenericCommandResult) await _handler.StudentHandle(_invalidCommand);
             Assert.AreEqual(_result.Success, false);
         }
 
@@ -36,7 +36,7 @@ namespace EpsSchool.Tests.HandlersTests
         [TestCategory("Handler")]
         public async Task Dado_um_comando_valido_o_manipulador_deve_atualizar_o_registro_de_aluno()
         {
-            _result = (GenericCommandResult) await _handler.Handle(_validCommand);
+            _result = (GenericCommandResult) await _handler.StudentHandle(_validCommand);
             Assert.AreEqual(_result.Success, true);
         }
     }
