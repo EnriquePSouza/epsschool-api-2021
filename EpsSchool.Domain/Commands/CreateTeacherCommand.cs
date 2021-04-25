@@ -6,7 +6,7 @@ using Flunt.Validations;
 namespace EpsSchool.Domain.Commands
 {
     /// <summary>
-    /// Este é o DTO para efetuar o registro de um Professor no banco de dados.
+    /// Este é o command para efetuar o registro de um professor no banco de dados.
     /// </summary>
     public class CreateTeacherCommand : Notifiable, ICommand
     {
