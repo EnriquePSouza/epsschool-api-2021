@@ -11,5 +11,7 @@ namespace EpsSchool.Domain.Repositories
         void Update(Subject subject);
         void Delete(Subject subject);
         Task SaveAsync();
+        Task<Subject> GetById(Guid Id);
+        Task<List<Subject>> GetAll();
     }
 }

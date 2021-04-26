@@ -5,11 +5,13 @@ using EpsSchool.Domain.Entities;
 
 namespace EpsSchool.Domain.Repositories
 {
-    public interface ICourseSubjectRepository
+    public interface ICourseRepository
     {
-        void Create(CourseSubject courseSubject);
-        void Update(CourseSubject courseSubject);
-        void Delete(CourseSubject courseSubject);
+        void Create(Course course);
+        void Update(Course course);
+        void Delete(Course course);
         Task SaveAsync();
+        Task<Course> GetById(Guid Id);
+        Task<List<Course>> GetAll();
     }
 }
