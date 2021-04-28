@@ -32,7 +32,6 @@ namespace EpsSchool.Domain.Handlers
                 return new GenericCommandResult(false,
                                     "Disciplina Invalida!", command.Notifications);
             
-
             // Creates the subject object.
             var subject = _mapper.Map<Subject>(command);
 
