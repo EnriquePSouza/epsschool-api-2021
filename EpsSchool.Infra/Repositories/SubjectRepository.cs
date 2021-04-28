@@ -55,7 +55,7 @@ namespace EpsSchool.Infra.Repositories
             IQueryable<Subject> query = _context.Subjects;
 
             query = query.AsNoTracking()
-                         .Where(s => s.Id == id);
+                         .Where(SubjectQueries.GetById(id));
 
             return await query.FirstOrDefaultAsync();
         }

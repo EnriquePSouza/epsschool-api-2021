@@ -126,6 +126,20 @@ namespace EpsSchool.Domain.Helpers
             return output;
         }
 
+        public static List<Subject> LoadSubjectQueriesTestsSampleData()
+        {
+            List<Subject> output = new List<Subject>();
+
+            Subject subjectData1 = SubjectsSampleDataManager.subject1;
+            subjectData1.Id = new Guid("3d04b2dd-76f8-4baa-8a67-12064a7808b2");
+
+            output.Add(subjectData1);
+            output.Add(SubjectsSampleDataManager.subject2);
+            output.Add(SubjectsSampleDataManager.subject3);
+
+            return output;
+        }
+
         public static List<Student> LoadStudentsSampleData()
         {
             List<Student> output = new List<Student>();
