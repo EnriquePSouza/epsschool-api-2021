@@ -140,6 +140,20 @@ namespace EpsSchool.Domain.Helpers
             return output;
         }
 
+        public static List<Course> LoadCourseQueriesTestsSampleData()
+        {
+            List<Course> output = new List<Course>();
+
+            Course courseData1 = CoursesSampleDataManager.course1;
+            courseData1.Id = new Guid("3d04b2dd-76f8-4baa-8a67-12064a7808b2");
+
+            output.Add(courseData1);
+            output.Add(CoursesSampleDataManager.course2);
+            output.Add(CoursesSampleDataManager.course3);
+
+            return output;
+        }
+
         public static List<Student> LoadStudentsSampleData()
         {
             List<Student> output = new List<Student>();
