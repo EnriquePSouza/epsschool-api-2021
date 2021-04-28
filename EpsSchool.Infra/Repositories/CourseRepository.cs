@@ -11,28 +11,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EpsSchool.Infra.Repositories
 {
-    public class StudentCourseSubjectRepository : IStudentCourseSubjectRepository
+    public class CourseRepository : ICourseRepository
     {
         private readonly SchoolContext _context;
 
-        public StudentCourseSubjectRepository(SchoolContext context)
+        public CourseRepository(SchoolContext context)
         {
             _context = context;
         }
 
-        public void Create(StudentCourseSubject studentCourseSubject)
+        public void Create(Course course)
         {
-            _context.StudentsCoursesSubjects.Add(studentCourseSubject);
+            _context.Courses.Add(course);
         }
 
-        public void Update(StudentCourseSubject studentCourseSubject)
+        public void Update(Course course)
         {
-            _context.Entry(studentCourseSubject).State = EntityState.Modified;
+            _context.Entry(course).State = EntityState.Modified;
         }
 
-        public void Delete(StudentCourseSubject studentCourseSubject)
+        public void Delete(Course course)
         {
-            _context.Entry(studentCourseSubject).State = EntityState.Deleted;
+            _context.Entry(course).State = EntityState.Deleted;
         }
 
         public async Task SaveAsync()
@@ -40,26 +40,24 @@ namespace EpsSchool.Infra.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<StudentCourseSubject>> GetAllByStudentIdAsync(Guid studentId)
+        public async Task<List<Course>> GetAllAsync()
         {
-            IQueryable<StudentCourseSubject> query = _context.StudentsCoursesSubjects;
+            IQueryable<Course> query = _context.Courses;
 
             query = query.AsNoTracking()
-                         .OrderBy(scs => scs.StudentId)
-                         .Where(scs => scs.StudentId == studentId);
+                         .OrderBy(s => s.Name);
 
             return await query.ToListAsync();
         }
 
-        public async Task<List<CourseSubject>> GetAllByCourseIdAsync(Guid courseId)
+        public async Task<Course> GetByIdAsync(Guid id)
         {
-            IQueryable<CourseSubject> query = _context.CoursesSubjects;
+            IQueryable<Course> query = _context.Courses;
 
             query = query.AsNoTracking()
-                         .OrderBy(cs => cs.CourseId)
-                         .Where(cs => cs.CourseId == courseId);
+                         .Where(s => s.Id == id);
 
-            return await query.ToListAsync();
+            return await query.FirstOrDefaultAsync();
         }
 
     }
